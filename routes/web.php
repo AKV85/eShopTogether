@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\MainController;
+// kodas naudojamas importuoti MainController klasę, kad būtų galima naudoti jos funkcijas maršrutų apibrėžimuose.
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -13,19 +16,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//vartotojas prisijungia į pagrindinį puslapį, t.y. "/", Laravel turės panaudoti "MainController" klasę,
+// kad sugeneruotų puslapio turinį. Konkrečiai, jis naudos "index" funkciją, kuri turėtų grąžinti HTML,
+// kuris bus rodomas vartotojui.
+Route::get('/', [MainController::class, 'index']);
 
-//maršrutas susiejamas su GET užklausa į '/' kelią ir grąžina 'index' rodinį.
-Route::get('/', function () {
-    return view('index');
-});
-//maršrutas susiejamas su GET užklausa į '/categories' kelią ir grąžina 'categories' rodinį.
-Route::get('/categories', function () {
-    return view('categories');
-});
-//maršrutas susiejamas su GET užklausa į '/product' kelią ir grąžina 'product' rodinį.
-Route::get('/product', function () {
-    return view('product');
-});
+//maršrutas nurodo, kad kai vartotojas eina į "categories" puslapį, Laravel turės vėl naudoti "MainController" klasę,
+// bet šį kartą naudodamas "categories" funkciją, kad sugeneruotų puslapio turinį. Ši funkcija gali atlikti tam
+// tikrus veiksmus, pvz., gauti kategorijas iš duomenų bazės ir atvaizduoti jas vartotojui.
+Route::get('categories', [MainController::class, 'categories']);
+
+//kelio maršrutas nurodo, kad kai vartotojas eina į "product" puslapį, Laravel turės vėl naudoti "MainController" klasę,
+// bet šį kartą naudodamas "product" funkciją, kad sugeneruotų puslapio turinį. Ši funkcija gali atlikti tam tikrus
+// veiksmus, pvz., gauti informaciją apie produktą iš duomenų bazės ir atvaizduoti ją vartotojui.
+Route::get('product', [MainController::class, 'product']);
+// '/', 'categories', 'product' kelio maršrutai turi būti apibrėžti aplikacijos maršrutų (routes) failo viduje,
+// kad Laravel galėtų juos naudoti, kai vartotojas atlieka atitinkamą veiksmą, pvz., kai paspaudžia nuorodą arba įveda adresą į naršyklės adresų juostą.
+
+
 //maršrutas susiejamas su GET užklausa į '/welcome' kelią ir grąžina 'welcome' rodinį.
 Route::get('/welcome', function () {
     return view('welcome');
