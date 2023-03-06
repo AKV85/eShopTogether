@@ -27,4 +27,7 @@
    kurioje yra pavadinimu "origin", į jos "main" šaką. Jei šakos pavadinimas jūsų nuotolinėje saugykloje yra skirtingas,
    tada jums reikėtų pakeisti "main" į atitinkamą šakos pavadinimą. (AKV85:1-13)
 
+14. Sukūriau nauja branch "naujas_puslapis", pasibandėm sukomitint, supushint, sprest konfliktus.
+
+15. Sukūriau 3 blaidus(index,categories,product) su paprastais routais. Naudojau auto html sukurimo koda ir pridejau css
 
