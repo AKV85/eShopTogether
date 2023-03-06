@@ -1,7 +1,9 @@
 
 <!doctype html>
-<html lang="en">
+<html lang="en">{{--Įdedamas žymės ženklų rinkinys, kuriame nurodoma, kad dokumentas yra anglų kalba.--}}
 <head>
+    {{--Aprašomas puslapio viršutinė dalis: nustatomas simbolių rinkinys, numatytasis atvaizdavimo būdas,
+     svetainės pavadinimas, sukuriama nuoroda į šrifto rinkinį ir nuoroda į Bootstrap failą.--}}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,6 +16,8 @@
     <link href="/css/startCss.css" rel="stylesheet">
 </head>
 <body>
+{{-- Aprašomas puslapio viršutinis meniu: nuoroda į pagrindinį puslapį, nuoroda į produktų kategorijas, nuoroda į
+prekių krepšelį ir nuoroda į projektą. Taip pat yra nuoroda į administratoriaus valdymo skydelį.--}}
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -37,6 +41,8 @@
 
 
 <div class="container">
+    {{--Aprašomas pagrindinis puslapio turinys. Tai yra prekių galerija, kurioje yra paveikslėlis, pavadinimas, kaina
+     ir nuorodos į prekių krepšelį ir išsamiau susipažinti su preke.--}}
     <div class="starter-template">
         <h1>Visos prekes</h1>
 

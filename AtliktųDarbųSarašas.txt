@@ -30,4 +30,5 @@
 14. Sukūriau nauja branch "naujas_puslapis", pasibandėm sukomitint, supushint, sprest konfliktus.
 
 15. Sukūriau 3 blaidus(index,categories,product) su paprastais routais. Naudojau auto html sukurimo koda ir pridejau css
-
+(Paulina)
+16. Sudejau komentarus(akv85)

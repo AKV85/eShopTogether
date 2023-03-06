@@ -14,7 +14,13 @@
     <link href="/css/startCss.css" rel="stylesheet">
 </head>
 <body>
+{{--Puslapio struktūra yra padalinta į "navbar" ir "container" dalis. "navbar" yra juoda naršymo juosta viršuje,
+ kurioje yra nuorodos į kitus puslapius, o "container" yra vieta, kurioje yra prekės pavadinimas, kaina, nuotrauka
+  ir tekstas. Į puslapio stilių yra įtrauktas Bootstrap CSS, kuris yra labai populiarus ir lengvai pritaikomas
+   tinklalapiams.--}}
 <nav class="navbar navbar-inverse navbar-fixed-top">
+    {{--Puslapio viršuje yra juoda naršymo juosta, kurioje yra parduotuvės pavadinimas ir nuorodos į produktų
+     kategorijas, pirkimo krepšelį ir administratoriaus valdymo puslapį.--}}
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand" href="http://eShopForEveryone.lt">E-shop parduotuve</a>
@@ -37,6 +43,9 @@
 
 
 <div class="container">
+    {{--Toliau puslapyje yra produktas - vyrų kepure - kurio pavadinimas, kaina ir nuotrauka yra pateikti virš
+     teksto aprašymo. Tekstas trumpai aprašo produkto savybes ir yra pateikta mygtukų nuoroda "Į krepšelį",
+      kad pirkėjas galėtų pridėti produktą į savo krepšelį ir tęsti apsipirkimą.--}}
     <div class="starter-template">
         <h1>Vyr.kepure</h1>
         <p>Kaina: <b>7 Eur</b></p>
