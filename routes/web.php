@@ -26,6 +26,11 @@ Route::get('/', [MainController::class, 'index']);
 // tikrus veiksmus, pvz., gauti kategorijas iš duomenų bazės ir atvaizduoti jas vartotojui.
 Route::get('/categories', [MainController::class, 'categories']);
 
+//Šis kodas aprašo maršrutą, kuris turi reaguoti į URL adresą su kintamuoju 'category'. Tai reiškia, kad nurodžius bet
+// kokią kategoriją URL adrese, pvz. "/menClothes" arba "/womenClothes", šis maršrutas bus naudojamas ir bus iškviesta
+// 'MainController' kategorijos funkcija, kad būtų atvaizduota atitinkama kategorija.
+Route::get('/{category}', [MainController::class, 'category']);
+
 //Šis kodas aprašo maršrutą, kuriuo pasiekiamas product metodas MainController
 // klasėje. Maršrutas yra pasiekiamas adresu /menClothes/{product?}, kur {product?} reiškia, kad product yra
 // pasirenkamas parametras. Tai reiškia, kad galima pasiekti šį maršrutą tiek su, tiek be product parametro.
