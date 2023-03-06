@@ -38,18 +38,16 @@
 <div class="container">
     <div class="starter-template">
         <h1>
-            {{--Šis kodas yra logikos dalis, kuri nusprendžia, kokią kategoriją rodyti puslapyje. Kintamasis $category yra
-            patikrinamas, ar jis atitinka vieną iš nurodytų kategorijų: 'menClothes', 'womenClotes' arba 'accessories'.--}}
-            @if($category == 'menClothes')
-                Drabuziai berniukams
-            @elseif($category == 'womenClotes')
-                Drabuziai mergaitems
-            @elseif($category == 'accessories')
-                Aksesuarai
-            @endif
+            {{$category->name}}
+{{--             atvaizduoja kategorijos pavadinimą. $category->name yra kintamasis, kuris turi kategorijos pavadinimą.
+ Šis kintamasis yra perduodamas į šabloną iš valdiklio (controller) metodo.--}}
         </h1>
         <p>
-            Cia bus Drabuziai berniukams
+            {{ $category->description }}
+{{--            atvaizduoja kategorijos aprašymą. $category->description yra kintamasis, kuris turi kategorijos
+ aprašymą. Šis kintamasis taip pat yra perduodamas į šabloną iš valdiklio metodo.
+
+--}}
         </p>
         <div class="row">
             <div class="col-sm-6 col-md-4">
