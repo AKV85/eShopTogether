@@ -24,14 +24,17 @@ Route::get('/', [MainController::class, 'index']);
 //maršrutas nurodo, kad kai vartotojas eina į "categories" puslapį, Laravel turės vėl naudoti "MainController" klasę,
 // bet šį kartą naudodamas "categories" funkciją, kad sugeneruotų puslapio turinį. Ši funkcija gali atlikti tam
 // tikrus veiksmus, pvz., gauti kategorijas iš duomenų bazės ir atvaizduoti jas vartotojui.
-Route::get('categories', [MainController::class, 'categories']);
+Route::get('/categories', [MainController::class, 'categories']);
 
-//kelio maršrutas nurodo, kad kai vartotojas eina į "product" puslapį, Laravel turės vėl naudoti "MainController" klasę,
-// bet šį kartą naudodamas "product" funkciją, kad sugeneruotų puslapio turinį. Ši funkcija gali atlikti tam tikrus
-// veiksmus, pvz., gauti informaciją apie produktą iš duomenų bazės ir atvaizduoti ją vartotojui.
-Route::get('product', [MainController::class, 'product']);
-// '/', 'categories', 'product' kelio maršrutai turi būti apibrėžti aplikacijos maršrutų (routes) failo viduje,
-// kad Laravel galėtų juos naudoti, kai vartotojas atlieka atitinkamą veiksmą, pvz., kai paspaudžia nuorodą arba įveda adresą į naršyklės adresų juostą.
+//Šis kodas aprašo maršrutą, kuris turi reaguoti į URL adresą su kintamuoju 'category'. Tai reiškia, kad nurodžius bet
+// kokią kategoriją URL adrese, pvz. "/menClothes" arba "/womenClothes", šis maršrutas bus naudojamas ir bus iškviesta
+// 'MainController' kategorijos funkcija, kad būtų atvaizduota atitinkama kategorija.
+Route::get('/{category}', [MainController::class, 'category']);
+
+//Šis kodas aprašo maršrutą, kuriuo pasiekiamas product metodas MainController
+// klasėje. Maršrutas yra pasiekiamas adresu /menClothes/{product?}, kur {product?} reiškia, kad product yra
+// pasirenkamas parametras. Tai reiškia, kad galima pasiekti šį maršrutą tiek su, tiek be product parametro.
+Route::get('/menClothes/{product?}', [MainController::class, 'product']);
 
 
 //maršrutas susiejamas su GET užklausa į '/welcome' kelią ir grąžina 'welcome' rodinį.

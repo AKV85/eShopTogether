@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Elektronine drabuziu parduotuve</title>
+    <title>AKS Design</title>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
@@ -26,14 +26,14 @@ prekių krepšelį ir nuoroda į projektą. Taip pat yra nuoroda į administrato
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li  class="active" ><a href="/">Visi produktai</a></li>
-                <li ><a href="http://eShopForEveryone/categories">Kategorijos</a>
+                <li ><a href="/categories">Kategorijos</a>
                 </li>
-                <li ><a href="http://eShopForEveryone.lt/basket">I krepseli</a></li>
-                <li><a href="http://eShopForEveryone/reset">Grazinti projekta i pradine padeti</a></li>
+                <li ><a href="/basket">I krepseli</a></li>
+                <li><a href="/reset">Grazinti projekta i pradine padeti</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="http://eShopForEveryone/admin/home">Admino panele</a></li>
+                <li><a href="/admin/home">Admino panele</a></li>
             </ul>
         </div>
     </div>
@@ -54,8 +54,8 @@ prekių krepšelį ir nuoroda į projektą. Taip pat yra nuoroda į administrato
                         <h3>Vyr.kepure</h3>
                         <p>71 Eur</p>
                         <p>
-                            <a href="http://eShopForEveryone/basket/1/add" class="btn btn-primary" role="button">I krepseli</a>
-                            <a href="http://eShopForEveryone/vyrai/vyr.kepure" class="btn btn-default"
+                            <a href="/basket/1/add" class="btn btn-primary" role="button">I krepseli</a>
+                            <a href="/menClothes/vyr.kepure" class="btn btn-default"
                                role="button">Placiau</a>
                         </p>
                     </div>
@@ -63,13 +63,13 @@ prekių krepšelį ir nuoroda į projektą. Taip pat yra nuoroda į administrato
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
-                    <img src="http://eShopForEveryone/storage/products/mot.kelnes" alt="mot.kelnes">
+                    <img src="http://eShopForEveryone/storage/products/vyr.kelnes" alt="vyr.kelnes">
                     <div class="caption">
-                        <h3>mot.kelnes</h3>
+                        <h3>vyr.kelnes</h3>
                         <p>89 eur</p>
                         <p>
-                            <a href="http://eShopForEveryone/basket/2/add" class="btn btn-primary" role="button">I krepseli</a>
-                            <a href="http://eShopForEveryone/moterys/mot.kelnes" class="btn btn-default"
+                            <a href="/basket/2/add" class="btn btn-primary" role="button">I krepseli</a>
+                            <a href="/menClothes/vyr.kelnes" class="btn btn-default"
                                role="button">Placiau</a>
                         </p>
                     </div>
@@ -77,13 +77,13 @@ prekių krepšelį ir nuoroda į projektą. Taip pat yra nuoroda į administrato
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
-                    <img src="http://eShopForEveryone/storage/products/mot.megztinis" alt="mot.megztinis">
+                    <img src="http://eShopForEveryone/storage/products/vyr.megztinis" alt="vyr.megztinis">
                     <div class="caption">
-                        <h3>mot.megztinis</h3>
+                        <h3>vyr.megztinis</h3>
                         <p>22 eur</p>
                         <p>
-                            <a href="http://eShopForEveryone/basket/3/add" class="btn btn-primary" role="button">I krepseli</a>
-                            <a href="http://eShopForEveryone/moterys/mot.megztinis" class="btn btn-default"
+                            <a href="/basket/3/add" class="btn btn-primary" role="button">I krepseli</a>
+                            <a href="/menClothes/vyr.megztinis" class="btn btn-default"
                                role="button">Placiau</a>
                         </p>
                     </div>
@@ -91,13 +91,13 @@ prekių krepšelį ir nuoroda į projektą. Taip pat yra nuoroda į administrato
             </div>
             <div class="col-sm-6 col-md-4">
                 <div class="thumbnail">
-                    <img src="http://eShopForEveryone/storage/products/mot.striuke" alt="mot.striuke">
+                    <img src="http://eShopForEveryone/storage/products/vyr.striuke" alt="vyr.striuke">
                     <div class="caption">
-                        <h3>mot.striuke</h3>
+                        <h3>vyr.striuke</h3>
                         <p>52 eur</p>
                         <p>
-                            <a href="http://eShopForEveryone/basket/4/add" class="btn btn-primary" role="button">I krepseli</a>
-                            <a href="http://eShopForEveryone/moterys/mot.striuke" class="btn btn-default"
+                            <a href="/basket/4/add" class="btn btn-primary" role="button">I krepseli</a>
+                            <a href="/menClothes/vyr.striuke" class="btn btn-default"
                                role="button">Placiau</a>
                         </p>
                     </div>
@@ -110,8 +110,8 @@ prekių krepšelį ir nuoroda į projektą. Taip pat yra nuoroda į administrato
                         <h3>mot.sijonas</h3>
                         <p>52 eur</p>
                         <p>
-                            <a href="http://eShopForEveryone/basket/5/add" class="btn btn-primary" role="button">I krepseli</a>
-                            <a href="http://eShopForEveryone/moterys/mot.sijonas" class="btn btn-default"
+                            <a href="/basket/5/add" class="btn btn-primary" role="button">I krepseli</a>
+                            <a href="/womenClothes/mot.sijonas" class="btn btn-default"
                                role="button">Placiau</a>
                         </p>
                     </div>
@@ -124,8 +124,8 @@ prekių krepšelį ir nuoroda į projektą. Taip pat yra nuoroda į administrato
                         <h3>vaik.megztinis</h3>
                         <p>52 eur</p>
                         <p>
-                            <a href="http://eShopForEveryone/basket/6/add" class="btn btn-primary" role="button">I krepseli</a>
-                            <a href="http://eShopForEveryone/moterys/vaik.megztinis" class="btn btn-default"
+                            <a href="/basket/6/add" class="btn btn-primary" role="button">I krepseli</a>
+                            <a href="/aksesuarai/vaik.megztinis" class="btn btn-default"
                                role="button">Placiau</a>
                         </p>
                     </div>
@@ -138,8 +138,8 @@ prekių krepšelį ir nuoroda į projektą. Taip pat yra nuoroda į administrato
                         <h3>vaik.megztinis</h3>
                         <p>52 eur</p>
                         <p>
-                            <a href="http://eShopForEveryone/basket/7/add" class="btn btn-primary" role="button">I krepseli</a>
-                            <a href="http://eShopForEveryone/moterys/vaik.megztinis" class="btn btn-default"
+                            <a href="/basket/7/add" class="btn btn-primary" role="button">I krepseli</a>
+                            <a href="/aksesuarai/vaik.megztinis" class="btn btn-default"
                                role="button">Placiau</a>
                         </p>
                     </div>
@@ -152,8 +152,8 @@ prekių krepšelį ir nuoroda į projektą. Taip pat yra nuoroda į administrato
                         <h3>vaik.megztinis</h3>
                         <p>52 eur</p>
                         <p>
-                            <a href="http://eShopForEveryone/basket/8/add" class="btn btn-primary" role="button">I krepseli</a>
-                            <a href="http://eShopForEveryone/moterys/vaik.megztinis" class="btn btn-default"
+                            <a href="/basket/8/add" class="btn btn-primary" role="button">I krepseli</a>
+                            <a href="/aksesuarai/vaik.megztinis" class="btn btn-default"
                                role="button">Placiau</a>
                         </p>
                     </div>
@@ -166,8 +166,8 @@ prekių krepšelį ir nuoroda į projektą. Taip pat yra nuoroda į administrato
                         <h3>vaik.megztinis</h3>
                         <p>52 eur</p>
                         <p>
-                            <a href="http://eShopForEveryone/basket/9/add" class="btn btn-primary" role="button">I krepseli</a>
-                            <a href="http://eShopForEveryone/moterys/vaik.megztinis" class="btn btn-default"
+                            <a href="/basket/9/add" class="btn btn-primary" role="button">I krepseli</a>
+                            <a href="/aksesuarai/vaik.megztinis" class="btn btn-default"
                                role="button">Placiau</a>
                         </p>
                     </div>
@@ -180,8 +180,8 @@ prekių krepšelį ir nuoroda į projektą. Taip pat yra nuoroda į administrato
                         <h3>vaik.megztinis</h3>
                         <p>52 eur</p>
                         <p>
-                            <a href="http://eShopForEveryone/basket/10/add" class="btn btn-primary" role="button">I krepseli</a>
-                            <a href="http://eShopForEveryone/moterys/vaik.megztinis" class="btn btn-default"
+                            <a href="/basket/10/add" class="btn btn-primary" role="button">I krepseli</a>
+                            <a href="/kids/vaik.megztinis" class="btn btn-default"
                                role="button">Placiau</a>
                         </p>
                     </div>
@@ -194,8 +194,8 @@ prekių krepšelį ir nuoroda į projektą. Taip pat yra nuoroda į administrato
                         <h3>vaik.megztinis</h3>
                         <p>52 eur</p>
                         <p>
-                            <a href="http://eShopForEveryone/basket/11/add" class="btn btn-primary" role="button">I krepseli</a>
-                            <a href="http://eShopForEveryone/moterys/vaik.megztinis" class="btn btn-default"
+                            <a href="/basket/11/add" class="btn btn-primary" role="button">I krepseli</a>
+                            <a href="/aksesuarai/vaik.megztinis" class="btn btn-default"
                                role="button">Placiau</a>
                         </p>
                     </div>
