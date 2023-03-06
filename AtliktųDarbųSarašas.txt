@@ -32,3 +32,6 @@
 15. Sukūriau 3 blaidus(index,categories,product) su paprastais routais. Naudojau auto html sukurimo koda ir pridejau css
 (Paulina)
 16. Sudejau komentarus(akv85)
+17. Pakomentavau kodus.
+ Sukuriau MainControlleri terminale nauduodama komanda: php artisan make:controller MainController.-> Sukuriau
+    funcijas(metodus) index,product,categories  ir pakeiciau kelius routes/web.php faile(Anzelika2022)
