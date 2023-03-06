@@ -1,4 +1,9 @@
 body {
+    /*background-color: #ea72e5;*/
+    background-image: url('https://github.com/PaulinaStan/darbas_su_laravel/blob/main/laravel_failai/Collage%202023-03-06%2020_35_13.jpg?raw=true');
+}
+
+body {
     padding-top: 70px;
 }
 
@@ -7,10 +12,24 @@ body {
     text-align: center;
 }
 
-table {
-    text-align: left;
-}
+.table {
 
+    text-align: left;
+    padding: 10px;
+}
 div.thumbnail img {
     max-height: 200px;
+}
+
+.table {
+    background-color: #ea72e5;
+    text-align: left;
+    padding: 10px;
+}
+.btn {
+    background-color: #073ad9;
+    color: #ea72e5;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
 }
