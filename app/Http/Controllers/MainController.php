@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -12,19 +13,14 @@ class MainController extends Controller
         return view('index');
     }
 
-    public function categories()
-    {
-        return view('categories');
+    public function categories() {
+        $categories = Category::get();
+        return view('categories', compact('categories'));
     }
 
-//    funkcija, kuri priima kintamąjį $category ir grąžina category vaizdo šabloną su category kintamuoju, kuris yra
-// perduodamas į vaizdą. Tai reiškia, kad, kai vartotojas naršyklėje suveda URL, pvz. localhost//menClothes,
-// tada jis yra nukreipiamas į šią funkciją, kurioje kintamasis $category yra nustatomas kaip menClothes ir yra
-// siunčiamas į vaizdo šabloną category.blade.php. Šis vaizdas tada gali naudoti $category kintamąjį, kad parodytų
-// tinkamą informaciją, susijusią su pasirinkta kategorija.
-    public function category($category)
-    {
-        return view('category', compact ('category'));
+    public function category($code) {
+        $category = Category::where('code', $code)->first();
+        return view('category', compact('category'));
     }
 
 

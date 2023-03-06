@@ -43,34 +43,17 @@
 
 <div class="container">
     <div class="starter-template">
-        <div class="panel">
-            {{--Puslapio turinys yra suskirstytas į tris blokus <div class="panel">. Kiekvienas blokas turi
-            nuorodą į skirtingas kategorijas - vyrų, moterų ir vaikų drabužius, ir trumpą aprašymą apie šias
-             kategorijas. Kiekvienas blokas taip pat turi paveikslėlį, kuris yra susietas su atitinkama kategorija.--}}
-            <a href="/menClothes">
-                <img src="/storage/categories/mens.jpg">
-                <h2>Drabuziai berniukams</h2>
-            </a>
-            <p>Cia bus Drabuziai berniukams </p>
-        </div>
-        <div class="panel">
-            <a href="/womenClothes">
-                <img src="http://eShopForEveryone.lt/storage/categories/portable.jpg">
-                <h2>Drabuziai mergaitems</h2>
-            </a>
-            <p>
-                Cia bus Drabuziai mergaitems
-            </p>
-        </div>
-        <div class="panel">
-            <a href="/kidsClothes">
-                <img src="http://eShopForEveryone.lt/storage/categories/appliance.jpg">
-                <h2>Aksesuarai</h2>
-            </a>
-            <p>
-                Cia Aksesuarai
-            </p>
-        </div>
+        @foreach($categories as $category)
+            <div class="panel">
+                <a href="/{{ $category->code }}">
+                    <img src="/storage/categories/mobile.jpg">
+                    <h2>{{ $category->name }}</h2>
+                </a>
+                <p>
+                    {{ $category->description }}
+                </p>
+            </div>
+        @endforeach
     </div>
 </div>
 </body>
