@@ -38,5 +38,5 @@
 18. Suteikiau parametra-{product} routui 'menClothes', dadedama dar i  MainControllerio funcija- kintamaji($product) ir return
      view pridedami masyva[] su raktu 'product' kurio deka mes ta kintamaji matysim, ir tai atrodys taip
       ['product'=>$product](AKV85)
-19.Sukuriau nauja routa ir metoda MainControllerije,pridejau nauja blaida,pakoregavau blaidus(akv85)
+19.Sukuriau nauja routa ir metoda MainControllerije,pridejau nauja blaida,pakoregavau blaidus(akv85).
 
