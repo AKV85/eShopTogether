@@ -34,13 +34,13 @@
                 <li><a href="http://eShopForEveryone.lt/reset">Grazinti projekta i pradine padeti</a></li>
             </ul>
 
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-fixed-bottom">
                 <li><a href="http://eShopForEveryone.lt/admin/home">Admino panele</a></li>
             </ul>
         </div>
     </div>
 </nav>
-
+<br>
 
 <div class="container">
     {{--Toliau puslapyje yra produktas - vyrų kepure - kurio pavadinimas, kaina ir nuotrauka yra pateikti virš
@@ -48,8 +48,9 @@
       kad pirkėjas galėtų pridėti produktą į savo krepšelį ir tęsti apsipirkimą.--}}
     <div class="starter-template">
         <h1>Vyr.kepure</h1>
+        <h2>{{$product}}</h2>
         <p>Kaina: <b>7 Eur</b></p>
-        <img src="http://eShopForEveryone.lt/storage/products/iphone_x.jpg">
+        <img src="http://eShopForEveryone.lt/storage/products/vyr.kepure">
         <p>Puikiai prie galvos priglundanti kepure</p>
         <a class="btn btn-success" href="http://eShopForEveryone.lt/basket/1/add">I krepseli</a>
     </div>

@@ -26,14 +26,14 @@ prekių krepšelį ir nuoroda į projektą. Taip pat yra nuoroda į administrato
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li  class="active" ><a href="/">Visi produktai</a></li>
-                <li ><a href="http://eShopForEveryone/categories">Kategorijos</a>
+                <li ><a href="/categories">Kategorijos</a>
                 </li>
-                <li ><a href="http://eShopForEveryone.lt/basket">I krepseli</a></li>
-                <li><a href="http://eShopForEveryone/reset">Grazinti projekta i pradine padeti</a></li>
+                <li ><a href="/basket">I krepseli</a></li>
+                <li><a href="/reset">Grazinti projekta i pradine padeti</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="http://eShopForEveryone/admin/home">Admino panele</a></li>
+                <li><a href="/admin/home">Admino panele</a></li>
             </ul>
         </div>
     </div>

@@ -23,7 +23,7 @@
         {{--<div> elementai naudojami kaip blokų konteineriai. Pirmas <div> elementas turi klasę "container",
          o kitas - "starter-template". Jie yra skirti aprašyti puslapio turinio išdėstymą ir padėti jį stilizuoti.--}}
         <div class="navbar-header">
-            <a class="navbar-brand" href="http://laravel-diplom-1.rdavydov.ru">Elektronine drabuziu parduotuve</a>
+            <a class="navbar-brand" href="http://eShopForEveryone.lt">Elektronine drabuziu parduotuve</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
@@ -39,7 +39,7 @@
         </div>
     </div>
 </nav>
-
+<br>
 
 <div class="container">
     <div class="starter-template">
@@ -47,14 +47,14 @@
             {{--Puslapio turinys yra suskirstytas į tris blokus <div class="panel">. Kiekvienas blokas turi
             nuorodą į skirtingas kategorijas - vyrų, moterų ir vaikų drabužius, ir trumpą aprašymą apie šias
              kategorijas. Kiekvienas blokas taip pat turi paveikslėlį, kuris yra susietas su atitinkama kategorija.--}}
-            <a href="http://http://eShopForEveryone.lt/men">
+            <a href="/men">
                 <img src="http://http://eShopForEveryone.lt/storage/categories/mens.jpg">
                 <h2>Vyriski drabuziai</h2>
             </a>
             <p>Cia bus vyru drabuziai </p>
         </div>
         <div class="panel">
-            <a href="http://http://eShopForEveryone.lt/portable">
+            <a href="/women">
                 <img src="http://http://eShopForEveryone.lt/storage/categories/portable.jpg">
                 <h2>Moteryski drabvuziai</h2>
             </a>
@@ -63,7 +63,7 @@
             </p>
         </div>
         <div class="panel">
-            <a href="http://http://eShopForEveryone.lt/women">
+            <a href="/kids">
                 <img src="http://http://eShopForEveryone.lt/storage/categories/appliance.jpg">
                 <h2>Vaiku drabuziai</h2>
             </a>
