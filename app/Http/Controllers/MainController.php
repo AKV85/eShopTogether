@@ -6,9 +6,6 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-//    Klasėje yra trys viešosios funkcijos: index(), categories(), ir product(). Kiekviena funkcija gražina
-// atitinkamą vaizdą, view() funkcijos pagalba. Tai yra, kai vartotojas pasieks puslapį, kurio kelias yra
-// apibrėžtas maršrute, funkcija bus iškviesta ir ji sugeneruos HTML, kuris bus rodomas vartotojui.
     public function index()
     {
         return view('index');
@@ -18,8 +15,13 @@ class MainController extends Controller
     {
         return view('categories');
     }
-    public function product()
+
+//     Ši funkcija turi vieną parametrą $product, kuris yra numatytasis null reikšmė. Funkcija grąžina vaizdą,
+// kuris yra nurodytas kaip menClothes, ir perduoda product kintamąjį į vaizdą kaip asociatyvų masyvą
+// ['product'=>$product]. Tai reiškia, kad product kintamasis bus pasiekiamas kaip product kintamasis per vaizdą,
+// ir null, jei product parametras nebuvo nurodytas maršrute arba buvo nurodytas kaip null.
+    public function product($product=null)
     {
-        return view('product');
+        return view('menClothes',['product'=>$product] );
     }
 }

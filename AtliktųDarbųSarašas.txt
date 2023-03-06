@@ -35,3 +35,6 @@
 17. Pakomentavau kodus.
  Sukuriau MainControlleri terminale nauduodama komanda: php artisan make:controller MainController.-> Sukuriau
     funcijas(metodus) index,product,categories  ir pakeiciau kelius routes/web.php faile(Anzelika2022)
+18. Suteikiau parametra-{product} routui 'menClothes', dadedama dar i  MainControllerio funcija- kintamaji($product) ir return
+     view pridedami masyva[] su raktu 'product' kurio deka mes ta kintamaji matysim, ir tai atrodys taip
+      ['product'=>$product]
