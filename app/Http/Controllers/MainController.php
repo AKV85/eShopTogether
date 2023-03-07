@@ -36,13 +36,4 @@ class MainController extends Controller
         return view('menClothes', ['product' => $product]);
     }
 
-    public function basket()
-    {
-        return view('basket');
-    }
-
-    public function basketPlace()
-    {
-        return view('order');
-    }
 }
