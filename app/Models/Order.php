@@ -2,10 +2,27 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property int $id
+ * @property int $status
+ * @property string $name
+ * @property string $phone
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
+ */
 class Order extends Model
 {
+
+
+    protected $fillable = [
+        'status',
+        'name',
+        'phone',
+    ];
+
 
 //    Funkcija "products" apibrėžia daugybę-į-daugybę ryšį tarp "Order" ir "Product" modelių. Tai reiškia, kad
 // kiekvienas krepšelio užsakymas (Order) gali turėti daug produktų (Product) ir kiekvienas produktas gali būti
@@ -32,5 +49,19 @@ class Order extends Model
             $sum += $product->getPriceForCount();
         }
         return $sum;
+    }
+
+    public function saveOrder($name, $phone)
+    {
+        if ($this->status == 0) {
+            $this->name = $name;
+            $this->phone = $phone;
+            $this->status = 1;
+            $this->save();
+            session()->forget('orderId');
+            return true;
+        } else {
+            return false;
+        }
     }
 }

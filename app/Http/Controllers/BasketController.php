@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class BasketController extends Controller
@@ -20,10 +21,43 @@ class BasketController extends Controller
         return view('basket', compact('order'));
     }
 
-//metodas atsakingas už užsakymo formos rodyklės grąžinimą, kad vartotojas galėtų užpildyti užsakymą.
+
+//Funkcija basketConfirm() yra susijusi su užsakymų tvarkymo procesu.Kodas pirmiausia patikrina, ar yra pirkimo
+//užsakymo identifikatorius (ID), saugomas sesijos kintamajame. Jei tokio identifikatoriaus nėra, vartotojas
+// nukreipiamas į pagrindinį puslapį index.Jei yra, Order modelio pagal šį ID randa susijusį užsakymą ir saveOrder()
+// metodu įrašo vartotojo informaciją apie užsakymą (pvz., vardą ir telefoną).Jeigu užsakymo informacija sėkmingai
+// išsaugota, vartotojas nukreipiamas į pagrindinį puslapį index ir rodomas sėkmingos užsakymo patvirtinimo pranešimas.
+// Kitu atveju vartotojas nukreipiamas į pagrindinį puslapį ir rodomas pranešimas apie klaidą.
+    public function basketConfirm(Request $request)
+    {
+        $orderId = session('orderId');
+        if (is_null($orderId)) {
+            return redirect()->route('index');
+        }
+        $order = Order::find($orderId);
+        $success = $order->saveOrder($request->name, $request->phone);
+
+        if ($success) {
+            session()->flash('success', 'Jusu uzsakymas priimtas ir greitai mes su jumis susisieksim');
+        } else {
+            session()->flash('warning', 'Atsitiko klaida.Atsiprasome uz nepatogumus.');
+        }
+
+        return redirect()->route('index');
+    }
+
+//    Pirmiausia jis patikrina, ar yra laikoma užsakymo id informacija sesijoje. Jei nėra, jis nukreipia vartotoją į
+// pagrindinį puslapį. Kitu atveju jis ieško užsakymo pagal jo id ir paduoda jį į vaizdą "order". Į vaizdą yra
+// perduodama tik "order" kintamasis naudojant funkciją "compact()". Tai leidžia vaizde pasiekti "order" kintamąjį,
+// kuris yra naudojamas parodyti informaciją apie užsakymą. Galiausiai funkcija grąžina vaizdą "order".
     public function basketPlace()
     {
-        return view('order');
+        $orderId = session('orderId');
+        if (is_null($orderId)) {
+            return redirect()->route('index');
+        }
+        $order = Order::find($orderId);
+        return view('order', compact('order'));
     }
 
 //Kodas pradeda sukurdamas kintamąjį $orderId, kuris turi sesijos kintamojo reikšmę "orderId". Jei šis kintamasis yra
@@ -48,6 +82,10 @@ class BasketController extends Controller
         } else {
             $order->products()->attach($productId);
         }
+        $product = Product::find($productId);
+
+        session()->flash('success', 'Pridejom preke ' . $product->name);
+
         return redirect()->route('basket');
     }
 
@@ -66,7 +104,6 @@ class BasketController extends Controller
             return redirect()->route('basket');
         }
         $order = Order::find($orderId);
-
         if ($order->products->contains($productId)) {
             $pivotRow = $order->products()->where('product_id', $productId)->first()->pivot;
             if ($pivotRow->count < 2) {
@@ -76,6 +113,9 @@ class BasketController extends Controller
                 $pivotRow->update();
             }
         }
+        $product = Product::find($productId);
+
+        session()->flash('warning', 'Pasalinom preke  ' . $product->name);
 
         return redirect()->route('basket');
     }

@@ -19,6 +19,7 @@ body {
     text-align: left;
     padding: 10px;
 }
+
 div.thumbnail img {
     max-height: 200px;
 }
@@ -28,10 +29,15 @@ div.thumbnail img {
     text-align: left;
     padding: 10px;
 }
+
 .btn {
     background-color: #073ad9;
     color: #ea72e5;
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
+}
+
+div.form-inline form {
+    display: inline;
 }

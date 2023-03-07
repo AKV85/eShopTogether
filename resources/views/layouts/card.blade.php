@@ -1,6 +1,6 @@
 <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
-        <img src="/storage//menClothes/vyr.kepure" alt="kepuraite">
+        <img src="/storage/dd.dd" alt="kepuraite">
         <div class="caption">
             <h3>{{ $product->name }}</h3>
             <p>{{ $product->price }} Eur</p>
