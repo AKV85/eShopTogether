@@ -16,7 +16,7 @@ class ProductsSeed extends Seeder
         $products = [
             [
                 'name' => 'Suknelė',
-                'slug' => 'suknelė',
+                'code' => 'suknelė',
                 'description' => 'suknelė mergaitei',
                 'image' => '/img/products/product-2.jpg',
                 'category_id' => 1,
@@ -25,7 +25,7 @@ class ProductsSeed extends Seeder
 
             [
                 'name' => 'Sijonas',
-                'slug' => 'sijonas',
+                'code' => 'sijonas',
                 'description' => 'mergaitiškas sijonas',
                 'image' => '/img/products/product-3.jpg',
                 'category_id' => 1,
@@ -34,7 +34,7 @@ class ProductsSeed extends Seeder
 
             [
                 'name' => 'Komplektukas',
-                'slug' => 'komplektukas',
+                'code' => 'komplektukas',
                 'description' => 'komplektukas mergaitei',
                 'image' => '/img/products/product-4.jpg',
                 'category_id' => 1,
@@ -42,7 +42,7 @@ class ProductsSeed extends Seeder
             ],
             [
                 'name' => 'Komplektukas',
-                'slug' => 'komplektukas',
+                'code' => 'komplektukas',
                 'description' => 'komplektukas berniukui',
                 'image' => '/img/products/product-5.jpg',
                 'category_id' => 2,
@@ -50,7 +50,7 @@ class ProductsSeed extends Seeder
             ],
             [
                 'name' => 'Kelnės',
-                'slug' => 'kelnės',
+                'code' => 'kelnės',
                 'description' => 'Kelnės berniukui',
                 'image' => '/img/products/product-6.jpg',
                 'category_id' => 2,
@@ -58,7 +58,7 @@ class ProductsSeed extends Seeder
             ],
             [
                 'name' => 'Megstukas',
-                'slug' => 'megstukas',
+                'code' => 'megstukas',
                 'description' => 'Megstukas berniukui',
                 'image' => '/img/products/product-6.jpg',
                 'category_id' => 2,
@@ -66,7 +66,7 @@ class ProductsSeed extends Seeder
             ],
             [
                 'name' => 'Striukė',
-                'slug' => 'striukė',
+                'code' => 'striukė',
                 'description' => 'Striukė suaugusiems',
                 'image' => '/img/products/product-6.jpg',
                 'category_id' => 3,
@@ -74,7 +74,7 @@ class ProductsSeed extends Seeder
             ],
             [
                 'name' => 'Galvajuostė',
-                'slug' => 'galvajuostė',
+                'code' => 'galvajuostė',
                 'description' => 'Galvajuostė suaugusiems',
                 'image' => '/img/products/product-6.jpg',
                 'category_id' => 3,
@@ -83,7 +83,7 @@ class ProductsSeed extends Seeder
 
             [
                 'name' => 'Riešinės',
-                'slug' => 'riešinės',
+                'code' => 'riešinės',
                 'description' => 'Riešinės suaugusiems',
                 'image' => '/img/products/product-6.jpg',
                 'category_id' => 3,
@@ -92,7 +92,7 @@ class ProductsSeed extends Seeder
 
             [
                 'name' => 'Gumutė',
-                'slug' => 'gumutė',
+                'code' => 'gumutė',
                 'description' => 'gumutė su ausytėm',
                 'image' => '/img/products/product-6.jpg',
                 'category_id' => 4,
@@ -101,7 +101,7 @@ class ProductsSeed extends Seeder
 
             [
                 'name' => 'Sagtukai',
-                'slug' => 'sagtukai',
+                'code' => 'sagtukai',
                 'description' => 'sagtukai plaukams',
                 'image' => '/img/products/product-6.jpg',
                 'category_id' => 4,
@@ -109,7 +109,7 @@ class ProductsSeed extends Seeder
             ],
             [
                 'name' => 'Galvajuostė',
-                'slug' => 'galvajuostė',
+                'code' => 'galvajuostė',
                 'description' => 'Galvajuostė su kaspinėliu',
                 'image' => '/img/products/product-6.jpg',
                 'category_id' => 4,

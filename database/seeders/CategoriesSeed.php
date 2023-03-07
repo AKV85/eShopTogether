@@ -44,7 +44,7 @@ class CategoriesSeed extends Seeder
             Category::updateOrCreate(
                 [
                     'name' => $cat['name'],
-                    'slug' => $cat['slug'],
+                    'code' => $cat['code'],
                 ],
                 [
                     'description' => $cat['description'],
