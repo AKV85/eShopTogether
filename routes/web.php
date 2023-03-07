@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/basket', [MainController::class, 'basket'])->name('basket');
-Route::get('/basket/place', [MainController::class, 'basketPlace'])->name('basket-place');
+//Route::get('/basket', [MainController::class, 'basket'])->name('basket');
+//Route::get('/basket/place', [MainController::class, 'basketPlace'])->name('basket-place');
 //vartotojas prisijungia į pagrindinį puslapį, t.y. "/", Laravel turės panaudoti "MainController" klasę,
 // kad sugeneruotų puslapio turinį. Konkrečiai, jis naudos "index" funkciją, kuri turėtų grąžinti HTML,
 // kuris bus rodomas vartotojui.
@@ -38,8 +38,8 @@ Route::get('/{category}', [MainController::class, 'category'])->name('category')
 // pasirenkamas parametras. Tai reiškia, kad galima pasiekti šį maršrutą tiek su, tiek be product parametro.
 Route::get('/{category}/{product?}', [MainController::class, 'product'])->name('product');
 //
-//Route::get('/basket', [MainController::class, 'basket'])->name('basket');
-//Route::get('/basket/place', [MainController::class, 'basket-place'])->name('basket-place');
+Route::get('/basket', [MainController::class, 'basket'])->name('basket');
+Route::get('/basket/place', [MainController::class, 'basket-place'])->name('basket-place');
 //
 //
 ////maršrutas susiejamas su GET užklausa į '/welcome' kelią ir grąžina 'welcome' rodinį.
