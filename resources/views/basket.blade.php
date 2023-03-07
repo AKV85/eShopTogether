@@ -21,7 +21,7 @@
                     <td>
                         <a href="/">
                             <img height="56px" src="http://eShopForEveryone/storage/products/kepure1">
-                            iPhone X 64GB
+                            Kepuraite
                         </a>
                     </td>
                     <td><span class="badge">1</span>
