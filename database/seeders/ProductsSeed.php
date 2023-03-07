@@ -28,7 +28,7 @@ class ProductsSeed extends Seeder
                 'slug' => 'sijonas',
                 'description' => 'mergaitiškas sijonas',
                 'image' => '/img/products/product-3.jpg',
-                'category_id' => 2,
+                'category_id' => 1,
                 'price' => 10,
             ],
 
@@ -37,7 +37,7 @@ class ProductsSeed extends Seeder
                 'slug' => 'komplektukas',
                 'description' => 'komplektukas mergaitei',
                 'image' => '/img/products/product-4.jpg',
-                'category_id' => 3,
+                'category_id' => 1,
                 'price' => 20,
             ],
             [
@@ -45,7 +45,7 @@ class ProductsSeed extends Seeder
                 'slug' => 'komplektukas',
                 'description' => 'komplektukas berniukui',
                 'image' => '/img/products/product-5.jpg',
-                'category_id' => 4,
+                'category_id' => 2,
                 'price' => 18,
             ],
             [
@@ -53,49 +53,23 @@ class ProductsSeed extends Seeder
                 'slug' => 'kelnės',
                 'description' => 'Kelnės berniukui',
                 'image' => '/img/products/product-6.jpg',
-                'category_id' => 5,
+                'category_id' => 2,
                 'price' => 8,
             ],
-
             [
                 'name' => 'Megstukas',
                 'slug' => 'megstukas',
                 'description' => 'Megstukas berniukui',
                 'image' => '/img/products/product-6.jpg',
-                'category_id' => 6,
+                'category_id' => 2,
                 'price' => 7,
-            ],
-            [
-                'name' => 'Gumutė',
-                'slug' => 'gumutė',
-                'description' => 'gumutė su ausytėm',
-                'image' => '/img/products/product-6.jpg',
-                'category_id' => 7,
-                'price' => 5,
-            ],
-
-            [
-                'name' => 'Sagtukai',
-                'slug' => 'sagtukai',
-                'description' => 'sagtukai plaukams',
-                'image' => '/img/products/product-6.jpg',
-                'category_id' => 8,
-                'price' => 5,
-            ],
-            [
-                'name' => 'Galvajuostė',
-                'slug' => 'galvajuostė',
-                'description' => 'Galvajuostė su kaspinėliu',
-                'image' => '/img/products/product-6.jpg',
-                'category_id' => 9,
-                'price' => 8,
             ],
             [
                 'name' => 'Striukė',
                 'slug' => 'striukė',
                 'description' => 'Striukė suaugusiems',
                 'image' => '/img/products/product-6.jpg',
-                'category_id' => 10,
+                'category_id' => 3,
                 'price' => 20,
             ],
             [
@@ -103,7 +77,7 @@ class ProductsSeed extends Seeder
                 'slug' => 'galvajuostė',
                 'description' => 'Galvajuostė suaugusiems',
                 'image' => '/img/products/product-6.jpg',
-                'category_id' => 11,
+                'category_id' => 3,
                 'price' => 8,
             ],
 
@@ -112,7 +86,33 @@ class ProductsSeed extends Seeder
                 'slug' => 'riešinės',
                 'description' => 'Riešinės suaugusiems',
                 'image' => '/img/products/product-6.jpg',
-                'category_id' => 8,
+                'category_id' => 3,
+                'price' => 8,
+            ],
+
+            [
+                'name' => 'Gumutė',
+                'slug' => 'gumutė',
+                'description' => 'gumutė su ausytėm',
+                'image' => '/img/products/product-6.jpg',
+                'category_id' => 4,
+                'price' => 5,
+            ],
+
+            [
+                'name' => 'Sagtukai',
+                'slug' => 'sagtukai',
+                'description' => 'sagtukai plaukams',
+                'image' => '/img/products/product-6.jpg',
+                'category_id' => 4,
+                'price' => 5,
+            ],
+            [
+                'name' => 'Galvajuostė',
+                'slug' => 'galvajuostė',
+                'description' => 'Galvajuostė su kaspinėliu',
+                'image' => '/img/products/product-6.jpg',
+                'category_id' => 4,
                 'price' => 8,
             ],
         ];
