@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title', 'Pabaigti uzsakyma')
-
+@section('background', 'uzsakyti')
 @section('content')
     <h1>Patvirtinti uzsakyma:</h1>
     <div class="container">

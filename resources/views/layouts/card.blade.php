@@ -1,3 +1,4 @@
+
 <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
         <img src="/storage/dd.dd" alt="kepuraite">

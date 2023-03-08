@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title', 'Kategorijos '. $category->name))
-
+@section('background', 'kategorijos')
 @section('content')
     <h1>
         {{$category->name}} {{ $category->products->count() }}

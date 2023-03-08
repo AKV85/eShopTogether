@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title', 'Krepselis')
-
+@section('background', 'krepselis')
 @section('content')
     <h1>Krepselis</h1>
     <p>Uzsakyti</p>

@@ -12,7 +12,7 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/startCss.css" rel="stylesheet">
 </head>
-<body>
+<body class="@yield('background', 'main')">
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
