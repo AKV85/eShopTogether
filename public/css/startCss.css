@@ -62,11 +62,12 @@ div.thumbnail img {
     }
 }
 
-
-/* Pradinė kategorijų puslapio spalva */
-.category-page {
-    background-color: pink;
-    animation: color-change 5s infinite; /* animacija, trukmė - 5 sekundės, kartojimas - begalybė */
+.btn {
+    background-color: #b7c8fc;
+    color: #f802e4;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
 }
 
 div.form-inline form {

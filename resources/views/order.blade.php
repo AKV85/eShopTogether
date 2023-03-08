@@ -9,7 +9,7 @@
             <p>Bendra kaina: <b>{{ $order->getFullPrice() }} Eur</b></p>
             <form action="{{ route('basket-confirm', $order) }}" method="POST">
                 <div>
-                    <p>Palikite savo varda ir tel.numeri kad menedzeris galetu su jumis susisiekti:</p>
+                    <p>Palikite savo varda ir tel.numerį, kad menedžeris galėtų su jumis susisiekti:</p>
 
                     <div class="container">
                         <div class="form-group">
