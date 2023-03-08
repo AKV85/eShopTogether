@@ -20,7 +20,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="{{ route('index') }}">Visos prekes</a></li>
+                <li class="active"><a href="{{ route('allproducts') }}">Visos prekes</a></li>
                 <li><a href="{{ route('categories') }}">Kategorijos</a>
                 </li>
                 <li><a href="{{ route('basket') }}">I krepseli</a></li>

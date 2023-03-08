@@ -1,7 +1,6 @@
 
 body {
 
-
     background-color: pink; /* pradinė spalva */
 
 
@@ -9,6 +8,7 @@ body {
 }
 
 .main {
+
     background-image: url('https://github.com/PaulinaStan/darbas_su_laravel/blob/main/laravel_failai/Collage%202023-03-06%2020_35_13.jpg?raw=true');
 }
 
@@ -23,7 +23,7 @@ body {
 
 .uzsakymas
 {
-    background-color: #adb9f3;
+    background-color: #ffccd5;
 }
 .uzsakyti
 {
@@ -31,8 +31,14 @@ body {
 }
 .kategorijos
 {
-    background-color: #ffccd5;
+    background-color: #adb9f3;
 }
+.produktai
+{
+    background-color:#ffccd5;
+}
+
+
 .starter-template {
     padding: 40px 15px;
     text-align: center;
