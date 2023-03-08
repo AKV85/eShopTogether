@@ -1,25 +1,19 @@
 <?php
-//
-//namespace App\Http\Controllers\Admin;
-//
-//use App\Events\OrderCreated;
-//use App\Http\Controllers\Controller;
-//use App\Http\Requests\OrderRequest;
-//use App\Models\Order;
-//
-//class OrderController extends Controller
-//{
-//    public function __construct()
-//    {
-//        $this->authorizeResource( Order::class);
-//    }
-//
-//    public function index()
-//    {
-//        $orders = Order::query()->with(['id', 'status',
-//            'name', 'phone'])->get();
-//        return view('order.index',['orders'=>Order::orderBy("id")->paginate(6)]);
-//    }
+
+namespace App\Http\Controllers\Admin;
+
+use App\Http\Controllers\Controller;
+use App\Models\Order;
+use Illuminate\Http\Request;
+
+class OrderController extends Controller
+{
+    public function index()
+    {
+        $orders = Order::where('status', 1)->get();
+        return view('auth.orders.index', compact('orders'));
+    }
+}
 //
 //    public function store(OrderRequest $request)
 //    {

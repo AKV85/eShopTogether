@@ -26,9 +26,30 @@
                 <li><a href="{{ route('basket') }}">I krepseli</a></li>
                 <li><a href="{{ route('index') }}">Kazkas dar :)</a></li>
             </ul>
+            <ul class="nav navbar-nav navbar-right">
+                @guest
+                    <li><a href="{{ route('login') }}">Prisijungti</a></li>
+                    <li><a href="{{ route('register') }}">Registruotis</a></li>
+                @endguest
+
+                @auth
+                    <li><a href="{{ route('home') }}">Admin Panele</a></li>
+                        <li><form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                    {{ __('Log Out') }}
+                                </button>
+                            </form></li>
+
+                @endauth
+            </ul>
+
         </div>
     </div>
+
 </nav>
+
 
 <div class="container">
     <div class="starter-template">
