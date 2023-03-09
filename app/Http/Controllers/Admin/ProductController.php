@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -33,7 +34,8 @@ class ProductController extends Controller
     // funkciją, kuri leidžia grąžinti reikiamą HTML kodą.
     public function create()
     {
-        return view('auth.products.form');
+        $categories = Category::get();
+        return view('auth.products.form', compact('categories'));
     }
 
     /**
@@ -49,7 +51,10 @@ class ProductController extends Controller
     // gali matyti visą prekių sąrašą su nauju produktu.
     public function store(Request $request)
     {
-        Product::create($request->all());
+        $path = $request->file('image')->store('public/products');
+        $params = $request->all();
+        $params['image'] = $path;
+        Product::create($params);
         return redirect()->route('products.index');
     }
 
@@ -81,8 +86,8 @@ class ProductController extends Controller
     // esamos prekės informaciją ir ją redaguoti. Tai yra būdas, kaip leisti vartotojams atnaujinti esamą prekę.
     public function edit(Product $product)
     {
-        return view('auth.products.form', compact('product'));
-    }
+        $categories = Category::get();
+        return view('auth.products.form', compact('product', 'categories'));    }
 
     /**
      * Update the specified resource in storage.
@@ -99,10 +104,13 @@ class ProductController extends Controller
     // su atnaujinta preke.
     public function update(Request $request, Product $product)
     {
-        $product->update($request->all());
+        Storage::delete($product->image);
+        $path = $request->file('image')->store('public/products');
+        $params = $request->all();
+        $params['image'] = $path;
+        $product->update($params);
         return redirect()->route('products.index');
     }
-
     /**
      * Remove the specified resource from storage.
      *
