@@ -53,6 +53,14 @@ class Kernel extends HttpKernel
      * @var array<string, class-string|string>
      */
     protected $middlewareAliases = [
+        //'is_admin' yra tarpinės grandinės pavadinimas, kuris yra susijęs su CheckIsAdmin middleware klase. Ši
+        // middleware funkcija patikrina, ar vartotojas yra administratorius, ir suteikia arba neleidžia priėjimo prie
+        // tam tikrų resursų ar puslapių.
+        'is_admin' => \App\Http\Middleware\CheckIsAdmin::class,
+        //'basket_not_empty' yra tarpinės grandinės pavadinimas, kuris yra susijęs su BasketIsNotEmpty middleware klase.
+        // Ši middleware funkcija patikrina, ar vartotojo krepšelis yra tuščias, ir leidžia arba neleidžia tęsti
+        // užsakymo proceso.
+        'basket_not_empty' => \App\Http\Middleware\BasketIsNotEmpty::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,

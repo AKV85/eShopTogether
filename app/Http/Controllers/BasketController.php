@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BasketController extends Controller
 {
@@ -82,6 +83,18 @@ class BasketController extends Controller
         } else {
             $order->products()->attach($productId);
         }
+
+        //Pirmiausia, funkcija Auth::check() patikrina, ar vartotojas yra prisijungęs. Jei prisijungimas yra sėkmingas,
+        // Auth::id() metodas grąžina vartotojo ID, kuris tada priskiriamas užsakymui.
+        //Toliau užsakymas yra išsaugomas su priskirtu vartotojo ID naudojant save() metodą.
+        //Šis kodas yra dažnai naudojamas, kai norite saugoti duomenis, susijusius su konkrečiu vartotoju, kaip šiuo
+        // atveju - vartotojo ID užsakymo informacijai. Tai leidžia atlikti vartotojui priskirtus užsakymus ir sekti
+        // jų istoriją.
+        if (Auth::check()) {
+            $order->user_id = Auth::id();
+            $order->save();
+        }
+
         $product = Product::find($productId);
 
         session()->flash('success', 'Pridejom preke ' . $product->name);
