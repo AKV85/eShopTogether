@@ -28,6 +28,13 @@ class CategoryRequest extends FormRequest
             'name' => 'required|min:3|max:255',
             'description' => 'required|min:5',
         ];
+//šis kodas tikrina, ar jis yra nurodytas dabartinėje maršruto dalyje. Jeigu taip yra, tada code taisyklės masyvo
+// reikšmės prieš sąryšio simbolį . yra pridedama kintamojo id reikšmės prieš tą patį sąryšio simbolį, kadangi šiuo
+// atveju yra atnaujinamas egzistuojantis objektas, o ne kuriamas naujas.Pavyzdžiui, jei code taisyklės masyvo reikšmė
+// yra 'required|string|max:255', o $this->route()->parameter('category')->id grąžina 2, tada šis kodas paverstų code
+// taisyklę į 'required|string|max:255,2'.Šis kodas yra naudojamas, kadangi taisyklės kai kuriais atvejais gali
+// priklausyti nuo jau egzistuojančių objektų, kurie yra redaguojami, o ne kuriami iš naujo. Tai yra naudinga, kadangi
+// galima užtikrinti, kad objektai turėtų unikalius identifikatorius, nors jie būtų keičiami.
 
         if ($this->route()->named('categories.update')) {
             $rules['code'] .= ',' . $this->route()->parameter('category')->id;

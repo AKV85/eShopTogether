@@ -1,4 +1,4 @@
-<!doctype html>
+{{--<!doctype html>--}}
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -21,9 +21,9 @@
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="{{ route('allproducts') }}">Visos prekes</a></li>
-                <li><a href="{{ route('categories') }}">Kategorijos</a>
+                <li @routeactive('categor*')><a href="{{ route('categories') }}">Kategorijos</a>
                 </li>
-                <li><a href="{{ route('basket') }}">I krepseli</a></li>
+                <li @routeactive('basket*')><a href="{{ route('basket') }}">I krepseli</a></li>
                 <li><a href="{{ route('index') }}">Kazkas dar :)</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -33,7 +33,11 @@
                 @endguest
 
                 @auth
+                    @admin
                     <li><a href="{{ route('home') }}">Admin Panele</a></li>
+                    @else
+                        <li><a href="{{ route('person.orders.index') }}">Мano uzsakymai</a></li>
+                        @endadmin
                         <li><form method="POST" action="{{ route('logout') }}">
                                 @csrf
 

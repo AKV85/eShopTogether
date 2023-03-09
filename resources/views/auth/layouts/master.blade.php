@@ -30,10 +30,12 @@
 
             <div id="navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
+                    @admin
                     <li><a href="{{ route('categories.index') }}">Каtegorijos</a></li>
                     <li><a href="{{ route('products.index') }}">Prekės</a>
                     </li>
                     <li><a href="{{ route('home') }}">Užsakymai</a></li>
+                    @endadmin
                 </ul>
 
                 @guest
@@ -53,8 +55,7 @@
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false" v-pre>
-                                Administratorius
-                            </a>
+                                @admin Administratorius @else {{ Auth::user()->name }} @endadmin                            </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout')}}"
