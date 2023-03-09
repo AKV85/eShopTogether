@@ -14,6 +14,9 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //Ši funkcija grąžina peržiūrimų produktų sąrašą su naudojamais duomenimis. Produktai gaunami iš "Product" modelio
+    // naudojant "get" metodą. Galiausiai, perduodamas peržiūrimų produktų sąrašas į atitinkamą "index" vaizdą,
+    // naudojant "compact" funkciją.
     public function index()
     {
         $products = Product::get();
@@ -25,6 +28,9 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    //Ši funkcija grąžina naujos prekės sukūrimo formos vaizdą. Tai yra "create" metodas, kuris naudojamas, kai reikia
+    // atvaizduoti naujos prekės sukūrimo formą. Tai padaryta perduodant "form" vaizdo failo pavadinimą per "view"
+    // funkciją, kuri leidžia grąžinti reikiamą HTML kodą.
     public function create()
     {
         return view('auth.products.form');
@@ -36,6 +42,11 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    //"Store" funkcija priima HTTP "Request" objektą, kuris naudojamas gauti informaciją, kurią įvedė naudotojas į
+    // prekės sukūrimo formą. Naudodama "create" funkciją, ji sukuria naują produktą naudojant šią informaciją ir
+    // išsaugo jį duomenų bazėje. Galiausiai, naudotojas nukreipiamas į prekių sąrašo puslapį, naudojant "redirect" ir
+    // "route" funkcijas. Tai yra būdas, kaip patvirtinti, kad naujas produktas buvo sėkmingai sukurtas ir vartotojas
+    // gali matyti visą prekių sąrašą su nauju produktu.
     public function store(Request $request)
     {
         Product::create($request->all());
@@ -48,6 +59,11 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
+    //"Show" funkcija priima "Product" modelio objektą, kuris yra paduodamas kaip parametras. Tai yra padaryta siekiant
+    // gauti konkretaus produkto informaciją iš duomenų bazės. Galiausiai, naudojant "view" funkciją, grąžinamas
+    // produkto rodymo puslapis, kuriame rodoma konkretaus produkto informacija, panaudojant "compact" funkciją. Tai
+    // yra būdas, kaip padaryti, kad naudotojas galėtų matyti vieną produktą iš visų produktų sąraše, o ne visus
+    // produktus.
     public function show(Product $product)
     {
         return view('auth.products.show', compact('product'));
@@ -59,6 +75,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
+    //"Edit" funkcija priima "Product" modelio objektą, kuris yra paduodamas kaip parametras. Tai yra padaryta siekiant
+    // gauti informaciją apie redaguojamą prekę iš duomenų bazės. Galiausiai, perduodamas produktas kaip kintamasis į
+    // atitinkamą "form" vaizdo failą, naudojant "view" funkciją ir "compact" funkciją. Tai leidžia vartotojui matyti
+    // esamos prekės informaciją ir ją redaguoti. Tai yra būdas, kaip leisti vartotojams atnaujinti esamą prekę.
     public function edit(Product $product)
     {
         return view('auth.products.form', compact('product'));
@@ -71,6 +91,12 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
+    //Ši funkcija atnaujina esamą prekę su nauja informacija, kurią įvedė naudotojas į prekės redagavimo formą.
+    // "Update" funkcija priima "Request" objektą, kuriame yra nauja prekės informacija, ir "Product" modelio objektą,
+    // kuris yra redaguojamas. Naudojant "update" funkciją, atnaujinama prekės informacija ir išsaugoma duomenų bazėje.
+    // Galiausiai, naudotojas nukreipiamas į prekių sąrašo puslapį, naudojant "redirect" ir "route" funkcijas. Tai yra
+    // būdas patvirtinti, kad prekės informacija buvo sėkmingai atnaujinta ir vartotojas gali matyti visą prekių sąrašą
+    // su atnaujinta preke.
     public function update(Request $request, Product $product)
     {
         $product->update($request->all());
@@ -83,6 +109,12 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
+    //Ši funkcija pašalina pasirinktą produktą iš duomenų bazės. "Destroy" funkcija priima "Product" modelio objektą,
+    // kuris yra paduodamas kaip parametras. Tai yra padaryta siekiant gauti informaciją apie trinamą produktą iš
+    // duomenų bazės. Naudodama "delete" funkciją, ši funkcija pašalina pasirinktą produktą iš duomenų bazės.
+    // Galiausiai, naudotojas nukreipiamas į prekių sąrašo puslapį, naudojant "redirect" ir "route" funkcijas. Tai yra
+    // būdas patvirtinti, kad pasirinktas produktas buvo sėkmingai pašalintas ir vartotojas gali matyti prekių sąrašą
+    // be šio produkto.
     public function destroy(Product $product)
     {
         $product->delete();
