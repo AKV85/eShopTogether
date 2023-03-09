@@ -13,7 +13,7 @@ class OrderController extends Controller
         $orders = Order::where('status', 1)->get();
         return view('auth.orders.index', compact('orders'));
     }
-}
+
 //
 //    public function store(OrderRequest $request)
 //    {
@@ -32,10 +32,11 @@ class OrderController extends Controller
 //        return view('order.create');
 //    }
 //
-//    public function show(Order $order)
-//    {
-//        return view('order.show', compact('order'));
-//    }
+    public function show(Order $order)
+    {
+        return view('auth.order.show', compact('order'));
+    }
+}
 //
 //    public function edit(Order $order)
 //    {

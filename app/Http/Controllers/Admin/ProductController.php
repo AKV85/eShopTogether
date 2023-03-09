@@ -99,12 +99,7 @@ class ProductController extends Controller
      * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
-    //Ši funkcija atnaujina esamą prekę su nauja informacija, kurią įvedė naudotojas į prekės redagavimo formą.
-    // "Update" funkcija priima "Request" objektą, kuriame yra nauja prekės informacija, ir "Product" modelio objektą,
-    // kuris yra redaguojamas. Naudojant "update" funkciją, atnaujinama prekės informacija ir išsaugoma duomenų bazėje.
-    // Galiausiai, naudotojas nukreipiamas į prekių sąrašo puslapį, naudojant "redirect" ir "route" funkcijas. Tai yra
-    // būdas patvirtinti, kad prekės informacija buvo sėkmingai atnaujinta ir vartotojas gali matyti visą prekių sąrašą
-    // su atnaujinta preke.
+
     public function update(ProductRequest $request, Product $product)
     {
 
