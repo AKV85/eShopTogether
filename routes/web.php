@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
@@ -37,6 +38,7 @@ Route::group([
     });
     Route::resources([
         'categories'=> CategoryController::class,
+        'products'=> ProductController::class
     ]);
 
 });
