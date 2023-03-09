@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\HomeController;
@@ -28,11 +29,16 @@ Route::get('/dashboard', function () {
 
 Route::group([
     'middleware' => 'auth',
-    'namespace' => 'Admin',
+//    'namespace' => 'Admin',
+    'prefix' => 'admin',
 ], function () {
     Route::group(['middleware' => 'is_admin'], function () {
         Route::get('/orders', [OrderController::class, 'index'])->name('home');
     });
+    Route::resources([
+        'categories'=> CategoryController::class,
+    ]);
+
 });
 
 Route::middleware('auth')->group(function () {
