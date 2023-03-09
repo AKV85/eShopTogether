@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\ProductRequest;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
@@ -45,13 +46,14 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function store(Request $request)
+    public function store(ProductRequest $request)
     {
-        $path = $request->file('image')->store('public/products');
-        //Čia yra gaunamas image failas iš POST užklausos, naudojant file() metodą, o po to saugomas nurodytame kataloge
-        // (public/products) naudojant store() metodą. Grąžinamas failo kelias yra priskiriamas $path kintamajam.
-        $params = $request->all();// Ši eilutė sukuria $params masyvą, kuriame yra visi POST užklausos duomenys.
-        $params['image'] = $path; //Čia priskiriamas kelias iki įkelto paveikslėlio $path kintamajam, kad būtų galima jį įrašyti į duomenų bazę.
+
+        $params = $request->all();
+        unset($params['image']);
+        if ($request->has('image')) {
+            $params['image'] = $request->file('image')->store('public/products');
+        }
         Product::create($params);//Ši eilutė sukuria naują Product objektą su $params masyve esančiais laukais ir išsaugo jį duomenų bazėje.
         return redirect()->route('products.index');//Pagal nurodytą maršrutą, vartotojas nukreipiamas atgal į produkto sąrašo puslapį.
 
@@ -103,17 +105,15 @@ class ProductController extends Controller
     // Galiausiai, naudotojas nukreipiamas į prekių sąrašo puslapį, naudojant "redirect" ir "route" funkcijas. Tai yra
     // būdas patvirtinti, kad prekės informacija buvo sėkmingai atnaujinta ir vartotojas gali matyti visą prekių sąrašą
     // su atnaujinta preke.
-    public function update(Request $request, Product $product)
+    public function update(ProductRequest $request, Product $product)
     {
-        Storage::delete($product->image);//Ši eilutė naudojama trinti (ištrinti) paveikslėlį, susijusį su konkrečiu
-        // produktu, iš failų sistemos. Tai yra metodas iš Laravel Storage klasės, kuris leidžia valdyti failus saugom
-        //// aplikacijos diske, kuris gali būti konfigūruojamas naudojant config/filesystems.php konfigūracijos failą.
-// Šioje eilutėje delete() metodui perduodamas produkto objekto laukas image, kuris yra kelias iki failo,
-// susijusio su tuo produktu, ir jis yra ištrinamas iš failų sistemos, kai funkcija vykdo šią eilutę. Tai naudinga, kai
-// norima ištrinti produktą iš duomenų bazės ir visus su juo susijusius failus, kad nebūtų paliktas nepanaudotas failas serverio diske.
-        $path = $request->file('image')->store('public/products');
+
         $params = $request->all();
-        $params['image'] = $path;
+        unset($params['image']);
+        if ($request->has('image')) {
+            Storage::delete($product->image);
+            $params['image'] = $request->file('image')->store('public/products');
+        }
         $product->update($params);
         return redirect()->route('products.index');
     }

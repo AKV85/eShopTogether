@@ -62,28 +62,42 @@
                     <label for="description" class="col-sm-2 col-form-label">Apibūdinimas: </label>
                     <div class="col-sm-6">
 								<textarea name="description" id="description" cols="72"
-                                          rows="7">@isset($product){{ $product->description }}@endisset</textarea>
+                                          rows="7">@isset($product)
+                                        {{ $product->description }}
+                                    @endisset</textarea>
                     </div>
                 </div>
                 <br>
-                <div class="input-group row">
-                    <label for="image" class="col-sm-2 col-form-label">Paveikslėlis: </label>
-                    <div class="col-sm-10">
-                        <label class="btn btn-default btn-file">
-                            Parsisiųsti <input type="file" style="display: none;" name="image" id="image">
-                        </label>
-                    </div>
+                <div class="mb-6">
+                    <label for="image" class="inline-block text-lg mb-2"
+                    >Paveiksliukas</label
+                    >
+                    <input
+                        type="file"
+                        class="border border-gray-200 rounded p-2 w-full"
+                        name="image"
+                        value="{{old('image')}}"/>
                 </div>
                 <br>
-                <div class="input-group row">
-                    <label for="price" class="col-sm-2 col-form-label">Kaina: </label>
-                    <div class="col-sm-2">
-                        <input type="text" class="form-control" name="price" id="price"
-                               value="@isset($product){{ $product->price }}@endisset">
-                    </div>
+                <div class="mb-6">
+                    <label
+                        for="price"
+                        class="inline-block text-lg mb-2">
+                        Kaina</label>
+                    <input
+                        type="number"
+                        class="border border-gray-200 rounded p-2 w-full"
+                        name="price"
+                        placeholder="1"
+                        value="@isset($product){{ $product->price }}@endisset">
+
+                    @error('price')
+                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                    @enderror
                 </div>
-                <button class="btn btn-success">Išsaugoti</button>
+                    <button class="btn btn-success">Išsaugoti</button>
+
             </div>
         </form>
     </div>
-    @endsectionp
+@endsection
