@@ -29,14 +29,20 @@
                 <div class="input-group row">
                     <label for="code" class="col-sm-2 col-form-label">Kodas: </label>
                     <div class="col-sm-6">
+                        @error('code')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                         <input type="text" class="form-control" name="code" id="code"
-                               value="@isset($category){{ $category->code }}@endisset">
+                               value="{{ old('code', isset($category) ? $category->code : null) }}">
                     </div>
                 </div>
                 <br>
                 <div class="input-group row">
                     <label for="name" class="col-sm-2 col-form-label">Pavadinimas: </label>
                     <div class="col-sm-6">
+                        @error('name')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                         <input type="text" class="form-control" name="name" id="name"
                                value="@isset($category){{ $category->name }}@endisset">
                     </div>
@@ -45,22 +51,27 @@
                 <div class="input-group row">
                     <label for="description" class="col-sm-2 col-form-label">Apibūdinimas: </label>
                     <div class="col-sm-6">
-							<textarea name="description" id="description" cols="72"
-                                      rows="7">@isset($category){{ $category->description }}@endisset</textarea>
+                        @error('description')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
+                        <textarea name="description" id="description" cols="72"
+                                  rows="7">@isset($category)
+                                {{ $category->description }}
+                            @endisset</textarea>
                     </div>
                 </div>
 
-                    <div class="mb-6">
-                                        <label for="image" class="inline-block text-lg mb-2"
-                                        >Paveiksliukas</label
-                                        >
-                                        <input
-                                            type="file"
-                                            class="border border-gray-200 rounded p-2 w-full"
-                                            name="image"
-                                            value="{{old('image')}}"/>
-                <button class="btn btn-success">Išsaugoti</button>
-                    </div>
+                <div class="mb-6">
+                    <label for="image" class="inline-block text-lg mb-2"
+                    >Paveiksliukas</label
+                    >
+                    <input
+                        type="file"
+                        class="border border-gray-200 rounded p-2 w-full"
+                        name="image"
+                        value="{{old('image')}}"/>
+                    <button class="btn btn-success">Išsaugoti</button>
+                </div>
             </div>
         </form>
     </div>
