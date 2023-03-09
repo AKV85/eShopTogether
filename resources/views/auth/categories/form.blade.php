@@ -49,17 +49,18 @@
                                       rows="7">@isset($category){{ $category->description }}@endisset</textarea>
                     </div>
                 </div>
-                <br>
-                <div class="input-group row">
-                    <label for="image" class="col-sm-2 col-form-label">Paveikslėlis: </label>
-                    <div class="col-sm-10">
-                        <label class="btn btn-default btn-file">
-                            Parsisiųsti
-                            <input type="file" style="display: none;" name="image" id="image">
-                        </label>
-                    </div>
-                </div>
+
+                    <div class="mb-6">
+                                        <label for="image" class="inline-block text-lg mb-2"
+                                        >Paveiksliukas</label
+                                        >
+                                        <input
+                                            type="file"
+                                            class="border border-gray-200 rounded p-2 w-full"
+                                            name="image"
+                                            value="{{old('image')}}"/>
                 <button class="btn btn-success">Išsaugoti</button>
+                    </div>
             </div>
         </form>
     </div>
