@@ -41,27 +41,27 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    //"Store" funkcija priima HTTP "Request" objektą, kuris naudojamas gauti informaciją, kurią įvedė naudotojas į
-    // prekės sukūrimo formą. Naudodama "create" funkciją, ji sukuria naują produktą naudojant šią informaciją ir
-    // išsaugo jį duomenų bazėje. Galiausiai, naudotojas nukreipiamas į prekių sąrašo puslapį, naudojant "redirect" ir
-    // "route" funkcijas. Tai yra būdas, kaip patvirtinti, kad naujas produktas buvo sėkmingai sukurtas ir vartotojas
-    // gali matyti visą prekių sąrašą su nauju produktu.
+
     public function store(Request $request)
     {
         $path = $request->file('image')->store('public/products');
-        $params = $request->all();
-        $params['image'] = $path;
-        Product::create($params);
-        return redirect()->route('products.index');
+        //Čia yra gaunamas image failas iš POST užklausos, naudojant file() metodą, o po to saugomas nurodytame kataloge
+        // (public/products) naudojant store() metodą. Grąžinamas failo kelias yra priskiriamas $path kintamajam.
+        $params = $request->all();// Ši eilutė sukuria $params masyvą, kuriame yra visi POST užklausos duomenys.
+        $params['image'] = $path; //Čia priskiriamas kelias iki įkelto paveikslėlio $path kintamajam, kad būtų galima jį įrašyti į duomenų bazę.
+        Product::create($params);//Ši eilutė sukuria naują Product objektą su $params masyve esančiais laukais ir išsaugo jį duomenų bazėje.
+        return redirect()->route('products.index');//Pagal nurodytą maršrutą, vartotojas nukreipiamas atgal į produkto sąrašo puslapį.
+
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     //"Show" funkcija priima "Product" modelio objektą, kuris yra paduodamas kaip parametras. Tai yra padaryta siekiant
@@ -77,7 +77,7 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     //"Edit" funkcija priima "Product" modelio objektą, kuris yra paduodamas kaip parametras. Tai yra padaryta siekiant
@@ -87,13 +87,14 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $categories = Category::get();
-        return view('auth.products.form', compact('product', 'categories'));    }
+        return view('auth.products.form', compact('product', 'categories'));
+    }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     //Ši funkcija atnaujina esamą prekę su nauja informacija, kurią įvedė naudotojas į prekės redagavimo formą.
@@ -104,7 +105,12 @@ class ProductController extends Controller
     // su atnaujinta preke.
     public function update(Request $request, Product $product)
     {
-        Storage::delete($product->image);
+        Storage::delete($product->image);//Ši eilutė naudojama trinti (ištrinti) paveikslėlį, susijusį su konkrečiu
+        // produktu, iš failų sistemos. Tai yra metodas iš Laravel Storage klasės, kuris leidžia valdyti failus saugom
+        //// aplikacijos diske, kuris gali būti konfigūruojamas naudojant config/filesystems.php konfigūracijos failą.
+// Šioje eilutėje delete() metodui perduodamas produkto objekto laukas image, kuris yra kelias iki failo,
+// susijusio su tuo produktu, ir jis yra ištrinamas iš failų sistemos, kai funkcija vykdo šią eilutę. Tai naudinga, kai
+// norima ištrinti produktą iš duomenų bazės ir visus su juo susijusius failus, kad nebūtų paliktas nepanaudotas failas serverio diske.
         $path = $request->file('image')->store('public/products');
         $params = $request->all();
         $params['image'] = $path;
@@ -114,7 +120,7 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     //Ši funkcija pašalina pasirinktą produktą iš duomenų bazės. "Destroy" funkcija priima "Product" modelio objektą,
