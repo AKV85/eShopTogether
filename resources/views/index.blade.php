@@ -3,7 +3,7 @@
 @section('title', 'Pagrindinis')
 
 @section('content')
-    <div style="font-size: 40px; color: rgba(99,2,128,0.99);">
+    <div style="font-size: 40px; color: rgb(62,250,5);">
 
         Sveiki apsilankę mano puslapyje!
         Trumpai papasakosiu apie save ir ka čia galite rasti :)

@@ -8,8 +8,8 @@ body {
 }
 
 .main {
-
-    background-image: url('https://github.com/PaulinaStan/darbas_su_laravel/blob/main/laravel_failai/Collage%202023-03-06%2020_35_13.jpg?raw=true');
+    background-image: url('/images/Collage 2023-03-08 20_47_27-compressed.jpg');
+    /*background-image: url('https://github.com/PaulinaStan/darbas_su_laravel/blob/main/laravel_failai/Collage%202023-03-06%2020_35_13.jpg?raw=true');*/
 }
 
 .kategorija
