@@ -41,4 +41,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+//Funkcija tikrina, ar prisijungusio vartotojo atributas "is_admin" yra lygus 1 (t.y. vartotojas yra administratorius).
+//Jei vartotojas yra administratorius, funkcija grąžina "true", o jei ne - "false".
+//Šis metodas dažniausiai naudojamas patikrinti vartotojo rolę ir leisti/pašalinti teises tam tikram funkcionalumui
+// svetainėje.
+
+    public function isAdmin()
+    {
+        return $this->is_admin === 1;
+    }
 }
