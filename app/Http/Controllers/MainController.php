@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Http\Requests\ProductsFilterRequest;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
@@ -12,28 +14,47 @@ class MainController extends Controller
     {
         return view('index');
     }
-    public function allProducts()
+
+    public function allProducts(ProductsFilterRequest $request)
     {
-        $products = Product::all();
+        $productsQuery = Product::with('category');
+
+        if ($request->filled('price_from')) {
+            $productsQuery->where('price', '>=', $request->price_from);
+        }
+
+        if ($request->filled('price_to')) {
+            $productsQuery->where('price', '<=', $request->price_to);
+        }
+
+        foreach (['hit', 'new', 'recommend'] as $field) {
+            if ($request->has($field)) {
+                $productsQuery->where($field, 1);
+            }
+        }
+
+        $products = $productsQuery->paginate(6)->withPath("?" . $request->getQueryString());
+
         return view('allProducts', compact('products'));
     }
+
     public function categories()
     {
         $categories = Category::all();
         return view('categories', compact('categories'));
     }
 
-//    public function category($code)
-//    {
-//        $category = Category::where('code', $code)->first();
-//
-//        return view('category', compact('category'));
-//    }
     public function category($code)
     {
-        $category = Category::where('code', $code)->firstOrFail();
-        return view('category', ['category' => $category]);
+        $category = Category::where('code', $code)->first();
+
+        return view('category', compact('category'));
     }
+//    public function category($code)
+//    {
+//        $category = Category::where('code', $code)->firstOrFail();
+//        return view('category', ['category' => $category]);
+//    }
 
     public function product($category, $product = null)
     {
