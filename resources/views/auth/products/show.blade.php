@@ -33,7 +33,7 @@
             </tr>
             <tr>
                 <td>Paveikslėlis</td>
-                <td><img src="{{ Storage::url($product->image) }}" height="240px"></td>
+                <td><img src="{{asset( Storage::url($product->image)) }}" height="240px"  alt="img"></td>
             </tr>
             <tr>
                 <td>Kategorija</td>

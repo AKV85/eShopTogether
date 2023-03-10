@@ -54,6 +54,7 @@ class ProductController extends Controller
             $params['image'] = $request->file('image')->store('public/products');
         }
 
+
         Product::create($params);
         return redirect()->route('products.index');
     }
@@ -101,40 +102,42 @@ class ProductController extends Controller
 
     public function update(ProductRequest $request, Product $product)
     {
-            $params = $request->all();
-            unset($params['image']);
-            if ($request->has('image')) {
-                Storage::delete($product->image);
-                $params['image'] = $request->file('image')->store('public/products');
-            }
-
-            foreach (['new', 'hit', 'recommend'] as $fieldName) {
-                if (!isset($params[$fieldName])) {
-                    $params[$fieldName] = 0;
-                }
-            }
-            $product->update($params);
-            $product->update($request->all());
-
-            return redirect()->route('products.index');
+        $params = $request->all();
+        unset($params['image']);
+        if ($request->has('image')) {
+            Storage::delete($product->image);
+            $params['image'] = $request->file('image')->store('public/products');
         }
 
-        /**
-         * Remove the specified resource from storage.
-         *
-         * @param \App\Models\Product $product
-         * @return \Illuminate\Http\Response
-         */
-        //Ši funkcija pašalina pasirinktą produktą iš duomenų bazės. "Destroy" funkcija priima "Product" modelio objektą,
-        // kuris yra paduodamas kaip parametras. Tai yra padaryta siekiant gauti informaciją apie trinamą produktą iš
-        // duomenų bazės. Naudodama "delete" funkciją, ši funkcija pašalina pasirinktą produktą iš duomenų bazės.
-        // Galiausiai, naudotojas nukreipiamas į prekių sąrašo puslapį, naudojant "redirect" ir "route" funkcijas. Tai yra
-        // būdas patvirtinti, kad pasirinktas produktas buvo sėkmingai pašalintas ir vartotojas gali matyti prekių sąrašą
-        // be šio produkto.
-        public
-        function destroy(Product $product)
-        {
-            $product->delete();
-            return redirect()->route('products.index');
+        foreach (['new', 'hit', 'recommend'] as $fieldName) {
+            if (!isset($params[$fieldName])) {
+                $params[$fieldName] = 0;
+            }
         }
+
+        $product->update($params);
+//        $product->update($request->all());
+
+        return redirect()->route('products.index');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param \App\Models\Product $product
+     * @return \Illuminate\Http\Response
+     */
+    //Ši funkcija pašalina pasirinktą produktą iš duomenų bazės. "Destroy" funkcija priima "Product" modelio objektą,
+    // kuris yra paduodamas kaip parametras. Tai yra padaryta siekiant gauti informaciją apie trinamą produktą iš
+    // duomenų bazės. Naudodama "delete" funkciją, ši funkcija pašalina pasirinktą produktą iš duomenų bazės.
+    // Galiausiai, naudotojas nukreipiamas į prekių sąrašo puslapį, naudojant "redirect" ir "route" funkcijas. Tai yra
+    // būdas patvirtinti, kad pasirinktas produktas buvo sėkmingai pašalintas ir vartotojas gali matyti prekių sąrašą
+    // be šio produkto.
+    public
+    function destroy(
+        Product $product
+    ) {
+        $product->delete();
+        return redirect()->route('products.index');
+    }
+}

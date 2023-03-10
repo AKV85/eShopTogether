@@ -80,7 +80,7 @@
                     <input
                         type="file"
                         class="border border-gray-200 rounded p-2 w-full"
-                        @error('image') is-invalid @enderror"
+                        @error('image') is-invalid @enderror
                         name="image"
                         id="image"
                         value="{{old('image')}}"/>
@@ -99,22 +99,22 @@
                 {{--                    </div>--}}
                 {{--                </div>--}}
                 <br>
-                                                    <div class="mb-6">
-                                                        <label
-                                                            for="price"
-                                                            class="inline-block text-lg mb-2">
-                                                            Kaina</label>
-                                                        <input
-                                                            type="number"
-                                                            class="border border-gray-200 rounded p-2 w-full"
-                                                            name="price"
-                                                            placeholder="1"
-                                                            value="@isset($product){{ $product->price }}@endisset">
+{{--                                                    <div class="mb-6">--}}
+{{--                                                        <label--}}
+{{--                                                            for="price"--}}
+{{--                                                            class="inline-block text-lg mb-2">--}}
+{{--                                                            Kaina</label>--}}
+{{--                                                        <input--}}
+{{--                                                            type="number"--}}
+{{--                                                            class="border border-gray-200 rounded p-2 w-full"--}}
+{{--                                                            name="price"--}}
+{{--                                                            placeholder="1"--}}
+{{--                                                            value="@isset($product){{ $product->price }}@endisset">--}}
 
-                                                        @error('price')
-                                                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                                                        @enderror
-                                                    </div>
+{{--                                                        @error('price')--}}
+{{--                                                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>--}}
+{{--                                                        @enderror--}}
+{{--                                                    </div>--}}
                 @foreach ([
            'hit' => 'Hitas',
            'new' => 'Naujiena',
