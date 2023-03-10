@@ -52,6 +52,10 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
+    //Ši funkcija grąžina kainą už nurodytą produktų kiekį. Tai yra PHP kalbos funkcija, kuri gali būti naudojama
+    // apskaičiuoti kainą už nurodytą prekių kiekį. Funkcija tikrina, ar esama kiekvieno produkto kiekio įrašas,
+    // naudojant pivot atributą. Jei yra, funkcija grąžina prekių kiekį padaugintą iš prekės kainos. Kitu atveju,
+    // funkcija grąžina prekės kainą. Tai leidžia apskaičiuoti galutinę kainą už nurodytą kiekį prekių.
     public function getPriceForCount()
     {
         if (!is_null($this->pivot)) {

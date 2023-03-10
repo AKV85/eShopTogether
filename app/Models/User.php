@@ -52,6 +52,9 @@ class User extends Authenticatable
         return $this->is_admin === 1;
     }
 
+    //Funkcija nustato ryšį tarp vartotojo ir jo užsakymų (orders) modelių, taip  grąžina vartotojo turimus užsakymus,
+    // naudodama hasMany() ryšio tipą. Tai leidžia lengvai susieti vartotoją su jo užsakymais ir atlikti veiksmus su
+    // užsakymais, susijusiais su konkrečiu vartotoju.
     public function orders()
     {
         return $this->hasMany(Order::class);

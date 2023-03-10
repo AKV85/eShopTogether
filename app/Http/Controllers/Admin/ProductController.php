@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\ProductRequest;
 use App\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -35,35 +33,29 @@ class ProductController extends Controller
     // funkciją, kuri leidžia grąžinti reikiamą HTML kodą.
     public function create()
     {
-        $categories = Category::get();
-        return view('auth.products.form', compact('categories'));
+        return view('auth.products.form');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-
-    public function store(ProductRequest $request)
+    //Ši funkcija sukuria naują produktą pagal paduotus duomenis ($request) ir nukreipia vartotoją į produktų sąrašo
+    // puslapį. Funkcija gauna duomenis iš $request objekto, kuris yra HTTP užklausos duomenų rinkinys, ir sukuria
+    // naują produktą naudojant Product modelio create() metodą. Galiausiai funkcija nukreipia vartotoją į produktų
+    // sąrašo puslapį,kur galima matyti, kad naujas produktas buvo sėkmingai sukurtas.
+    public function store(Request $request)
     {
-
-        $params = $request->all();
-        unset($params['image']);
-        if ($request->has('image')) {
-            $params['image'] = $request->file('image')->store('public/products');
-        }
-        Product::create($params);//Ši eilutė sukuria naują Product objektą su $params masyve esančiais laukais ir išsaugo jį duomenų bazėje.
-        return redirect()->route('products.index');//Pagal nurodytą maršrutą, vartotojas nukreipiamas atgal į produkto sąrašo puslapį.
-
-
+        Product::create($request->all());
+        return redirect()->route('products.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Product $product
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     //"Show" funkcija priima "Product" modelio objektą, kuris yra paduodamas kaip parametras. Tai yra padaryta siekiant
@@ -79,7 +71,7 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Product $product
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     //"Edit" funkcija priima "Product" modelio objektą, kuris yra paduodamas kaip parametras. Tai yra padaryta siekiant
@@ -88,40 +80,31 @@ class ProductController extends Controller
     // esamos prekės informaciją ir ją redaguoti. Tai yra būdas, kaip leisti vartotojams atnaujinti esamą prekę.
     public function edit(Product $product)
     {
-        $categories = Category::get();
-        return view('auth.products.form', compact('product', 'categories'));
+        return view('auth.products.form', compact('product'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Product $product
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
 
-    public function update(ProductRequest $request, Product $product)
+    //Ši funkcija atnaujina produkto ($product) informaciją pagal paduotus duomenis ($request) ir nukreipia vartotoją į
+    // produktų sąrašo puslapį.Funkcija gauna duomenis iš $request objekto, kuris yra HTTP užklausos duomenų rinkinys,
+    // ir atnaujina produkto informaciją naudojant Product modelio update() metodą. Galiausiai funkcija nukreipia
+    // vartotoją į produktų sąrašo puslapį, kur galima matyti, kad produkto informacija buvo sėkmingai atnaujinta.
+    public function update(Request $request, Product $product)
     {
 
-        $params = $request->all();
-        unset($params['image']);
-        if ($request->has('image')) {
-            Storage::delete($product->image);
-            $params['image'] = $request->file('image')->store('public/products');
-        }
-
-        foreach (['new', 'hit', 'recommend'] as $fieldName) {
-            if (!isset($params[$fieldName])) {
-                $params[$fieldName] = 0;
-            }
-        }
-        $product->update($params);
         return redirect()->route('products.index');
     }
+
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Product $product
+     * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
     //Ši funkcija pašalina pasirinktą produktą iš duomenų bazės. "Destroy" funkcija priima "Product" modelio objektą,
