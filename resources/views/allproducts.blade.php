@@ -4,7 +4,7 @@
 @section('background', 'produktai')
 @section('content')
     <h1>Visos Prekes</h1>
-    <form method="GET" action="{{route("index")}}">
+    <form method="GET" action="{{route("allproducts")}}">
         <div class="filters row">
             <div class="col-sm-6 col-md-3">
                 <label for="price_from">Kaina nuo
@@ -31,7 +31,7 @@
             </div>
             <div class="col-sm-6 col-md-3">
                 <button type="submit" class="btn btn-primary">Filtras</button>
-                <a href="{{ route("index") }}" class="btn btn-warning">Nuimti</a>
+                <a href="{{ route("allproducts") }}" class="btn btn-warning">Nuimti</a>
             </div>
         </div>
     </form>
@@ -40,6 +40,6 @@
             @include('layouts.card', compact('product'))
         @endforeach
     </div>
-    {{ $products->links() }}
+    {{ $products->links('pagination::bootstrap-4')}}
 @endsection
 

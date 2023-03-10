@@ -20,6 +20,10 @@ span.badge.badge-danger {
     color: #212529;
     background-color: #ffc107;
 }
+
+div.input-group select.form-control {
+    height: 32px !important;
+}
 div.input-group select.form-control {
     height: 32px !important;
 }

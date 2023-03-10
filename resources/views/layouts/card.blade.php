@@ -2,7 +2,7 @@
 <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
         <img src="{{ Storage::url($product->image) }}" alt="kepuraite">
-        <div class="caption">
+        <p class="caption">
             <h3>{{ $product->name }}</h3>
             <p>{{ $product->price }} Eur</p>
             <p>
@@ -12,7 +12,7 @@
                    role="button">Placiau</a>
                 @csrf
             </form>
-            </p>
+        </p>>
         </div>
     </div>
 </div>

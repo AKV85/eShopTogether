@@ -40,6 +40,7 @@
             @endforeach
             </tbody>
         </table>
+        {{ $products->links('pagination::bootstrap-4')}}
         <a class="btn btn-success" type="button"
            href="{{ route('categories.create') }}">Pridėti kategoriją</a>
     </div>

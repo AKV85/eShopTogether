@@ -21,7 +21,7 @@ class ProductController extends Controller
     // naudojant "compact" funkciją.
     public function index()
     {
-        $products = Product::get();
+        $products = Product::paginate(10);
         return view('auth.products.index', compact('products'));
     }
 
@@ -127,8 +127,6 @@ class ProductController extends Controller
         }
 
         $product->update($params);
-//        $product->update($request->all());
-
         return redirect()->route('products.index');
     }
 
@@ -144,10 +142,8 @@ class ProductController extends Controller
     // Galiausiai, naudotojas nukreipiamas į prekių sąrašo puslapį, naudojant "redirect" ir "route" funkcijas. Tai yra
     // būdas patvirtinti, kad pasirinktas produktas buvo sėkmingai pašalintas ir vartotojas gali matyti prekių sąrašą
     // be šio produkto.
-    public
-    function destroy(
-        Product $product
-    ) {
+    public function destroy(Product $product)
+    {
         $product->delete();
         return redirect()->route('products.index');
     }
