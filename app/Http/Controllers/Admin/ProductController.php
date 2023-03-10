@@ -99,7 +99,18 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
+// Kodas naudojamas atnaujinti produkto informaciją. Funkcija "update" priklauso produktų kontroleriui ir naudoja
+// "ProductRequest" klasę validacijai. Funkcija priima dvi parametrus: "ProductRequest" objektą, kuris yra naudojamas
+// kaip pagrindas atnaujinimo reikalavimams tikrinti ir "Product" objektą, kuris yra atnaujinamas.
+//Metodo veikimas yra toks:
+//Gauti visus parametrus iš prašymo.
+//Išimti "image" parametrą, kad būtų galima atskirai tvarkyti nuotraukos atnaujinimą.
+//Patikrinti, ar yra įkeltas naujas vaizdas. Jei taip, ištrinti seną vaizdą ir įkelti naują vaizdą į "public/products"
+// direktoriją, o jo kelias išsaugoti naujame "params" masyvo elemente.
+//Patikrinti, ar yra "new", "hit" ir "recommend" parametrai, ir jei nėra, priskirti jiems reikšmę 0.
+//Atlikti produkto atnaujinimą naudojant "update" metodą ir perduodant "params" masyvą kaip parametrą.
+//Grąžinti naršymo sąsają į produktų sąrašo puslapį.
+//Tokia funkcija naudojama, kai reikalinga atnaujinti produktų informaciją ir tvarkyti produktų nuotraukas.
     public function update(ProductRequest $request, Product $product)
     {
         $params = $request->all();
