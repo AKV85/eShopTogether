@@ -43,10 +43,6 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    //Ši funkcija sukuria naują produktą pagal paduotus duomenis ($request) ir nukreipia vartotoją į produktų sąrašo
-    // puslapį. Funkcija gauna duomenis iš $request objekto, kuris yra HTTP užklausos duomenų rinkinys, ir sukuria
-    // naują produktą naudojant Product modelio create() metodą. Galiausiai funkcija nukreipia vartotoją į produktų
-    // sąrašo puslapį,kur galima matyti, kad naujas produktas buvo sėkmingai sukurtas.
 
     public function store(ProductRequest $request)
     {
@@ -100,10 +96,6 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    //Ši funkcija atnaujina produkto ($product) informaciją pagal paduotus duomenis ($request) ir nukreipia vartotoją į
-    // produktų sąrašo puslapį.Funkcija gauna duomenis iš $request objekto, kuris yra HTTP užklausos duomenų rinkinys,
-    // ir atnaujina produkto informaciją naudojant Product modelio update() metodą. Galiausiai funkcija nukreipia
-    // vartotoją į produktų sąrašo puslapį, kur galima matyti, kad produkto informacija buvo sėkmingai atnaujinta.
     public function update(ProductRequest $request, Product $product){
 
 
