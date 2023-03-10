@@ -6,7 +6,7 @@
     <h1>Patvirtinti uzsakyma:</h1>
     <div class="container">
         <div class="row justify-content-center">
-            <p>Bendra kaina: <b>{{ $order->getFullPrice() }} Eur</b></p>
+            <p>Bendra kaina: <b>{{ $order->calculateFullSum() }} Eur</b></p>
             <form action="{{ route('basket-confirm', $order) }}" method="POST">
                 <div>
                     <p>Palikite savo varda ir tel.numerį, kad menedžeris galėtų su jumis susisiekti:</p>

@@ -38,17 +38,41 @@ class Order extends Model
         return $this->belongsToMany(Product::class)->withPivot('count')->withTimestamps();
     }
 
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1);
+    }
 
-//    Funkcija "getFullPrice" naudojama skaičiuoti krepšelio užsakymo bendrąją kainą. Tai daroma pereinant per visus
+    //    Funkcija  naudojama skaičiuoti krepšelio užsakymo bendrąją kainą. Tai daroma pereinant per visus
 // produktus krepšelyje ir pridedant kainą už kiekvieną produktą, dauginant ją iš jo kiekio (naudojant
 // "getPriceForCount" metodą iš "Product" modelio). Galiausiai, funkcija grąžina visų produktų bendrąją kainą.
-    public function getFullPrice()
+    public function calculateFullSum()
     {
         $sum = 0;
         foreach ($this->products as $product) {
             $sum += $product->getPriceForCount();
         }
         return $sum;
+    }
+
+    public static function eraseOrderSum()
+    {
+        session()->forget('full_order_sum');
+    }
+
+    public static function changeFullSum($changeSum)
+    {
+        $sum = self::getFullSum() + $changeSum;
+        session(['full_order_sum' => $sum]);
+    }
+
+//    Funkcija "getFullSum" naudojama skaičiuoti krepšelio užsakymo bendrąją kainą. Tai daroma pereinant per visus
+// produktus krepšelyje ir pridedant kainą už kiekvieną produktą, dauginant ją iš jo kiekio (naudojant
+// "getPriceForCount" metodą iš "Product" modelio). Galiausiai, funkcija grąžina visų produktų bendrąją kainą.
+    public static function getFullSum()
+    {
+        return session('full_order_sum', 0);
+
     }
 
     public function saveOrder($name, $phone)

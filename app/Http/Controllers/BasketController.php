@@ -44,6 +44,8 @@ class BasketController extends Controller
             session()->flash('warning', 'Atsitiko klaida.Atsiprasome uz nepatogumus.');
         }
 
+        Order::eraseOrderSum();
+
         return redirect()->route('index');
     }
 
@@ -96,7 +98,7 @@ class BasketController extends Controller
         }
 
         $product = Product::find($productId);
-
+        Order::changeFullSum($product->price);
         session()->flash('success', 'Pridejom preke ' . $product->name);
 
         return redirect()->route('basket');
@@ -127,7 +129,7 @@ class BasketController extends Controller
             }
         }
         $product = Product::find($productId);
-
+        Order::changeFullSum(-$product->price);
         session()->flash('warning', 'Pasalinom preke  ' . $product->name);
 
         return redirect()->route('basket');

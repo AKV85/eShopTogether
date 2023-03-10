@@ -65,6 +65,22 @@ class Product extends Model
         }
         return $this->price;
     }
+
+    public function scopeNew($query)
+    {
+       return $query->where('new', 1);
+    }
+
+    public function scopeHit($query)
+    {
+        return $query->where('hit', 1);
+    }
+
+    public function scopeRecommended($query)
+    {
+        return $query->where('recommended', 1);
+    }
+
 //Kodas naudojamas nustatant naują produktą kaip atributą.
 //"setNewAttribute" funkcija yra atributas, priklausantis produktų modeliui. Ji nustato naujo produkto reikšmę
 // atitinkamam laukui, kai kuris nors iš formos laukų yra pateiktas.
