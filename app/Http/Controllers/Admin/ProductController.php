@@ -97,7 +97,7 @@ class ProductController extends Controller
     // vartotoją į produktų sąrašo puslapį, kur galima matyti, kad produkto informacija buvo sėkmingai atnaujinta.
     public function update(Request $request, Product $product)
     {
-        $product->update($request->all());
+
         return redirect()->route('products.index');
     }
 
