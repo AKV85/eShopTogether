@@ -6,7 +6,7 @@
     @foreach($categories as $category)
         <div class="panel">
             <a href="{{ route('category', $category->code) }}">
-                <img src="{{ Storage::url($category->image) }}">{{--Ši eilutė yra naudojama atvaizduoti kategorijos
+                <img class='categoriesfoto' src="{{ Storage::url($category->image) }}">{{--Ši eilutė yra naudojama atvaizduoti kategorijos
  paveikslėlį, naudojant Laravel Storage klasės url() metodą, kuris gražina viešą URL adresą iš konfigūruojamo disko,
   pagal pavadinimą, kuris yra saugomas aplikacijoje.
 $category->image yra paveikslėlio kelias, kuris yra saugomas duomenų bazėje ir perduodamas į Storage::url() metodą, kad
