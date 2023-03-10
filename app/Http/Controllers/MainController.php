@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Http\Requests\ProductsFilterRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class MainController extends Controller
 {
@@ -17,6 +18,8 @@ class MainController extends Controller
 
     public function allProducts(ProductsFilterRequest $request)
     {
+//        dd(get_class_methods($request));
+        Log::channel('daily')->info($request->ip());
         $productsQuery = Product::with('category');
 
         if ($request->filled('price_from')) {
