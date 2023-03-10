@@ -42,7 +42,7 @@ class ProductRequest extends FormRequest
             'name' => 'required|min:3|max:255',
             'description' => 'required|min:5',
             'price' => 'nullable|numeric|min:1',
-            'image'   => 'nullable|file|max:1024'
+            'image'   => 'nullable|file|max:10240'
         ];
 
         if ($this->route()->named('products.update')) {

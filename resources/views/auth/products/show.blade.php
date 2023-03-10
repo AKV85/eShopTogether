@@ -39,6 +39,22 @@
                 <td>Kategorija</td>
                 <td>{{ $product->category->name }}</td>
             </tr>
+            <tr>
+                <td>Leiblai</td>
+                <td>
+                    @if($product->isNew())
+                        <span class="badge badge-success">Naujiena</span>
+                    @endif
+
+                    @if($product->isRecommend())
+                        <span class="badge badge-warning">Rekomenduojama</span>
+                    @endif
+
+                    @if($product->isHit())
+                        <span class="badge badge-danger">Sezono hitas!</span>
+                    @endif
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>

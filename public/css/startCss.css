@@ -47,7 +47,7 @@ body {
     text-align: center;
 }
 
-.table {
+table {
 
     text-align: left;
     padding: 10px;
@@ -82,3 +82,4 @@ div.thumbnail img {
 div.form-inline form {
     display: inline;
 }
+
