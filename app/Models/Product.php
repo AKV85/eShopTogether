@@ -52,10 +52,12 @@ class Product extends Model
         return $this->belongsTo(Category::class);
     }
 
-    //Ši funkcija grąžina kainą už nurodytą produktų kiekį. Tai yra PHP kalbos funkcija, kuri gali būti naudojama
-    // apskaičiuoti kainą už nurodytą prekių kiekį. Funkcija tikrina, ar esama kiekvieno produkto kiekio įrašas,
-    // naudojant pivot atributą. Jei yra, funkcija grąžina prekių kiekį padaugintą iš prekės kainos. Kitu atveju,
-    // funkcija grąžina prekės kainą. Tai leidžia apskaičiuoti galutinę kainą už nurodytą kiekį prekių.
+    //Kodas, kuris naudojamas suskaičiuoti kainą pagal produktų kiekį.Funkcija "getPriceForCount" nurodo, kad šis
+    // metodas priklauso produktų modeliui, o ne kontroleriui ar kitam klasės objektui. Šis metodas tikrina, ar
+    // produktas yra susietas su kiekiu (pvz. ar buvo pridėtas į krepšelį), patikrinant ar "pivot" objektas nėra null.
+    // Jei taip, metodas grąžina produktų kiekį padaugintą iš produkto kainos. Jei ne, metodas grąžina paprastą
+    // produkto kainą. Toks kodas naudojamas dažnai kai reikalinga apskaičiuoti kainą pagal kiekius, pvz. kai prekių
+    // krepšelyje yra daugiau nei vienas produktas ir reikia suskaičiuoti bendrą kainą.
     public function getPriceForCount()
     {
         if (!is_null($this->pivot)) {
@@ -63,7 +65,13 @@ class Product extends Model
         }
         return $this->price;
     }
-
+//Kodas naudojamas nustatant naują produktą kaip atributą.
+//"setNewAttribute" funkcija yra atributas, priklausantis produktų modeliui. Ji nustato naujo produkto reikšmę
+// atitinkamam laukui, kai kuris nors iš formos laukų yra pateiktas.
+//Funkcija priima vieną parametrą - $value, ir priskiria naujo produkto reikšmę atitinkamam atributui. Šiuo atveju,
+// $value tikrinama, ar lygi "on", o jei taip, atributui "new" priskiriama reikšmė 1, kitu atveju - 0.
+//Tokia funkcija naudojama, kai norima tvarkyti produkto naujumo atributą, kuris yra laikomas boolean tipo atributu,
+// tačiau jo reikšmė gaunama iš formos lauko "checkbox" tipo, todėl reikia atlikti vertės konvertavimą.
     public function setNewAttribute($value)
     {
         $this->attributes['new'] = $value === 'on' ? 1 : 0;
@@ -78,7 +86,11 @@ class Product extends Model
     {
         $this->attributes['recommend'] = $value === 'on' ? 1 : 0;
     }
-
+//Kodas naudojamas tikrinant, ar produktas yra populiariausias (hit).
+//"isHit" funkcija yra metodas, priklausantis produktų modeliui. Šis metodas tikrina, ar produkto "hit" atributas
+// lygus 1, t.y. ar produktas yra populiariausias. Jei atributas lygus 1, grąžinama TRUE, kitu atveju - FALSE.
+//Tokia funkcija naudojama, kai reikalinga patikrinti, ar produktas yra "hit", ir atitinkamai jį apdoroti, pavyzdžiui,
+// rodyti specialiame puslapyje ar išskirti kitais būdais.
     public function isHit()
     {
         return $this->hit === 1;

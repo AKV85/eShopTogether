@@ -42,19 +42,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-//Funkcija tikrina, ar prisijungusio vartotojo atributas "is_admin" yra lygus 1 (t.y. vartotojas yra administratorius).
-//Jei vartotojas yra administratorius, funkcija grąžina "true", o jei ne - "false".
-//Šis metodas dažniausiai naudojamas patikrinti vartotojo rolę ir leisti/pašalinti teises tam tikram funkcionalumui
-// svetainėje.
+//Kodas naudojamas patikrinti, ar vartotojas yra administratorius. Funkcija "isAdmin" priklauso vartotojo modeliui ir
+// tikrina, ar dabartinio vartotojo objekto "is_admin" savybė yra lygi 1. Jei taip, funkcija grąžina true (tiesa),
+// reiškianti, kad vartotojas yra administratorius. Kitu atveju funkcija grąžina false (netiesa). Tokia funkcija dažnai
+// naudojama, kai reikia patikrinti, ar vartotojas turi tam tikras privilegijas ar teises, pvz. redaguoti kitų
+// vartotojų informaciją, valdyti turinį ir pan.
 
     public function isAdmin()
     {
         return $this->is_admin === 1;
     }
 
-    //Funkcija nustato ryšį tarp vartotojo ir jo užsakymų (orders) modelių, taip  grąžina vartotojo turimus užsakymus,
-    // naudodama hasMany() ryšio tipą. Tai leidžia lengvai susieti vartotoją su jo užsakymais ir atlikti veiksmus su
-    // užsakymais, susijusiais su konkrečiu vartotoju.
+    //Kodas naudojamas nustatyti ryšį tarp vartotojo ir užsakymų. Funkcija "orders" priklauso vartotojo modeliui ir
+    // naudoja "hasMany" metodo funkcionalumą, kad nustatytų ryšį tarp vartotojo ir jo užsakymų. Tai reiškia, kad
+    // vienas vartotojas gali turėti daugiau nei vieną užsakymą. Metodas "hasMany" nurodo, kad "User" modelis turi
+    // daugiau nei vieną "Order" modelio objektą. "Order::class" naudojama norint nurodyti modelio klasę, su kuria
+    // nustatomas ryšys. Tokia funkcija naudojama, kai reikia gauti visus vartotojo užsakymus arba kai reikalinga
+    // atlikti tam tikrą veiksmą su visais vartotojo užsakymais.
     public function orders()
     {
         return $this->hasMany(Order::class);
