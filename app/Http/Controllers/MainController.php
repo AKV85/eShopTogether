@@ -32,7 +32,7 @@ class MainController extends Controller
 
         foreach (['hit', 'new', 'recommend'] as $field) {
             if ($request->has($field)) {
-                $productsQuery->where($field, 1);
+                $productsQuery->$field();
             }
         }
 
@@ -47,17 +47,17 @@ class MainController extends Controller
         return view('categories', compact('categories'));
     }
 
-    public function category($code)
-    {
-        $category = Category::where('code', $code)->first();
-
-        return view('category', compact('category'));
-    }
 //    public function category($code)
 //    {
-//        $category = Category::where('code', $code)->firstOrFail();
-//        return view('category', ['category' => $category]);
+//        $category = Category::where('code', $code)->first();
+//
+//        return view('category', compact('category'));
 //    }
+    public function category($code)
+    {
+        $category = Category::where('code', $code)->firstOrFail();
+        return view('category', ['category' => $category]);
+    }
 
     public function product($category, $product = null)
     {

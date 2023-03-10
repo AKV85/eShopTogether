@@ -17,14 +17,13 @@
         <div class="caption">
             <h3>{{ $product->name }}</h3>
             <p>{{ $product->price }} Eur</p>
-            <p>
             <form action="{{ route('basket-add', $product) }}" method="POST">
                 <button type="submit" class="btn btn-primary" role="button">I krepseli</button>
-                <a href="{{ route('product', [$product->category->code, $product->code]) }}" class="btn btn-default"
+                <a href="{{ route('product', [isset($category) ? $category->code : $product->category->code, $product->code]) }}"
+                   class="btn btn-default"
                    role="button">Placiau</a>
                 @csrf
             </form>
-            </p>>
         </div>
     </div>
 </div>

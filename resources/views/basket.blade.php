@@ -16,11 +16,11 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($order->products as $product)
+            @foreach($order->products()->with('category')->get() as $product)
                 <tr>
                     <td>
                         <a href="{{ route('product', [$product->category->code, $product->code]) }}">
-                            <img height="56px" src="{{ Storage::url($product->image) }}">
+                            <img height="56px" src="{{ Storage::url($product->image) }}" alt="komplektukas">
                             {{ $product->name }}
                         </a>
                     </td>
@@ -52,7 +52,7 @@
             @endforeach
             <tr>
                 <td colspan="3">Bendra Kaina:</td>
-                <td>{{ $order->getFullPrice() }} Eur</td>
+                <td>{{ $order->getFullSum() }} Eur</td>
             </tr>
             </tbody>
         </table>
