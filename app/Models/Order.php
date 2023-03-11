@@ -21,6 +21,7 @@ class Order extends Model
         'status',
         'name',
         'phone',
+        'user_id'
     ];
 
 
