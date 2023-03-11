@@ -20,12 +20,12 @@
                 <td>{{ $product->id}}</td>
             </tr>
             <tr>
-                <td>Kodas</td>
-                <td>{{ $product->code }}</td>
-            </tr>
-            <tr>
                 <td>Pavadinimas</td>
                 <td>{{ $product->name }}</td>
+            </tr>
+            <tr>
+                <td>Kodas</td>
+                <td>{{ $product->code }}</td>
             </tr>
             <tr>
                 <td>Apibūdinimas</td>
@@ -33,11 +33,19 @@
             </tr>
             <tr>
                 <td>Paveikslėlis</td>
-                <td><img src="{{asset( Storage::url($product->image)) }}" height="240px"  alt="img"></td>
+                <td><img src="{{asset( Storage::url($product->image)) }}" height="240px" alt="img"></td>
             </tr>
             <tr>
                 <td>Kategorija</td>
                 <td>{{ $product->category->name }}</td>
+            </tr>
+            <tr>
+                <td>Kaina</td>
+                <td>{{ $product->price }}</td>
+            </tr>
+            <tr>
+                <td>Kiekis</td>
+                <td>{{ $product->count }}</td>
             </tr>
             <tr>
                 <td>Leiblai</td>

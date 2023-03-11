@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Http\Requests\ProductsFilterRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
 class MainController extends Controller
@@ -43,7 +44,7 @@ class MainController extends Controller
 
     public function categories()
     {
-        $categories = Category::all();
+        $categories = Category::get();
         return view('categories', compact('categories'));
     }
 
@@ -59,9 +60,12 @@ class MainController extends Controller
         return view('category', ['category' => $category]);
     }
 
-    public function product($category, $product = null)
+    public function product($category, $productCode)
     {
-        return view('product', ['product' => $product]);
-    }
+//        if (Auth::check() && Auth::user()->isAdmin()) {
+            $product = Product::withTrashed()->byCode($productCode)->firstOrFail();
+            return view('product', compact('product'));
+        }
+//    }
 
 }
