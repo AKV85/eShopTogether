@@ -23,26 +23,15 @@ class ProductRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-//    public function rules(): array
-//    {
-//        return [
-//
-//            'category_id' => ['required', 'integer', 'exists:categories,id'],
-//            'name'        => ['required', 'string', 'min:4', 'max:255'],
-//            'code'        => ['required', 'integer', 'exists:statuses,id'],
-//            'description' => ['nullable', 'string', 'min:3'],
-//            'image'       => ['nullable', 'file', 'max:1024'],
-//            'price'       => ['required', 'integer', 'min:0'],
-//        ];
-//    }
     public function rules()
     {
         $rules = [
             'code' => 'required|min:3|max:255|unique:products,code',
             'name' => 'required|min:3|max:255',
             'description' => 'required|min:5',
-            'price' => 'nullable|numeric|min:1',
-            'image'   => 'nullable|file|max:10240'
+            'price' => 'required|numeric|min:1',
+            'image'   => 'nullable|file|max:10240',
+            'count'=> 'required|numeric|min:0'
         ];
 
         if ($this->route()->named('products.update')) {

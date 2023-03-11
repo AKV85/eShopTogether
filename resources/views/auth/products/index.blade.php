@@ -12,16 +12,19 @@
                     #
                 </th>
                 <th>
-                    Kodas
+                    Pavadinimas
                 </th>
                 <th>
-                    Pavadinimas
+                    Kodas
                 </th>
                 <th>
                     Kategorija
                 </th>
                 <th>
                     Kaina
+                </th>
+                <th>
+                    Kiekis
                 </th>
                 <th>
                     Veiksmai
@@ -34,6 +37,7 @@
                     <td>{{ $product->code }}</td>
                     <td>{{ $product->category->name }}</td>
                     <td>{{ $product->price }}</td>
+                    <td>{{ $product->count }}</td>
                     <td>
                         <div class="btn-group" role="group">
                             <form action="{{ route('products.destroy', $product) }}" method="POST">

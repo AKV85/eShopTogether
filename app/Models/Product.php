@@ -6,6 +6,7 @@ use App\Models\Category;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * Class Product
@@ -24,11 +25,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $recommend
  * @property Carbon $created_at
  * @property Carbon $updated_at
+ * @property Carbon $deleted_at
  */
 class Product extends Model
 {
 //    public const COLORS = ['Red', 'Green', 'Blue', 'Black', 'White'];
 //    public const SIZES  = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+
+    use SoftDeletes;
 
     protected $fillable = [
         'category_id',
@@ -39,7 +43,8 @@ class Product extends Model
         'price',
         'hit',
         'new',
-        'recommend'
+        'recommend',
+        'count'
     ];
 
 //    public function getCategory()
@@ -66,9 +71,14 @@ class Product extends Model
         return $this->price;
     }
 
+    public function scopeByCode($query, $code)
+    {
+        return $query->where('code', $code);
+    }
+
     public function scopeNew($query)
     {
-       return $query->where('new', 1);
+        return $query->where('new', 1);
     }
 
     public function scopeHit($query)
@@ -107,6 +117,12 @@ class Product extends Model
 // lygus 1, t.y. ar produktas yra populiariausias. Jei atributas lygus 1, grąžinama TRUE, kitu atveju - FALSE.
 //Tokia funkcija naudojama, kai reikalinga patikrinti, ar produktas yra "hit", ir atitinkamai jį apdoroti, pavyzdžiui,
 // rodyti specialiame puslapyje ar išskirti kitais būdais.
+
+    public function isAvailable()
+    {
+        return !$this->trashed() && $this->count > 0;
+    }
+
     public function isHit()
     {
         return $this->hit === 1;

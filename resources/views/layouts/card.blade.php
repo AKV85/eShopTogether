@@ -13,12 +13,16 @@
                 <span class="badge badge-danger">Perkamiausi!</span>
             @endif
         </div>
-        <img src="{{ Storage::url($product->image) }}" alt="iPhone X 64GB">
+        <img src="{{ Storage::url($product->image) }}" alt="{{$product->name}}">
         <div class="caption">
             <h3>{{ $product->name }}</h3>
             <p>{{ $product->price }} Eur</p>
             <form action="{{ route('basket-add', $product) }}" method="POST">
-                <button type="submit" class="btn btn-primary" role="button">I krepseli</button>
+                @if($product->isAvailable())
+                    <button type="submit" class="btn btn-primary" role="button">I krepseli</button>
+                @else
+                    <p>Siuo metu nera</p>
+                @endif
                 <a href="{{ route('product', [isset($category) ? $category->code : $product->category->code, $product->code]) }}"
                    class="btn btn-default"
                    role="button">Placiau</a>
