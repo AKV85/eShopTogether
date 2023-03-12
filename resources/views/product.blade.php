@@ -9,15 +9,29 @@
         <p>Kaina: <b>{{$product->price}} Eur</b></p>
         <img src="{{ Storage::url($product->image) }}" alt="{{$product->name}}">
         <h2>Aprasymas:{{$product->description}}</h2>
-        <form action="{{ route('basket-add', $product) }}" method="POST">
-            @if($product->isAvailable())
+        @if($product->isAvailable())
+            <form action="{{ route('basket-add', $product) }}" method="POST">
                 <button type="submit" class="btn btn-primary" role="button">I krepseli</button>
-            @else
-                <p>Siuo metu nera. Kreiptis tiesiogiai i dizainere del uzsakymo tel.nr. +37065487123<p>
-                    @endif
-                    <a href="{{ route('allproducts')}}" class="btn btn-default"
-                       role="button">Atgal</a>
                 @csrf
-        </form>
+            </form>
+        @else
+
+            <span>Nepasiekiamas</span>
+            <br>
+            <span>Pranesti man kai atsiras preke:</span>
+            <div class="warning">
+                @if($errors->get('email'))
+                    {!! $errors->get('email')[0] !!}
+                @endif
+            </div>
+            <form method="POST" action="{{ route('subscription', $product) }}">
+                @csrf
+                <input type="text" name="email"></input>
+                <button type="submit">Issiusti</button>
+            </form>
+        @endif
+                        <a href="{{ route('allproducts')}}" class="btn btn-default"
+                           role="button">Atgal</a>
+                    @csrf
     </div>
 @endsection

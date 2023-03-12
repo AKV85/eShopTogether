@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Product;
+use App\Observers\ProductObserver;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -32,5 +34,10 @@ class AppServiceProvider extends ServiceProvider
         Blade::if('admin', function () {
             return Auth::check() && Auth::user()->isAdmin();
         });
+//        Ši eilutė prisideda prie tam tikro "Product" modelio stebėjimo priskyrimo "ProductObserver" klasei. Tai
+// leidžia "ProductObserver" klasės metodams būti automatiškai iškviečiami, kai vyksta tam tikri "Product" modelio
+// veiksmai (pvz., kai yra atnaujinamas arba trinamas įrašas). Tai yra labai naudinga, jei norite automatizuoti tam
+// tikrus veiksmus ar vykdyti patikrinimus, kai vykdomi tam tikri modelio veiksmai.
+        Product::observe(ProductObserver::class);
     }
 }

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Http\Requests\ProductsFilterRequest;
+use App\Http\Requests\SubscriptionRequest;
+use App\Models\Category;
 use App\Models\Product;
+use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -68,4 +70,19 @@ class MainController extends Controller
         }
 //    }
 
+//Ši funkcija priima du parametrus - "SubscriptionRequest" objektą, kuris yra gaunamas iš vartotojo užpildžius
+// prenumeratos formą ir "Product" objektą, su kuriuo susijusi prenumerata.Funkcija sukuria naują "Subscription"
+// objektą duomenų bazėje, kuriame saugomas naujas prenumeratoriaus el. pašto adresas ir susijusio produkto id.
+//Toliau funkcija nukreipia vartotoją atgal į prieš tai matytą puslapį ir sukuria "success" žinutę, kuri informuoja
+// vartotoją, kad jo prenumerata yra sėkmingai užregistruota ir kad jis bus informuojamas, kai prekė, kuriai jis
+// prenumeruoja, pasirodys sandėlyje.
+    public function subscribe(SubscriptionRequest $request, Product $product)
+    {
+        Subscription::create([
+            'email' => $request->email,
+            'product_id' => $product->id,
+        ]);
+
+        return redirect()->back()->with('success', 'Aciu, mes jus informuosim apie atsiradusia preke');
+    }
 }
