@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\HomeController;
@@ -30,8 +29,11 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-Route::middleware(['auth'])->group(function () {
-    Route::group([
+Route::get('locale/{locale}', [MainController::class, 'changeLocale'])->name('locale');
+
+Route::middleware(['set_locale'])->group(function () {
+    Route::middleware(['auth'])->group(function () {
+     Route::group([
         'prefix' => 'person',
         'namespace' => 'Person',
         'as' => 'person.',
@@ -53,6 +55,7 @@ Route::middleware(['auth'])->group(function () {
         ]);
     });
     });
+});
 
     Route::middleware('auth')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

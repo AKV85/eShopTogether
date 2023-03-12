@@ -9,7 +9,7 @@ return [
     'price' => 'Kaina',
     'full_cost' => 'Bwndra kaina',
     'cost' => 'Kaina',
-    'total' => 'Total',
+    'total' => 'Bendra kaina',
     'place_order' => 'Pateikti užsakymas',
     'ordering' => 'Užsakymas',
     'approve_order' => 'Patvirtinti užsakymą',

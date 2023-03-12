@@ -1,20 +1,20 @@
 @extends('layouts.main')
 
-@section('title', 'Pabaigti uzsakyma')
+@section('title', __('basket.place_order'))
+
 @section('background', 'uzsakyti')
 @section('content')
-    <h1>Patvirtinti uzsakyma:</h1>
+    <h1>@lang('basket.approve_order'):</h1>
     <div class="container">
         <div class="row justify-content-center">
-            <p>Bendra kaina: <b>{{ $order->calculateFullSum() }} Eur</b></p>
-            <form action="{{ route('basket-confirm', $order) }}" method="POST">
+            <p>@lang('basket.full_cost'): <b>{{ $order->calculateFullSum() }} @lang('main.eur').</b></p>
+            <form action="{{ route('basket-confirm') }}" method="POST">
                 <div>
-                    <p>Palikite savo varda ir tel.numerį, kad menedžeris galėtų su jumis susisiekti:</p>
+                    <p>@lang('basket.personal_data'):</p>
 
                     <div class="container">
                         <div class="form-group">
-                            <label for="name" class="control-label col-lg-offset-3 col-lg-2">Vardas:
-                            </label>
+                            <label for="name" class="control-label col-lg-offset-3 col-lg-2">@lang('basket.data.name'): </label>
                             <div class="col-lg-4">
                                 <input type="text" name="name" id="name" value="" class="form-control">
                             </div>
@@ -22,9 +22,7 @@
                         <br>
                         <br>
                         <div class="form-group">
-                            <label for="phone" class="control-label col-lg-offset-3 col-lg-2">Telefono
-                                numeris:
-                            </label>
+                            <label for="phone" class="control-label col-lg-offset-3 col-lg-2">@lang('basket.data.phone'): </label>
                             <div class="col-lg-4">
                                 <input type="text" name="phone" id="phone" value="" class="form-control">
                             </div>
@@ -33,7 +31,7 @@
                         <br>
 {{--                        @guest--}}
                             <div class="form-group">
-                                <label for="name" class="control-label col-lg-offset-3 col-lg-2">Email: </label>
+                                <label for="name" class="control-label col-lg-offset-3 col-lg-2">@lang('basket.data.email'): </label>
                                 <div class="col-lg-4">
                                     <input type="text" name="email" id="email" value="" class="form-control">
                                 </div>
@@ -42,7 +40,7 @@
                     </div>
                     <br>
                     @csrf
-                    <input type="submit" class="btn btn-success" value="Patvirtinti uzsakyma">
+                    <input type="submit" class="btn btn-success" value="@lang('basket.approve_order')">
                 </div>
             </form>
         </div>

@@ -1,15 +1,15 @@
-<p>Gerbiamas(oji) {{ $name }}</p>
+<p>@lang('mail.order_created.dear') {{ $name }}</p>
 
-<p>Jusu uzsakymo suma {{ $fullSum }}. Uzsakymas patvirtintas.</p>
+<p>@lang('mail.order_created.your_order') {{ $fullSum }} @lang('mail.order_created.created')</p>
 
 <table class="table table-striped">
     <thead>
     <tr>
-        <th>Pavadinimas</th>
-        <th>Aprasymas</th>
-        <th>Kaina</th>
-        <th>Kiekis</th>
-        <th>Kaina uz kiekius</th>
+        <th>@lang('mail.name')</th>
+        <th>@lang('mail.description')</th>
+        <th>@lang('mail.price')</th>
+        <th>@lang('mail.count')</th>
+        <th>@lang('mail.total')</th>
     </tr>
     </thead>
     <tbody>
@@ -27,14 +27,14 @@
                 {!! $product->description !!}
             </div>
         </td>
-        <td>  {{ $product->price }} Eur</td>
+        <td>  {{ $product->price }} @lang('main.eur').</td>
         <td> {{ $product->pivot->count }}</td>
-        <td> {{ $product->getPriceForCount() }} Eur</td>
+        <td> {{ $product->getPriceForCount() }} @lang('main.eur').</td>
     </tr>
     @endforeach
     <tr>
-        <td colspan="3">Bendra Kaina:</td>
-        <td>{{ $order->getFullSum() }} Eur</td>
+        <td colspan="3">@lang('mail.total'):</td>
+        <td>{{ $order->getFullSum() }} @lang('main.eur').</td>
     </tr>
     </tbody>
 </table>

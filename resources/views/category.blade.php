@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
-@section('title', 'Kategorijos '. $category->name))
+@section('title', __('main.category') . $category->name)
+
 @section('background', 'kategorijos')
 @section('content')
     <h1>

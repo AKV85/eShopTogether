@@ -1,18 +1,20 @@
 @extends('layouts.main')
 
-@section('title', 'Krepselis')
-@section('background', 'krepselis')
+@section('title', __('basket.cart'))
+
 @section('content')
-    <h1>Krepselis</h1>
-    <p>Uzsakyti</p>
+    <h1>@lang('basket.cart')</h1>
+    <p>@lang('basket.ordering')</p>
     <div class="panel">
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>Pavadinimas</th>
-                <th>Kiekis</th>
-                <th>Kaina</th>
-                <th>Bendra kaina</th>
+                <th>{{__('basket.name')}}</th>
+{{--                __() funkcija leidžia įtraukti ir dinaminius parametrus į tekstą, o @lang() - ne.--}}
+                <th>@lang('basket.count')</th>
+
+                <th>@lang('basket.price')</th>
+                <th>@lang('basket.cost')</th>
             </tr>
             </thead>
             <tbody>
@@ -46,19 +48,19 @@
                             </form>
                         </div>
                     </td>
-                    <td>{{ $product->price }} Eur</td>
-                    <td>{{ $product->getPriceForCount() }} Eur</td>
+                    <td>{{ $product->price }} @lang('main.eur').</td>
+                    <td>{{ $product->getPriceForCount() }} @lang('main.eur').</td>
                 </tr>
             @endforeach
             <tr>
-                <td colspan="3">Bendra Kaina:</td>
-                <td>{{ $order->getFullSum() }} Eur</td>
+                <td colspan="3">@lang('basket.full_cost'):</td>
+                <td>{{ $order->getFullSum() }} @lang('main.eur').</td>
             </tr>
             </tbody>
         </table>
         <br>
         <div class="btn-group pull-right" role="group">
-            <a type="button" class="btn btn-success" href="{{ route('basket-place') }}">Uzsakyti</a>
+            <a type="button" class="btn btn-success" href="{{ route('basket-place') }}">@lang('basket.place_order')</a>
         </div>
     </div>
 @endsection

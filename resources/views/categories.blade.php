@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
-@section('title', 'Visos kategorijos')
-@section('background', 'kategorija')
+@section('title', __('main.all_categories'))
+
 @section('content')
     @foreach($categories as $category)
         <div class="panel">
