@@ -1,6 +1,8 @@
 <?php
 
 return [
+    'about' => 'Apie mane',
+    'back' => 'Atgal',
     'online_shop' => 'Internetinė parduotuvė',
     'all_products' => 'Visos prekės',
     'product' => 'Produktas',
@@ -20,12 +22,13 @@ return [
     'reset' => 'Nustatyti iš naujo',
     'price_from' => 'Kaina nuo',
     'to' => 'iki',
+    'register' => 'Registracija',
     'login' => 'Įeiti',
     'logout' => 'Išeiti',
     'my_orders' => 'Mano užsakymai',
     'admin_panel' => 'Administratoriaus skydelis',
     'title' => 'Pagrindinis',
-    'rub' => 'Euras',
+    'eur' => 'Eur',
     'add_to_basket' => 'Į krepšelį',
     'more' => 'Daugiau',
     'not_available' => 'Nepasiekiamas',
