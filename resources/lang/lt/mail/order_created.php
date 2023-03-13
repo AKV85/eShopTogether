@@ -5,8 +5,8 @@ return [
     'your_order' => 'Jūsų užsakymas už sumą ',
     'created' => ' Sukurtas',
     'name' => 'Name',
-    'description' => 'Description',
-    'price' => 'Price',
-    'count' => 'Count',
-    'total' => 'Total',
+    'description' => 'Aprašymas',
+    'price' => 'Kaina',
+    'count' => 'Kiekis',
+    'total' => 'Bendra kaina',
 ];

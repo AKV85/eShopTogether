@@ -7,7 +7,7 @@ return [
     'name' => 'Pavadinimas',
     'count' => 'Кiekis',
     'price' => 'Kaina',
-    'full_cost' => 'Bwndra kaina',
+    'full_cost' => 'Bendra kaina',
     'cost' => 'Kaina',
     'total' => 'Bendra kaina',
     'place_order' => 'Pateikti užsakymas',
