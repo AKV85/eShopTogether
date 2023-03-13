@@ -45,7 +45,8 @@ class BasketController extends Controller
     }
 
     public function basketAdd(Product $product)
-    { // Sukuriamas naujas krepšelio objektas ir pridedama prekė.
+    {
+        // Sukuriamas naujas krepšelio objektas ir pridedama prekė.
         $result = (new BasketManager(true))->addProduct($product);
         // Jei prekė buvo pridėta, nustatomas sėkmės pranešimas. Kitu atveju nustatomas perspėjimo pranešimas.
         if ($result) {

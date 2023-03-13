@@ -41,7 +41,6 @@ class MainController extends Controller
         }
 
         $products = $productsQuery->paginate(6)->withPath("?".$request->getQueryString());
-
         return view('allProducts', compact('products'));
     }
 
@@ -97,12 +96,14 @@ class MainController extends Controller
 // vartotoją atgal į prieš tai matytą puslapį, naudojant "redirect()->back()" funkciją.
     public function changeLocale($locale)
     {
-        $availableLocales = ['en', 'lt'];
+        $availableLocales = ['lt', 'en'];
         if (!in_array($locale, $availableLocales)) {
             $locale = config('app.locale');
         }
         session(['locale' => $locale]);
+
         App::setLocale($locale);
+
         return redirect()->back();
     }
 }
