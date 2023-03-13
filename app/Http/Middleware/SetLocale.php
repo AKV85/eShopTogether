@@ -13,8 +13,8 @@ class SetLocale
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param   \Illuminate\Http\Request  $request
+     * @param  Closure  $next
      * @return mixed
      */
 
@@ -27,24 +27,4 @@ class SetLocale
         App::setLocale($locale);
         return $next($request);
     }
-
-//    public function handle(Request $request, Closure $next): Response|RedirectResponse
-//    {
-//        // Nustatom fallback locale
-//        app()->setFallbackLocale('en');
-//
-//        // Paimam is seseijos lokale, o jei nera, tai is config/app.php
-//        $locale = $request->session()->get('lang', config('app.locale'));
-//
-//        // Jei yra lang parametras, tai pakeiciam locale
-//        if ($request->has('lang')) {
-//            $locale = $request->get('lang');
-//            $request->session()->put('lang', $locale);
-//        }
-//
-//        // Nustatom locale
-//        app()->setLocale($locale);
-//
-//        return $next($request);
-//    }
 }
