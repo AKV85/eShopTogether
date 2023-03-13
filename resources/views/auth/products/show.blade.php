@@ -24,12 +24,20 @@
                 <td>{{ $product->name }}</td>
             </tr>
             <tr>
+                <td>Pavadinimas EN</td>
+                <td>{{ $product->name_en }}</td>
+            </tr>
+            <tr>
                 <td>Kodas</td>
                 <td>{{ $product->code }}</td>
             </tr>
             <tr>
                 <td>Apibūdinimas</td>
                 <td>{{ $product->description }}</td>
+            </tr>
+            <tr>
+                <td>Apibūdinimas EN</td>
+                <td>{{ $product->description_en }}</td>
             </tr>
             <tr>
                 <td>Paveikslėlis</td>

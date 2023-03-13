@@ -23,7 +23,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li @routeactive('allproducts')><a href="{{ route('allproducts') }}">@lang('main.all_products')</a></li>
+                <li @routeactive('allproducts')><a href="{{ route('allproducts') }}">{{__('main.all_products')}}</a></li>
                 <li @routeactive('categor*')><a href="{{ route('categories') }}">@lang('main.categories')</a>
                 </li>
                 <li @routeactive('basket*')><a href="{{ route('basket') }}">@lang('main.cart')</a></li>

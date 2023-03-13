@@ -28,8 +28,15 @@
                 <td>{{ $category->name }}</td>
             </tr>
             <tr>
+                <td>Pavadinimas en</td>
+                <td>{{ $category->name_en }}</td>
+            </tr>
+            <tr>
                 <td>Apibūdinimas</td>
                 <td>{{ $category->description }}</td>
+            </tr>
+            <td>Apibūdinimas en</td>
+            <td>{{ $category->description_en }}</td>
             </tr>
             <tr>
                 <td>Paveikslėlis</td>

@@ -33,6 +33,16 @@
                                value="@isset($product){{ $product->name }}@endisset">
                     </div>
                 </div>
+                    <br>
+                    <div class="input-group row">
+                        <label for="name" class="col-sm-2 col-form-label">Pavadinimas EN: </label>
+                        <div class="col-sm-6">
+                            @include('auth.layouts.error', ['fieldName' => 'name_en'])
+                            <input type="text" class="form-control" name="name_en" id="name_en"
+                                   value="@isset($product){{ $product->name_en }}@endisset">
+                        </div>
+                    </div>
+                    <br>
                 <div class="input-group row">
                     <label for="code" class="col-sm-2 col-form-label">Kodas: </label>
                     <div class="col-sm-6">
@@ -73,6 +83,17 @@
                     </div>
                 </div>
                 <br>
+                    <div class="input-group row">
+                        <label for="description" class="col-sm-2 col-form-label">Apibūdinimas EN: </label>
+                        <div class="col-sm-6">
+                            @include('auth.layouts.error', ['fieldName' => 'description_en'])
+                            <textarea name="description_en" id="description_en" cols="72"
+                                      rows="7">@isset($product)
+                                    {{ $product->description_en }}
+                                @endisset</textarea>
+                        </div>
+                    </div>
+                    <br>
                 <div class="form-group">
                     <label for="image" class="inline-block text-lg mb-2"
                     >Paveiksliukas

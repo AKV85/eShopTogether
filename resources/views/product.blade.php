@@ -4,11 +4,11 @@
 
 @section('content')
     <div class="thumbnail">
-        <h1>{{$product->name}}</h1>
-        <h2>{{$product->category->name}}</h2>
+        <h1>{{$product->__('name')}}</h1>
+        <h2>{{$product->category->__('name')}}</h2>
         <p>@lang('product.price'): : <b>{{$product->price}}  @lang('main.eur')</b></p>
         <img src="{{ Storage::url($product->image) }}" alt="{{$product->name}}">
-        <h2>Aprasymas:{{$product->description}}</h2>
+        <h2>Aprasymas:{{$product->__('description')}}</h2>
         @if($product->isAvailable())
             <form action="{{ route('basket-add', $product) }}" method="POST">
                 <button type="submit" class="btn btn-primary" role="button">@lang('product.add_to_cart')</button>
