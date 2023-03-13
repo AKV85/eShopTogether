@@ -12,10 +12,10 @@
 $category->image yra paveikslėlio kelias, kuris yra saugomas duomenų bazėje ir perduodamas į Storage::url() metodą, kad
  būtų sugeneruotas viešas URL, kuris rodo į paveikslėlį. Tai naudinga, kai norite atvaizduoti paveikslėlį, kuris yra
   saugomas diskas, tačiau jis nėra tiesiogiai pasiekiamas per HTTP protokolą, nes jis yra saugomas privačiame diske.--}}
-                <h2>{{ $category->name }}</h2>
+                <h2>{{ $category->__('name') }}</h2>
             </a>
             <p>
-                {{ $category->description }}
+                {{ $category->__('description') }}
             </p>
         </div>
     @endforeach

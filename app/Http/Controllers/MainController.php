@@ -90,14 +90,14 @@ class MainController extends Controller
 
 //    Ši funkcija skirta keisti nustatytą vartotojo kalbą.Funkcija priima "locale" parametro reikšmę, kuri nurodo
 // naują kalbą, kurią vartotojas nori naudoti.Funkcija patikrina, ar nurodyta kalba yra palaikoma (t.y. ar ją galima
-// naudoti svetainėje), ir jei ne, naudojama numatytoji svetainės kalba, nurodyta konfigūracijos failoje.Tada funkcija
+// naudoti svetainėje), ir jei ne, naudojama numatytoji svetainės kalba, nurodyta konfigūracijos faile.Tada funkcija
 // įrašo naują kalbą į sesiją, naudodama "session" funkciją, kad vartotojas galėtų naudoti naują kalbą kitoje svetainės
 // dalyje ar per kitą sesiją.Taip pat funkcija nustato programos lokalę naudodama "App::setLocale()" funkciją, kad
 // svetainės vertimai ir formatavimas būtų rodomi tinkamu formatu pasirinktai kalbai.Galiausiai funkcija nukreipia
 // vartotoją atgal į prieš tai matytą puslapį, naudojant "redirect()->back()" funkciją.
     public function changeLocale($locale)
     {
-        $availableLocales = ['lt', 'en'];
+        $availableLocales = ['en', 'lt'];
         if (!in_array($locale, $availableLocales)) {
             $locale = config('app.locale');
         }

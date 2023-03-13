@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Category;
+use App\Models\Traits\Translatable;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -29,10 +30,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Product extends Model
 {
-//    public const COLORS = ['Red', 'Green', 'Blue', 'Black', 'White'];
-//    public const SIZES  = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
-
-    use SoftDeletes;
+    use SoftDeletes, Translatable;
 
     protected $fillable = [
         'category_id',
@@ -44,7 +42,9 @@ class Product extends Model
         'hit',
         'new',
         'recommend',
-        'count'
+        'count',
+        'name_en',
+        'description_en',
     ];
 
 //    public function getCategory()
