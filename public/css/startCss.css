@@ -46,7 +46,15 @@ body {
     display: block;
     margin: 0 auto;
 }
+.login
+{
+    background-color: #adb9f3;
+}
 
+/*.register*/
+/*{*/
+/*    background-color:#ffccd5;*/
+/*}*/
 
 .starter-template {
     padding: 20px 15px;
@@ -64,18 +72,6 @@ div.thumbnail img {
 }
 
 
-/*!* Animacijos stiliai *!*/
-/*@keyframes color-change {*/
-/*    0% {*/
-/*        background-color: pink; !* pradinė spalva *!*/
-/*    }*/
-/*    50% {*/
-/*        background-color: purple; !* tarpinė spalva *!*/
-/*    }*/
-/*    100% {*/
-/*        background-color: blue; !* galutinė spalva *!*/
-/*    }*/
-/*}*/
 
 .btn {
     background-color: #b7c8fc;

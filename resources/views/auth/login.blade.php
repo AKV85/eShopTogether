@@ -1,4 +1,5 @@
 <x-guest-layout>
+    @include('partials._hero')
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -44,4 +45,5 @@
             </x-primary-button>
         </div>
     </form>
+    @include('footer')
 </x-guest-layout>

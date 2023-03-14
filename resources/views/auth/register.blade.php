@@ -1,4 +1,5 @@
 <x-guest-layout>
+    @include('partials._hero')
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
