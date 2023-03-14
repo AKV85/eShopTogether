@@ -63,13 +63,6 @@ Route::group(['middleware' => 'set_locale'], function () {
         });
 
 
-        Route::get('/', [MainController::class, 'index'])->name('index');
-        Route::get('/categories', [MainController::class, 'categories'])->name('categories');
-        Route::get('/allproducts', [MainController::class, 'allProducts'])->name('allproducts');
-
-        Route::post('subscription/{product}', [MainController::class, 'subscribe'])->name('subscription');
-
-
         Route::group(['prefix' => 'basket'], function () {
             Route::post('/add/{product}', [BasketController::class, 'basketAdd'])->name('basket-add');
 
@@ -82,10 +75,15 @@ Route::group(['middleware' => 'set_locale'], function () {
                 Route::post('/place', [BasketController::class, 'basketConfirm'])->name('basket-confirm');
             });
         });
-
-
-        Route::get('/{category}', [MainController::class, 'category'])->name('category');
-        Route::get('/{category}/{product}', [MainController::class, 'product'])->name('product');
     });
+
+    Route::get('/', [MainController::class, 'index'])->name('index');
+    Route::get('/categories', [MainController::class, 'categories'])->name('categories');
+    Route::get('/allproducts', [MainController::class, 'allProducts'])->name('allproducts');
+
+    Route::post('subscription/{product}', [MainController::class, 'subscribe'])->name('subscription');
+
+    Route::get('/{category}', [MainController::class, 'category'])->name('category');
+    Route::get('/{category}/{product}', [MainController::class, 'product'])->name('product');
 });
 
