@@ -49,7 +49,7 @@
                 </div>
                 <br>
                 <div class="input-group row">
-                    <label for="name" class="col-sm-2 col-form-label">Название en: </label>
+                    <label for="name" class="col-sm-2 col-form-label">Pavadinimas en: </label>
                     <div class="col-sm-6">
                         @error('name_en')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -73,7 +73,7 @@
                 </div>
                 <br>
                     <div class="input-group row">
-                        <label for="description" class="col-sm-2 col-form-label">Описание en: </label>
+                        <label for="description" class="col-sm-2 col-form-label">Apibūdinimas en: </label>
                         <div class="col-sm-6">
                             @error('description_en')
                             <div class="alert alert-danger">{{ $message }}</div>

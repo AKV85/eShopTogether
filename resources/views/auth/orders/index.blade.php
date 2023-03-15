@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="col-md-12">
-        <h1>Uzsakymai</h1>
+        <h1>Užsakymai</h1>
         <table class="table">
             <tbody>
             <tr>
@@ -18,7 +18,7 @@
                     Telefonas
                 </th>
                 <th>
-                    Kada issiustas
+                    Kada išsiųstas
                 </th>
                 <th>
                     Suma
