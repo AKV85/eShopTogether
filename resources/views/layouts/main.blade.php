@@ -8,6 +8,7 @@
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
+    <link href="/css/layout.css" rel="stylesheet">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/startCss.css" rel="stylesheet">
 </head>

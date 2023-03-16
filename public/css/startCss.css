@@ -1,4 +1,9 @@
 
+/*<!-- rotating an icon -->*/
+/*<i class="fa-solid fa-bomb fa-rotate-by" style="--fa-rotate-angle: 45deg;"></i>*/
+
+/*<!-- using inline styles to define duotone icon custom properties -->*/
+/*<i class="fa-duotone fa-crow" style="--fa-primary-color: dodgerblue; --fa-secondary-color: gold;" ></i>*/
 
 body {
     padding-top: 40px;
@@ -51,10 +56,7 @@ body {
     background-color: #adb9f3;
 }
 
-/*.register*/
-/*{*/
-/*    background-color:#ffccd5;*/
-/*}*/
+
 
 .starter-template {
     padding: 20px 15px;

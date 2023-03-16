@@ -2,9 +2,9 @@
 <div class="footer-content">
     <div class="footer-section about">
         <h1 class="logo-text">AKS Design</h1>
-        <p>
+{{--        <p>--}}
 {{--            Cia bus tekstas, kuris atspindes realu turini.--}}
-        </p>
+{{--        </p>--}}
         <div class="contact">
             <span><i class="fas fa-phone"></i> +370 622 72195</span>
             <span><i class="fas fa-envelope"></i> aks.design93@gmail.com</span>
