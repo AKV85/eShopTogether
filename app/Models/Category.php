@@ -16,6 +16,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $code
  * @property string $description
  * @property string $image
+ * @property string $name_en
+ * @property string $description_en
  * @property Category $products
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -30,8 +32,8 @@ class Category extends Model
         'code',
         'description',
         'image',
-        'name en',
-        'description en',
+        'name_en',
+        'description_en',
     ];
 
     public function products()
