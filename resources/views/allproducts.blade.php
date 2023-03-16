@@ -6,7 +6,7 @@
     <h1>@lang('main.all_products')</h1>
     <form method="GET" action="{{route("allproducts")}}">
         <div class="filters row">
-            <div class="col-sm-6 col-md-3">
+            <div class="col-sm-6 col-md-3 d-inline-block">
                 <label for="price_from">@lang('main.price_from')
                     <input type="text" name="price_from" id="price_from" size="6" value="{{ request()->price_from}}">
                 </label>

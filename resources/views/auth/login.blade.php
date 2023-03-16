@@ -45,5 +45,5 @@
             </x-primary-button>
         </div>
     </form>
-    @include('footer')
+
 </x-guest-layout>
