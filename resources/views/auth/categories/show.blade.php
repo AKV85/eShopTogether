@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="col-md-12">
-        <h1>Prekės</h1>
+        <h1>Kategorija {{ $category->name }}</h1>
         <table class="table">
             <tbody>
             <tr>

@@ -2,10 +2,9 @@
 
 namespace App\Models;
 
-use App\Models\Category;
+use App\Models\Property;
 use App\Models\Traits\Translatable;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -55,6 +54,16 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function skus()
+{
+    return $this->hasMany(Sku::class);
+}
+    //TODO: check table name and fields
+    public function properties()
+    {
+        return $this->belongsToMany(Property::class);
     }
 
     //Kodas, kuris naudojamas suskaičiuoti kainą pagal produktų kiekį.Funkcija "getPriceForCount" nurodo, kad šis
