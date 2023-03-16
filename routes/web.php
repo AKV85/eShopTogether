@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\PropertyController;
+use App\Http\Controllers\Admin\PropertyOptionController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
@@ -58,7 +60,9 @@ Route::group(['middleware' => 'set_locale'], function () {
             });
             Route::resources([
                 'categories' => CategoryController::class,
-                'products' => ProductController::class
+                'products' => ProductController::class,
+                'properties' =>PropertyController::class,
+                'properties/{property}/property-option' =>PropertyOptionController::class
             ]);
         });
 

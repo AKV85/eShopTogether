@@ -33,6 +33,7 @@
                     @admin
                     <li><a href="{{ route('categories.index') }}">Каtegorijos</a></li>
                     <li><a href="{{ route('products.index') }}">Prekės</a>
+                    <li><a href="{{ route('properties.index') }}">Savybės</a>
                     </li>
                     <li><a href="{{ route('home') }}">Užsakymai</a></li>
                     @endadmin
