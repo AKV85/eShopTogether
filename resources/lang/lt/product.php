@@ -7,4 +7,5 @@ return [
     'tell_me' => 'Pasakyk man, kada ji bus prieinama',
     'subscribe' => 'Prenumeruoti',
     'we_will_update' => 'Informuosime jus, kai prekė bus prieinama',
+    'not_available' => 'Nepasiekiamas',
 ];

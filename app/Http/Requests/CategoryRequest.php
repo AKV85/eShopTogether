@@ -27,6 +27,12 @@ class CategoryRequest extends FormRequest
             'code' => 'required|min:3|max:255|unique:categories,code',
             'name' => 'required|min:3|max:255',
             'description' => 'required|min:5',
+            'description_en' => 'required|min:5',
+            'image'   => 'nullable|file|max:10240',
+            'name_en' => 'required|min:3|max:255 ',
+
+
+
         ];
 //šis kodas tikrina, ar jis yra nurodytas dabartinėje maršruto dalyje. Jeigu taip yra, tada code taisyklės masyvo
 // reikšmės prieš sąryšio simbolį . yra pridedama kintamojo id reikšmės prieš tą patį sąryšio simbolį, kadangi šiuo

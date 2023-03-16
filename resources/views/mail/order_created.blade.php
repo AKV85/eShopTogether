@@ -1,15 +1,15 @@
-<p>@lang('mail.order_created.dear') {{ $name }}</p>
+<p>{{__('mail.order_created.dear')}} {{ $name }}</p>
 
-<p>@lang('mail.order_created.your_order') {{ $fullSum }} @lang('mail.order_created.created')</p>
+<p>{{__('mail.order_created.your_order')}} {{ $fullSum }} {{__('mail.order_created.created')}}</p>
 
 <table class="table table-striped">
     <thead>
     <tr>
-        <th>@lang('mail.name')</th>
-        <th>@lang('mail.description')</th>
-        <th>@lang('mail.price')</th>
-        <th>@lang('mail.count')</th>
-        <th>@lang('mail.total')</th>
+        <th>{{__('mail.name')}}</th>
+        <th>{{__('mail.description')}}</th>
+        <th>{{__('mail.price')}}</th>
+        <th>{{__('mail.count')}}</th>
+        <th>{{__('mail.total')}}</th>
     </tr>
     </thead>
     <tbody>
@@ -27,14 +27,14 @@
                 {!! $product->__('description')  !!}
             </div>
         </td>
-        <td>  {{ $product->price }} @lang('main.eur').</td>
+        <td>  {{ $product->price }} {{__('main.eur')}}.</td>
         <td> {{ $product->pivot->count }}</td>
-        <td> {{ $product->getPriceForCount() }} @lang('main.eur').</td>
+        <td> {{ $product->getPriceForCount() }} {{__('main.eur')}}.</td>
     </tr>
     @endforeach
     <tr>
-        <td colspan="3">@lang('mail.total'):</td>
-        <td>{{ $order->getFullSum() }} @lang('main.eur').</td>
+        <td colspan="3">{{__('mail.total')}}:</td>
+        <td>{{ $order->getFullSum() }} {{__('main.eur')}}.</td>
     </tr>
     </tbody>
 </table>

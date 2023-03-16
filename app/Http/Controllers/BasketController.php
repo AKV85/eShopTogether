@@ -50,9 +50,9 @@ class BasketController extends Controller
         $result = (new BasketManager(true))->addProduct($product);
         // Jei prekė buvo pridėta, nustatomas sėkmės pranešimas. Kitu atveju nustatomas perspėjimo pranešimas.
         if ($result) {
-            session()->flash('success', __('basket.added').$product->name);
+            session()->flash('success', __('basket.added').$product->__('name'));
         } else {
-            session()->flash('warning', $product->name . __('basket.not_available_more'));
+            session()->flash('warning', $product->__('name') . __('basket.not_available_more'));
         }
 
         return redirect()->route('basket');
@@ -62,7 +62,7 @@ class BasketController extends Controller
     {
         (new BasketManager())->removeProduct($product);
 
-        session()->flash('warning', __('basket.removed').$product->name);
+        session()->flash('warning', __('basket.removed').$product->__('name'));
 
         return redirect()->route('basket');
     }
