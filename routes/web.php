@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AddressController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\PersonController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\PropertyOptionController;
@@ -59,10 +61,12 @@ Route::group(['middleware' => 'set_locale'], function () {
                 Route::get('/orders/{order}', [AdminOrderController::class, 'show'])->name('orders.show');
             });
             Route::resources([
+                'addresses' => AddressController::class,
                 'categories' => CategoryController::class,
                 'products' => ProductController::class,
                 'properties' =>PropertyController::class,
-                'properties/{property}/property-option' =>PropertyOptionController::class
+                'properties/{property}/property-option' =>PropertyOptionController::class,
+                'persons'  => PersonController::class,
             ]);
         });
 
