@@ -18,7 +18,8 @@
         <h2>Nuorodos</h2>
         <br>
         <ul>
-            <a href="#"><li>Apie mus</li></a>
+            <a href="http://localhost/"><li>Apie mus</li></a>
+            <a href="{{ route('index') }}">@lang('main.about')</a>
             <a href="#"><li>Kontaktai</li></a>
         </ul>
     </div>

@@ -17,6 +17,13 @@ return [
         'hit' => 'Hitas',
         'recommend' => 'Rekomenduojame',
         'new' => 'Naujiena',
+
+        'categories' => [
+            'girls clothes' => 'Mergaičių rūbai',
+            'boys clothes' => 'Berniukų rūbai',
+            'adults' => 'Suaugusiems',
+            'accessories' => 'Aksesuarai',
+        ]
     ],
     'filter' => 'Filtras',
     'reset' => 'Nustatyti iš naujo',
