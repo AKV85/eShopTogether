@@ -3,11 +3,14 @@
 namespace App\Models;
 
 use App\Mail\SendSubscriptionMessage;
+use App\Models\Traits\Translatable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Mail;
 
 class Subscription extends Model
 {
+    use  Translatable;
+
     protected $fillable = ['email', 'product_id'];
 
     public function scopeActiveByProductId($query, $productId)

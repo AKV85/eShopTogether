@@ -8,10 +8,3 @@ return [
     'subscribe' => 'Prenumeruoti',
     'we_will_update' => 'Informuosime jus, kai prekė bus prieinama',
 
-'categories' => [
-    'girls clothes' => 'Mergaičių rūbai',
-    'boys clothes' => 'Berniukų rūbai',
-    'adults' => 'Suaugusiems',
-    'accessories' => 'Aksesuarai',
-]
-];

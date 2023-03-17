@@ -2,11 +2,14 @@
 
 return [
     'main' => 'Welcome to my webpage!
-    I will briefly introduce myself and what you can find here :)
-    AKS - why AKS? Because they are my initials - Aurelija Klimaite Stankeviciene.
-    And the design - its my own original desig. simple and convenient.
-    I am a mother of two, and my profession is quite relevant for me - a seamstress.
-      the kids are growing up fast and always need new clothes, and since the mother can sew - it isnt a problem!
-      My goal isnt just to adorn my kids, but Yours as well. Which is why much of my work is dedicated for chlidren,
-      thought I also sew for adults too. '
+    I will tell you a little about myself and what you can find here :)
+    AKS - why AKS?
+    Because those are my initials - Aurelija Klimaite Stankeviciene.
+    And the design - because  is my own design.
+    Simple and convenient.
+
+   I am a mother of two children, so my profession - seamstress - is very important to me.
+      Children grow very quickly and need new clothes all the time, and when mom knows how to sew - its not a problem!
+      My goal is not only to decorate my children, but also yours. Therefore, many of my works are intended for children,
+      although I also sew for adults.'
 ];

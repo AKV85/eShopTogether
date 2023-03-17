@@ -40,4 +40,6 @@ return [
     'more' => 'Daugiau',
     'not_available' => 'Nepasiekiamas',
     'project_reset' => 'Produktas buvo grąžintas į pradinę būseną',
+    'description' => 'Aprašymas'
+
 ];

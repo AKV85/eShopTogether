@@ -1,7 +1,12 @@
 
+/*<!-- rotating an icon -->*/
+/*<i class="fa-solid fa-bomb fa-rotate-by" style="--fa-rotate-angle: 45deg;"></i>*/
+
+/*<!-- using inline styles to define duotone icon custom properties -->*/
+/*<i class="fa-duotone fa-crow" style="--fa-primary-color: dodgerblue; --fa-secondary-color: gold;" ></i>*/
 
 body {
-    padding-top: 40px;
+    padding-top: 50px;
 }
 
 .main
@@ -11,7 +16,7 @@ body {
 
 .kategorija
 {
-        background-color: #ffccd5;
+    background-color: #ffccd5;
 }
 
 .krepselis {
@@ -40,7 +45,7 @@ body {
 }
 .categoriesfoto
 {
-   padding-top: 12px;
+    padding-top: 12px;
     width: 200px;
     height: 150px;
     display: block;
@@ -51,13 +56,10 @@ body {
     background-color: #adb9f3;
 }
 
-/*.register*/
-/*{*/
-/*    background-color:#ffccd5;*/
-/*}*/
+
 
 .starter-template {
-    padding: 20px 15px;
+    /*padding: 20px 15px;*/
     text-align: center;
 }
 
@@ -67,6 +69,10 @@ table {
     padding: 10px;
 }
 
+div .thumbnail
+{
+    border-radius: 10px;
+}
 div.thumbnail img {
     max-height: 200px;
 }
@@ -110,4 +116,7 @@ span.badge.badge-danger {
 
 div.filters {
     padding-bottom: 5px;
+}
+footer {
+    color: #999;
 }

@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Traits\Translatable;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * @property int $id
@@ -15,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Order extends Model
 {
-
+use  Translatable;
 
     protected $fillable = [
         'status',
