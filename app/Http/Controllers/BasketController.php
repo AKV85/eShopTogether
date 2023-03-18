@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Managers\BasketManager;
-use App\Models\order;
+use App\Models\Order;
 use App\Models\Sku;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -25,7 +25,7 @@ class BasketController extends Controller
 // perspėjimo pranešimas.
         $email = Auth::check() ? Auth::user()->email : $request->email;
         if ((new BasketManager())->saveOrder($request->name, $request->phone, $request->email)) {
-            session()->flash('success',  __('basket.you_order_confirmed'));
+            session()->flash('success', __('basket.you_order_confirmed'));
         } else {
             session()->flash('warning', __('basket.you_cant_order_more'));
         }
@@ -45,27 +45,28 @@ class BasketController extends Controller
         return view('order', compact('order'));
     }
 
+//    Funkcija "basketAdd" prideda naują prekę į krepšelį, gautą per parametrą "$sku". Ji sukuria naują "BasketManager"
+// objektą, kuriame yra patikrinama, ar prekė yra prieinama ir pridedama į krepšelį. Jei prekė sėkmingai pridėta,
+// funkcija sukurs sėkmės pranešimą, pateikdamas pranešime prekės pavadinimą, naudojant vertimo funkciją "__()".
+// Kitu atveju bus rodomas perspėjimo pranešimas, kad prekės nėra sandėlyje arba yra užsakoma daugiau, nei yra prieinama.
     public function basketAdd(Sku $sku)
     {
         $result = (new BasketManager(true))->addSku($sku);
-
         if ($result) {
-
-            session()->flash('success', __('basket.added').$sku->product->__('name'));
+            session()->flash('success', __('basket.added') . $sku->product->__('name'));
         } else {
-
             session()->flash('warning', $sku->product->__('name') . __('basket.not_available_more'));
         }
-
         return redirect()->route('basket');
     }
 
+//    Funkcija "basketRemove" pašalina prekę iš krepšelio, gautą per parametrą "$sku". Ji naudoja "BasketManager"
+// objektą, kad ištrintų prekę iš krepšelio. Po sėkmingo pašalinimo funkcija parodys pranešimą, kad prekė buvo
+// pašalinta iš krepšelio, pateikiant prekės pavadinimą, naudojant vertimo funkciją "__()".
     public function basketRemove(Sku $sku)
     {
         (new BasketManager())->removeSku($sku);
-
-        session()->flash('warning', __('basket.removed').$sku->product->__('name'));
-
+        session()->flash('warning', __('basket.removed') . $sku->product->__('name'));
         return redirect()->route('basket');
     }
 }

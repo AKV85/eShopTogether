@@ -23,14 +23,13 @@
                         @foreach ($skus as $sku)
                             <tr>
                                 <td>
-                                    <a href="{{ route('sku', [$sku->product->category->code, $sku->product->code]) }}">
+                                    <a href="{{ route('sku', [$sku->product->category->code, $sku->product->code, $sku]) }}">
                                         <img height="56px alt={{$sku->product->name}}"
                                              src="{{ Storage::url($sku->product->image) }}">
                                         {{ $sku->product->name }}
                                     </a>
                                 </td>
                                 <td><span class="badge"> {{ $sku->pivot->count }}</span></td>
-                                <td>{{ $sku->pivot->price }} {{ $order->currency->symbol }}</td>
                                 <td>{{ $sku->pivot->price * $sku->pivot->count }} Eur.</td>
                             </tr>
                         @endforeach
