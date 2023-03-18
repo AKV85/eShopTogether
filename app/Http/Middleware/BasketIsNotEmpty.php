@@ -28,14 +28,56 @@ class BasketIsNotEmpty
 // kad gautų informaciją iš sesijos ir perduotų ją kintamajam $orderId.
 //Kintamasis $orderId vėliau naudojamas kitose funkcijose, kad būtų galima atlikti veiksmus su užsakymo duomenimis.
 
+//    public function handle($request, Closure $next)
+//    {
+//        $order = session('order');
+//dd($order);
+//        if (!is_null($order) && (new Order)->getFullSum() > 0) {
+//            return $next($request);
+//        }
+//
+//        session()->flash('warning', __('basket.cart_is_empty'));
+//        return redirect()->route('index');
+//    }
+//}
+
+//public function handle($request, Closure $next)
+//{    $order = session('order');
+//
+//    if (!is_null($order)
+//        &&
+//        (new Order)->getFullSum() > 0)
+//    {
+//        return $next($request);
+//    }
+//    session()->forget('order');
+//    session()->flash('warning', __('basket.cart_is_empty'));
+//    return redirect()->route('index');
+//}
+
+//    public function handle($request, Closure $next)
+//    {
+//        $order = session('order');
+//
+//        if (isset($order) && $order->getFullSum() > 0) {
+//            return $next($request);
+//        }
+//
+//        session()->forget('order');
+//        session()->flash('warning', __('basket.cart_is_empty'));
+//
+//        return redirect()->route('index');
+//    }
+
     public function handle($request, Closure $next)
     {
-        $orderId = session('orderId');
+        $order = session('order');
 
-        if (!is_null($orderId) && Order::getFullSum() > 0) {
+        if ($order && $order->skus->count() > 0 && (new Order)->getFullSum() > 0) {
             return $next($request);
         }
 
+        session()->forget('order');
         session()->flash('warning', __('basket.cart_is_empty'));
         return redirect()->route('index');
     }

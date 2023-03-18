@@ -46,38 +46,19 @@ class Product extends Model
         'description_en',
     ];
 
-//    public function getCategory()
-//    {
-//        return Category::find($this->category_id);
-//    }
-
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
 
     public function skus()
-{
-    return $this->hasMany(Sku::class);
-}
-    //TODO: check table name and fields
-    public function properties()
     {
-        return $this->belongsToMany(Property::class);
+        return $this->hasMany(Sku::class);
     }
 
-    //Kodas, kuris naudojamas suskaičiuoti kainą pagal produktų kiekį.Funkcija "getPriceForCount" nurodo, kad šis
-    // metodas priklauso produktų modeliui, o ne kontroleriui ar kitam klasės objektui. Šis metodas tikrina, ar
-    // produktas yra susietas su kiekiu (pvz. ar buvo pridėtas į krepšelį), patikrinant ar "pivot" objektas nėra null.
-    // Jei taip, metodas grąžina produktų kiekį padaugintą iš produkto kainos. Jei ne, metodas grąžina paprastą
-    // produkto kainą. Toks kodas naudojamas dažnai kai reikalinga apskaičiuoti kainą pagal kiekius, pvz. kai prekių
-    // krepšelyje yra daugiau nei vienas produktas ir reikia suskaičiuoti bendrą kainą.
-    public function getPriceForCount()
+    public function properties()
     {
-        if (!is_null($this->pivot)) {
-            return $this->pivot->count * $this->price;
-        }
-        return $this->price;
+        return $this->belongsToMany(Property::class, 'property_product')->withTimestamps();
     }
 
     public function scopeByCode($query, $code)
@@ -120,16 +101,6 @@ class Product extends Model
     public function setRecommendAttribute($value)
     {
         $this->attributes['recommend'] = $value === 'on' ? 1 : 0;
-    }
-//Kodas naudojamas tikrinant, ar produktas yra populiariausias (hit).
-//"isHit" funkcija yra metodas, priklausantis produktų modeliui. Šis metodas tikrina, ar produkto "hit" atributas
-// lygus 1, t.y. ar produktas yra populiariausias. Jei atributas lygus 1, grąžinama TRUE, kitu atveju - FALSE.
-//Tokia funkcija naudojama, kai reikalinga patikrinti, ar produktas yra "hit", ir atitinkamai jį apdoroti, pavyzdžiui,
-// rodyti specialiame puslapyje ar išskirti kitais būdais.
-
-    public function isAvailable()
-    {
-        return !$this->trashed() && $this->count > 0;
     }
 
     public function isHit()

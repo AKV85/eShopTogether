@@ -17,28 +17,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class Order extends Model
 {
-use  Translatable;
+    use  Translatable;
 
     protected $fillable = [
         'status',
         'name',
         'phone',
-        'user_id'
+        'user_id',
+        'sum',
     ];
 
-
-//    Funkcija "products" apibrėžia daugybę-į-daugybę ryšį tarp "Order" ir "Product" modelių. Tai reiškia, kad
-// kiekvienas krepšelio užsakymas (Order) gali turėti daug produktų (Product) ir kiekvienas produktas gali būti
-// priskirtas daugybei krepšelio užsakymų. Šis ryšys yra apibrėžtas naudojant Laravel Eloquent "belongsToMany" metodą,
-// kuris grąžina ryšio objektą, leidžiantį naudoti ryšio metodus. "withPivot" metodas nurodo papildomą lauką
-// (pavadinimu "count"), kuris yra saugomas pivot lentelėje. Pivot lentelė yra tarpinė lentelė, kuri saugo papildomus
-// laukus, kuriuos galima priskirti daugybei-į-daugybę ryšių. Šiuo atveju, "count" laukas nurodo, kiek vnt. konkretus
-// produktas yra priskirtas konkrečiam krepšelio užsakymui."withTimestamps" metodas nustato, kad pivot lentelė
-// automatiškai pildys sukūrimo ir atnaujinimo datos laukus, t.y., šie duomenys bus automatiškai užpildyti kiekvieną
-// kartą, kai bus sukuriamas ar atnaujinamas ryšys.
-    public function products()
+    public function skus()
     {
-        return $this->belongsToMany(Product::class)->withPivot('count')->withTimestamps();
+        return $this->belongsToMany(Sku::class)->withPivot('count', 'price')->withTimestamps();
     }
 
     public function scopeActive($query)
@@ -46,48 +37,50 @@ use  Translatable;
         return $query->where('status', 1);
     }
 
-    //    Funkcija  naudojama skaičiuoti krepšelio užsakymo bendrąją kainą. Tai daroma pereinant per visus
-// produktus krepšelyje ir pridedant kainą už kiekvieną produktą, dauginant ją iš jo kiekio (naudojant
-// "getPriceForCount" metodą iš "Product" modelio). Galiausiai, funkcija grąžina visų produktų bendrąją kainą.
+
+//    Ši funkcija skirta skaičiuoti bendrą krepšelio sumą, atsižvelgiant į kainą ir kiekį kiekvienoje prekėje. Tai
+// daroma apdorojant visas skelbimų eilutes krepšelyje su funkcija getPriceForCount(), kuri grąžina kainą, padaugintą
+// iš kiekio. Funkcija withTrashed() užtikrina, kad bus apdorotos ir pašalintos prekės.
+//Taigi, ši funkcija skaičiuoja bendrą kainą, kurią vartotojas turi sumokėti už prekes krepšelyje.
     public function calculateFullSum()
     {
         $sum = 0;
-        foreach ($this->products()->withTrashed()->get() as $product) {
-            $sum += $product->getPriceForCount();
+        foreach ($this->skus()->withTrashed()->get() as $sku) {
+            $sum += $sku->getPriceForCount();
         }
         return $sum;
     }
 
-    public static function eraseOrderSum()
+    public function getFullSum()
     {
-        session()->forget('full_order_sum');
+        $sum = 0;
+        $order = session('order')->skus;
+
+        foreach ($order as $sku) {
+            $sum += $sku->price * $sku->countInOrder;
+        }
+        return $sum;
     }
 
-    public static function changeFullSum($changeSum)
-    {
-        $sum = self::getFullSum() + $changeSum;
-        session(['full_order_sum' => $sum]);
-    }
-
-//    Funkcija "getFullSum" naudojama skaičiuoti krepšelio užsakymo bendrąją kainą. Tai daroma pereinant per visus
-// produktus krepšelyje ir pridedant kainą už kiekvieną produktą, dauginant ją iš jo kiekio (naudojant
-// "getPriceForCount" metodą iš "Product" modelio). Galiausiai, funkcija grąžina visų produktų bendrąją kainą.
-    public static function getFullSum()
-    {
-        return session('full_order_sum', 0);
-    }
 
     public function saveOrder($name, $phone)
     {
-        if ($this->status == 0) {
-            $this->name = $name;
-            $this->phone = $phone;
-            $this->status = 1;
-            $this->save();
-            session()->forget('orderId');
-            return true;
-        } else {
-            return false;
+        $this->name = $name;
+        $this->phone = $phone;
+        $this->status = 1;
+        $this->sum = $this->getFullSum();
+
+        $skus = $this->skus;
+        $this->save();
+
+        foreach ($skus as $skuInOrder) {
+            $this->skus()->attach($skuInOrder, [
+                'count' => $skuInOrder->countInOrder,
+                'price' => $skuInOrder->price,
+            ]);
         }
+
+        session()->forget('order');
+        return true;
     }
 }

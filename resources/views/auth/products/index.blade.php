@@ -20,11 +20,9 @@
                 <th>
                     Kategorija
                 </th>
+
                 <th>
-                    Kaina
-                </th>
-                <th>
-                    Kiekis
+                    Kiekis prekes pasiulymu
                 </th>
                 <th>
                     Veiksmai
@@ -36,13 +34,14 @@
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->code }}</td>
                     <td>{{ $product->category->name }}</td>
-                    <td>{{ $product->price }}</td>
-                    <td>{{ $product->count }}</td>
+                    <td></td>
                     <td>
                         <div class="btn-group" role="group">
                             <form action="{{ route('products.destroy', $product) }}" method="POST">
                                 <a class="btn btn-success" type="button"
                                    href="{{ route('products.show', $product) }}">Atidaryti</a>
+                                <a class="btn btn-success" type="button"
+                                   href="{{ route('skus.index', $product) }}">Skus</a>
                                 <a class="btn btn-warning" type="button"
                                    href="{{ route('products.edit', $product) }}">Redaguoti</a>
                                 @csrf

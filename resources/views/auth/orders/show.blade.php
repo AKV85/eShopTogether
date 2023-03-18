@@ -20,23 +20,23 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach ($products as $product)
+                        @foreach ($skus as $sku)
                             <tr>
                                 <td>
-                                    <a href="{{ route('product', [$product->category->code, $product->code]) }}">
-                                        <img height="56px alt={{$product->name}}"
-                                             src="{{ Storage::url($product->image) }}">
-                                        {{ $product->name }}
+                                    <a href="{{ route('sku', [$sku->product->category->code, $sku->product->code]) }}">
+                                        <img height="56px alt={{$sku->product->name}}"
+                                             src="{{ Storage::url($sku->product->image) }}">
+                                        {{ $sku->product->name }}
                                     </a>
                                 </td>
-                                <td><span class="badge">1</span></td>
-                                <td>{{ $product->price }} Eur</td>
-                                <td>{{ $product->getPriceForCount()}} Eur </td>
+                                <td><span class="badge"> {{ $sku->pivot->count }}</span></td>
+                                <td>{{ $sku->pivot->price }} {{ $order->currency->symbol }}</td>
+                                <td>{{ $sku->pivot->price * $sku->pivot->count }} Eur.</td>
                             </tr>
                         @endforeach
                         <tr>
                             <td colspan="3">Bendra Kaina:</td>
-                            <td>{{ $order->calculateFullSum() }} Eur </td>
+                            <td>{{ $order->sum }} Eur </td>
                         </tr>
                         </tbody>
                     </table>
