@@ -6,6 +6,7 @@ use App\Http\Requests\ProductsFilterRequest;
 use App\Http\Requests\SubscriptionRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Sku;
 use App\Models\Subscription;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -24,63 +25,58 @@ class MainController extends Controller
     {
 //        dd(get_class_methods($request));
         Log::channel('daily')->info($request->ip());
-        $productsQuery = Product::with('category');
-
+        $skusQuery = Sku::with(['product', 'product.category']);
         if ($request->filled('price_from')) {
-            $productsQuery->where('price', '>=', $request->price_from);
+            $skusQuery->where('price', '>=', $request->price_from);
         }
 
         if ($request->filled('price_to')) {
-            $productsQuery->where('price', '<=', $request->price_to);
+            $skusQuery->where('price', '<=', $request->price_to);
         }
 
         foreach (['hit', 'new', 'recommend'] as $field) {
             if ($request->has($field)) {
-                $productsQuery->$field();
+                $skusQuery->whereHas('product', function ($query) use ($field) {
+                    $query->$field();
+                });
             }
         }
 
-        $products = $productsQuery->paginate(6)->withPath("?".$request->getQueryString());
-        return view('allProducts', compact('products'));
+        $skus = $skusQuery->paginate(6)->withPath("?".$request->getQueryString());
+        return view('allproducts', compact('skus'));
     }
 
     public function categories()
     {
         $categories = Category::get();
-        return view('categories', compact('categories'));
-    }
+        return view('categories', compact('categories'));    }
 
-//    public function category($code)
-//    {
-//        $category = Category::where('code', $code)->first();
-//
-//        return view('category', compact('category'));
-//    }
     public function category($code)
     {
         $category = Category::where('code', $code)->first();
         return view('category', compact('category'));
     }
 
-    public function product($category, $productCode)
+    public function sku($categoryCode, $productCode, Sku $sku)
     {
-//        if (Auth::check() && Auth::user()->isAdmin()) {
-        $product = Product::withTrashed()->byCode($productCode)->firstOrFail();
-        return view('product', compact('product'));
-    }
-//    }
+        if ($sku->product->code != $productCode)
+        {
+            abort(404, 'Product not found');
+        }
+        if ($sku->product->category->code != $categoryCode) {
+            abort(404, 'Category not found');
+        }
 
-//Ši funkcija priima du parametrus - "SubscriptionRequest" objektą, kuris yra gaunamas iš vartotojo užpildžius
-// prenumeratos formą ir "Product" objektą, su kuriuo susijusi prenumerata.Funkcija sukuria naują "Subscription"
-// objektą duomenų bazėje, kuriame saugomas naujas prenumeratoriaus el. pašto adresas ir susijusio produkto id.
-//Toliau funkcija nukreipia vartotoją atgal į prieš tai matytą puslapį ir sukuria "success" žinutę, kuri informuoja
-// vartotoją, kad jo prenumerata yra sėkmingai užregistruota ir kad jis bus informuojamas, kai prekė, kuriai jis
-// prenumeruoja, pasirodys sandėlyje.
-    public function subscribe(SubscriptionRequest $request, Product $product)
+        return view('product', compact('sku'));
+    }
+
+
+
+    public function subscribe(SubscriptionRequest $request, Sku $sku)
     {
         Subscription::create([
             'email' => $request->email,
-            'product_id' => $product->id,
+            'sku_id' => $sku->id,
         ]);
 
         return redirect()->back()->with('success', __('product.we_will_update'));

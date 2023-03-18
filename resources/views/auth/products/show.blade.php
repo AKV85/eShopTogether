@@ -47,14 +47,7 @@
                 <td>Kategorija</td>
                 <td>{{ $product->category->name }}</td>
             </tr>
-            <tr>
-                <td>Kaina</td>
-                <td>{{ $product->price }}</td>
-            </tr>
-            <tr>
-                <td>Kiekis</td>
-                <td>{{ $product->count }}</td>
-            </tr>
+
             <tr>
                 <td>Leiblai</td>
                 <td>

@@ -120,22 +120,24 @@
                 {{--                    </div>--}}
                 {{--                </div>--}}
                 <br>
-                <div class="mb-6">
-                    <label
-                        for="price"
-                        class="inline-block text-lg mb-2">
-                        Kaina</label>
-                    <input
-                        type="number"
-                        class="border border-gray-200 rounded p-2 w-full"
-                        name="price"
-                        placeholder="1"
-                        value="@isset($product){{ $product->price }}@endisset">
 
-                    @error('price')
-                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                    @enderror
-                </div>
+                    <div class="input-group row">
+                        <label for="category_id" class="col-sm-2 col-form-label">Prekes savybes: </label>
+                        <div class="col-sm-6">
+                            @include('auth.layouts.error', ['fieldName' => 'property_id[]'])
+                            <select name="property_id[]" multiple>
+                                @foreach($properties as $property)
+                                    <option value="{{ $property->id }}"
+                                            @isset($product)
+                                                @if($product->properties->contains($property->id))
+                                                    selected
+                                        @endif
+                                        @endisset
+                                    >{{ $property->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                 @foreach ([
            'hit' => 'Hitas',
            'new' => 'Naujiena',
@@ -154,22 +156,7 @@
                     <br>
                 @endforeach
 
-                <div class="mb-6">
-                    <label
-                        for="count"
-                        class="inline-block text-lg mb-2">
-                        Kiekis</label>
-                    <input
-                        type="number"
-                        class="border border-gray-200 rounded p-2 w-full"
-                        name="count"
-                        placeholder=""
-                        value="@isset($product){{ $product->count }}@endisset">
 
-                    @error('count')
-                    <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                    @enderror
-                </div>
                 <button class="btn btn-success">Išsaugoti</button>
 
             </div>
