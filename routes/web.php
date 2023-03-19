@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AddressController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\MerchantController;
 use App\Http\Controllers\Admin\PersonController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PropertyController;
@@ -65,12 +66,14 @@ Route::group(['middleware' => 'set_locale'], function () {
                 'addresses' => AddressController::class,
                 'categories' => CategoryController::class,
                 'products' => ProductController::class,
-                'persons'  => PersonController::class,
+                'persons' => PersonController::class,
                 'products/{product}/skus' => SkuController::class,
                 'properties' => PropertyController::class,
-                'properties/{property}/property-option' => PropertyOptionController::class
-
+                'properties/{property}/property-option' => PropertyOptionController::class,
+                'merchants' => MerchantController::class,
             ]);
+            Route::get('merchant/{merchant}/update_token',
+                [MerchantController::class, 'updateToken'])->name('merchants.update_token');
         });
 
 

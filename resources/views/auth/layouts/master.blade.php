@@ -32,11 +32,12 @@
                 <ul class="nav navbar-nav">
                     @admin
                     <li><a href="{{ route('categories.index') }}">Каtegorijos</a></li>
-                    <li><a href="{{ route('products.index') }}">Prekės</a>
-                    <li><a href="{{ route('properties.index') }}">Savybės</a>
-                    <li><a href="{{ route('addresses.index') }}">Adresai</a>
-                    <li><a href="{{ route('persons.index') }}">Asmenys</a>
-                    </li>
+                    <li><a href="{{ route('products.index') }}">Prekės</a></li>
+                    <li><a href="{{ route('properties.index') }}">Savybės</a></li>
+                    <li><a href="{{ route('addresses.index') }}">Adresai</a></li>
+                    <li><a href="{{ route('persons.index') }}">Asmenys</a></li>
+                    <li><a href="{{ route('merchants.index') }}">Tiekejai</a></li>
+
                     <li><a href="{{ route('home') }}">Užsakymai</a></li>
                     @endadmin
                 </ul>
