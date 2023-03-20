@@ -11,6 +11,8 @@ class PersonStoreRequest extends FormRequest
      *
      * @return bool
      */
+   //Ši klasė yra atsakinga už validacijos taisyklių nustatymą ir taikymą HTTP užklausų formos laukams,
+    // kuriuos naudotojas pateikia.
     public function authorize(): bool
     {
         return true;
