@@ -69,7 +69,7 @@ Route::group(['middleware' => 'set_locale'], function () {
                 'persons' => PersonController::class,
                 'products/{product}/skus' => SkuController::class,
                 'properties' => PropertyController::class,
-                'properties/{property}/property-option' => PropertyOptionController::class,
+                'properties/{property}/property-options' => PropertyOptionController::class,
                 'merchants' => MerchantController::class,
             ]);
             Route::get('merchant/{merchant}/update_token',
