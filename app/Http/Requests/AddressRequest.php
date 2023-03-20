@@ -11,6 +11,11 @@ class AddressRequest extends FormRequest
      *
      * @return bool
      */
+
+    //Ši klasė yra atsakinga už validacijos taisyklių nustatymą ir taikymą HTTP užklausų formos laukams,
+    // kuriuos naudotojas pateikia.
+    // Klasės pavadinimas, "AddressRequest", yra sugeneruotas pagal laukų pavadinimus,
+    // kuriems yra taikomos taisyklės.
     public function authorize(): bool
     {
         return true;

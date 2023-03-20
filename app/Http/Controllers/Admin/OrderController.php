@@ -14,45 +14,10 @@ class OrderController extends Controller
         return view('auth.orders.index', compact('orders'));
     }
 
-//
-//    public function store(OrderRequest $request)
-//    {
-//        $order = Order::create(
-//            $request->all()
-//            + [
-//                'status_id' => Status::query()->where(['type' => 'order', 'name' => 'Naujas'])->first()->id,
-//            ],
-//        );
-//
-//        return redirect()->route('orders.show', $order);
-//    }
-//
-//    public function create()
-//    {
-//        return view('order.create');
-//    }
-//
     public function show(Order $order)
     {
-        $products = $order->products()->withTrashed()->get();
-        return view('auth.orders.show', compact('order', 'products'));
+        $skus = $order->skus()->withTrashed()->get();
+        return view('auth.orders.show', compact('order', 'skus'));
     }
 }
-//
-//    public function edit(Order $order)
-//    {
-//        return view('order.edit', compact('order'));
-//    }
-//
-//    public function update(OrderRequest $request, Order $order)
-//    {
-//        $order->update($request->all());
-//        return redirect()->route('orders.show', $order);
-//    }
-//
-//    public function destroy(Order $order)
-//    {
-//        $order->delete();
-//        return redirect()->route('orders.index');
-//    }
-//}
+

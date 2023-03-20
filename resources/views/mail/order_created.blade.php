@@ -14,23 +14,22 @@
     </thead>
     <tbody>
     <tbody>
-    @foreach($order->products as $product)
-    <tr>
-        <td>
-            <a href="{{ route('product', [$product->category->code, $product->code]) }}">
-                <img height="56px" src="{{ Storage::url($product->image) }}">
-                {{ $product->__('name') }}
-            </a>
-        </td>
-        <td>
-            <div class="btn-group form-inline">
-                {!! $product->__('description')  !!}
-            </div>
-        </td>
-        <td>  {{ $product->price }} {{__('main.eur')}}.</td>
-        <td> {{ $product->pivot->count }}</td>
-        <td> {{ $product->getPriceForCount() }} {{__('main.eur')}}.</td>
-    </tr>
+    @foreach($order->skus as $sku)
+        <tr>
+            <td>
+                <a href="{{ route('sku', [$sku->product->category->code, $sku->product->code, $sku]) }}">
+                    <img height="56px" src="{{ Storage::url($sku->product->image) }}">
+                    {{ $sku->product->__('name') }}
+                </a>
+            </td>
+            <td><span class="badge">{{ $sku->countInOrder }}</span>
+                <div class="btn-group form-inline">
+                    {!! $sku->product->__('description') !!}
+                </div>
+            </td>
+            <td>{{ $sku->price }} Eur.</td>
+            <td>{{ $sku->getPriceForCount() }} Eur.</td>
+        </tr>
     @endforeach
     <tr>
         <td colspan="3">{{__('mail.total')}}:</td>

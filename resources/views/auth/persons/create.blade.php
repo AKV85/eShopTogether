@@ -1,3 +1,7 @@
+
+
+{{--Šis šablonas atsako už naujo asmens įrašymo formos rodymą.--}}
+
 <h1>Person</h1>
 <span>Asmenys</span>
 <form action="{{route('persons.store')}}" method="post">

@@ -1,3 +1,6 @@
+
+{{--Šis šablonas atrodo atsakingas už adresų sąrašo rodymą interneto puslapyje.--}}
+
 @extends('auth.layouts.master')
 
 @section('title', 'Adresai')

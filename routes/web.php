@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\Admin\AddressController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\MerchantController;
 use App\Http\Controllers\Admin\PersonController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PropertyController;
 use App\Http\Controllers\Admin\PropertyOptionController;
+use App\Http\Controllers\Admin\SkuController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
@@ -64,22 +66,26 @@ Route::group(['middleware' => 'set_locale'], function () {
                 'addresses' => AddressController::class,
                 'categories' => CategoryController::class,
                 'products' => ProductController::class,
-                'properties' =>PropertyController::class,
-                'properties/{property}/property-option' =>PropertyOptionController::class,
-                'persons'  => PersonController::class,
+                'persons' => PersonController::class,
+                'products/{product}/skus' => SkuController::class,
+                'properties' => PropertyController::class,
+                'properties/{property}/property-option' => PropertyOptionController::class,
+                'merchants' => MerchantController::class,
             ]);
+            Route::get('merchant/{merchant}/update_token',
+                [MerchantController::class, 'updateToken'])->name('merchants.update_token');
         });
 
 
         Route::group(['prefix' => 'basket'], function () {
-            Route::post('/add/{product}', [BasketController::class, 'basketAdd'])->name('basket-add');
+            Route::post('/add/{sku}', [BasketController::class, 'basketAdd'])->name('basket-add');
 
             Route::group([
                 'middleware' => 'basket_not_empty',
             ], function () {
                 Route::get('/', [BasketController::class, 'basket'])->name('basket');
                 Route::get('/place', [BasketController::class, 'basketPlace'])->name('basket-place');
-                Route::post('/remove/{product}', [BasketController::class, 'basketRemove'])->name('basket-remove');
+                Route::post('/remove/{sku}', [BasketController::class, 'basketRemove'])->name('basket-remove');
                 Route::post('/place', [BasketController::class, 'basketConfirm'])->name('basket-confirm');
             });
         });
@@ -89,9 +95,9 @@ Route::group(['middleware' => 'set_locale'], function () {
     Route::get('/categories', [MainController::class, 'categories'])->name('categories');
     Route::get('/allproducts', [MainController::class, 'allProducts'])->name('allproducts');
 
-    Route::post('subscription/{product}', [MainController::class, 'subscribe'])->name('subscription');
+    Route::post('subscription/{sku}', [MainController::class, 'subscribe'])->name('subscription');
 
     Route::get('/{category}', [MainController::class, 'category'])->name('category');
-    Route::get('/{category}/{product}', [MainController::class, 'product'])->name('product');
+    Route::get('/{category}/{product}/{sku}', [MainController::class, 'sku'])->name('sku');
 });
 

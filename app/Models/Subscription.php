@@ -9,34 +9,24 @@ use Illuminate\Support\Facades\Mail;
 
 class Subscription extends Model
 {
-    use  Translatable;
+    protected $fillable = ['email', 'sku_id'];
 
-    protected $fillable = ['email', 'product_id'];
-
-    public function scopeActiveByProductId($query, $productId)
+    public function scopeActiveBySkuId($query, $skuId)
     {
-        return $query->where('status', 0)->where('product_id', $productId);
+        return $query->where('status', 0)->where('sku_id', $skuId);
     }
 
-    public function product()
+    public function sku()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Sku::class);
     }
 
-
-//    Ši funkcija siunčia prenumeratoriams el. laiškus, susijusius su nauju produkto atsiradimu.Funkcija gauna "Product"
-// objektą kaip parametrą, kurio informacija reikalinga prenumeratų nustatymams.Funkcija išrenka visus aktyvius
-// prenumeratorius iš "Subscription" modelio, kurie prenumeruoja šį produktą. Tada funkcija praeina per visus šiuos
-// prenumeratorius ir siunčia kiekvienam prenumeratoriui el. laišką, kuriame informuojama apie naujai atsiradusią prekę.
-//Toliau funkcija pažymi kiekvieną prenumeratą kaip išsiųstą, tai daroma keičiant prenumeratos "status" reikšmę į 1 ir
-// išsaugant atnaujintą prenumeratą.Pastaba: Ši funkcija naudoja Laravel karkaso funkcijas "Mail" ir
-// "SendSubscriptionMessage", kurios yra skirtos siųsti el. laiškus naudojant nurodytą el. pašto šabloną.
-    public static function sendEmailsBySubscription(Product $product)
+    public static function sendEmailsBySubscription(Sku $sku)
     {
-        $subscriptions = self::activeByProductId($product->id)->get();
+        $subscriptions = self::activeBySkuId($sku->id)->get();
 
         foreach($subscriptions as $subscription) {
-            Mail::to($subscription->email)->send(new SendSubscriptionMessage($product));
+            Mail::to($subscription->email)->send(new SendSubscriptionMessage($sku));
             $subscription->status = 1;
             $subscription->save();
         }

@@ -4,19 +4,31 @@
 
 @section('content')
     <div class="thumbnail">
-        <h1>{{$product->__('name')}}</h1>
-        <h2>{{$product->category->__('name')}}</h2>
-        <p>@lang('product.price'): <b>{{$product->price}}  @lang('main.eur')</b></p>
-        <img src="{{ Storage::url($product->image) }}" alt="{{$product->__('name')}}">
-        <h2>{{__('main.description')}} : {{$product->__('description')}}</h2>
-        @if($product->isAvailable())
-            <form action="{{ route('basket-add', $product) }}" method="POST">
-                <button type="submit" class="btn btn-primary" role="button">@lang('product.add_to_cart')</button>
-                @csrf
-            </form>
-        @else
+        <h1>{{$sku->product->__('name')}}</h1>
+        <h2>{{$sku->product->category->__('name')}}</h2>
+        <p>@lang('product.price'): <b>{{$sku->price}}  @lang('main.eur')</b></p>
+        @isset($sku->product->properties)
+            @foreach ($sku->propertyOptions as $propertyOption)
+                <h4>{{ $propertyOption->property->__('name') }}: {{ $propertyOption->__('name') }}</h4>
+            @endforeach
+        @endisset
+        <img src="{{ Storage::url($sku->product->image) }}" alt="{{$sku->product->__('name')}}">
+        <h2>{{__('main.description')}} : {{$sku->product->__('description')}}</h2>
 
-            <span>@lang('product.not_available')</span>
+
+        <form action="{{ route('basket-add', $sku) }}" method="POST">
+        @if($sku->isAvailable())
+                <button type="submit" class="btn btn-primary" role="button">@lang('product.add_to_cart')</button>
+            @else
+                <span>@lang('product.not_available')</span>
+            @endif
+
+                <a href="{{ route('allproducts')}}" class="btn btn-default"
+                   role="button">@lang('product.back')</a>
+            @csrf
+
+        </form>
+
             <br>
             <span>@lang('product.tell_me'):</span>
             <div class="warning">
@@ -24,17 +36,10 @@
                     {!! $errors->get('email')[0] !!}
                 @endif
             </div>
-            <form method="POST" action="{{ route('subscription', $product) }}">
+            <form method="POST" action="{{ route('subscription', $sku) }}">
                 @csrf
                 <input type="text" name="email">
                 <button type="submit">@lang('product.subscribe')</button>
             </form>
-        @endif
-
-
-
-                        <a href="{{ route('allproducts')}}" class="btn btn-default"
-                           role="button">@lang('product.back')</a>
-                    @csrf
     </div>
 @endsection

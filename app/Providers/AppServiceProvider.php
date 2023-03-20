@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Product;
+use App\Models\Sku;
 use App\Observers\ProductObserver;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
@@ -38,6 +39,6 @@ class AppServiceProvider extends ServiceProvider
 // leidžia "ProductObserver" klasės metodams būti automatiškai iškviečiami, kai vyksta tam tikri "Product" modelio
 // veiksmai (pvz., kai yra atnaujinamas arba trinamas įrašas). Tai yra labai naudinga, jei norite automatizuoti tam
 // tikrus veiksmus ar vykdyti patikrinimus, kai vykdomi tam tikri modelio veiksmai.
-        Product::observe(ProductObserver::class);
+        Sku::observe(ProductObserver::class);
     }
 }
