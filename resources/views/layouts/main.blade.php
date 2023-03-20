@@ -80,8 +80,10 @@
         @endif
         @yield('content')
     </div>
-</div>
 
+</div>
+<script src="/js/watch.js"></script>
+<script src="/js/mystyle.js"></script>
 </body>
 <footer>
     <nav class="navbar navbar-inverse navbar-fixed-bottom">
