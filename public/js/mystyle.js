@@ -22,7 +22,7 @@ var text = "Sveiki apsilankę mano puslapyje!\n" +
     "    Vaikai labai greit auga ir reikia vis naujų rūbelių, o kai mama moka siūti - tai ne problema!\n" +
     "    Mano tikslas ne tik savo vaikučius papuošti, bet ir Jūsų.\n" +
     "    Todėl daugelis mano darbelių yra skirta vaikams, nors siuvu ir suaugusiems.";
-var delay = 100; // greitis
+var delay = 70; // greitis
 var elem = document.getElementById("result");
 
 var print_text = function(text, elem, delay) {

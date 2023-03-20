@@ -27,7 +27,7 @@
                 @endisset
                 @csrf
                 <div class="input-group row">
-                    <label for="name" class="col-sm-2 col-form-label">Pavadinimas: </label>
+                    <label for="name" class="col-sm-4 col-form-label">Pavadinimas: </label>
                     <div class="col-sm-6">
                         @error('name')
                         <div class="alert alert-danger">{{ $message }}</div>
@@ -39,7 +39,7 @@
 
                 <br>
                 <div class="input-group row">
-                    <label for="name" class="col-sm-2 col-form-label">Pavadinimas en: </label>
+                    <label for="name" class="col-sm-4 col-form-label">Pavadinimas en: </label>
                     <div class="col-sm-6">
                         @error('name_en')
                         <div class="alert alert-danger">{{ $message }}</div>

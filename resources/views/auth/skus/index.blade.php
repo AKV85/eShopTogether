@@ -30,7 +30,7 @@
                                 <a class="btn btn-warning" type="button" href="{{ route('skus.edit', [$product, $sku]) }}">Redaguoti</a>
                                 @csrf
                                 @method('DELETE')
-                                <input class="btn btn-danger" type="submit" value="Удалить"></form>
+                                <input class="btn btn-danger" type="submit" value="Ištrinti"></form>
                         </div>
                     </td>
                 </tr>

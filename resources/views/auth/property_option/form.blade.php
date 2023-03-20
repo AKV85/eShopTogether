@@ -30,8 +30,8 @@
                     <h2>Savybės {{ $property->name }}</h2>
                 </div>
                 <div class="input-group row">
-                    <label for="name" class="col-sm-2 col-form-label">Pavadinimas: </label>
-                    <div class="col-sm-6">
+                    <label for="name" class="col-sm-4 col-form-label">Pavadinimas: </label>
+                    <div class="col-sm-4">
                         @error('name')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror

@@ -37,7 +37,7 @@
                                 <a class="btn btn-primary" type="button" href="{{ route('merchants.update_token', $merchant) }}">Atnaujinti tokena</a>
                                 @csrf
                                 @method('DELETE')
-                                <input class="btn btn-danger" type="submit" value="Удалить"></form>
+                                <input class="btn btn-danger" type="submit" value="Ištrinti"></form>
                         </div>
                     </td>
                 </tr>

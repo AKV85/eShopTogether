@@ -20,7 +20,6 @@ class ProductsSeed extends Seeder
                 'description' => 'suknelė mergaitei',
                 'image' => '/img/products/product-2.jpg',
                 'category_id' => 1,
-                'price' => 18,
             ],
 
             [
@@ -29,7 +28,6 @@ class ProductsSeed extends Seeder
                 'description' => 'mergaitiškas sijonas',
                 'image' => '/img/products/product-3.jpg',
                 'category_id' => 1,
-                'price' => 10,
             ],
 
             [
@@ -38,7 +36,6 @@ class ProductsSeed extends Seeder
                 'description' => 'komplektukas mergaitei',
                 'image' => '/img/products/product-4.jpg',
                 'category_id' => 1,
-                'price' => 20,
             ],
             [
                 'name' => 'Komplektukas',
@@ -46,7 +43,6 @@ class ProductsSeed extends Seeder
                 'description' => 'komplektukas berniukui',
                 'image' => '/img/products/product-5.jpg',
                 'category_id' => 2,
-                'price' => 18,
             ],
             [
                 'name' => 'Kelnės',
@@ -54,7 +50,6 @@ class ProductsSeed extends Seeder
                 'description' => 'Kelnės berniukui',
                 'image' => '/img/products/product-6.jpg',
                 'category_id' => 2,
-                'price' => 8,
             ],
             [
                 'name' => 'Megstukas',
@@ -62,7 +57,6 @@ class ProductsSeed extends Seeder
                 'description' => 'Megstukas berniukui',
                 'image' => '/img/products/product-6.jpg',
                 'category_id' => 2,
-                'price' => 7,
             ],
             [
                 'name' => 'Striukė',
@@ -70,7 +64,6 @@ class ProductsSeed extends Seeder
                 'description' => 'Striukė suaugusiems',
                 'image' => '/img/products/product-6.jpg',
                 'category_id' => 3,
-                'price' => 20,
             ],
             [
                 'name' => 'Galvajuostė',
@@ -78,7 +71,6 @@ class ProductsSeed extends Seeder
                 'description' => 'Galvajuostė suaugusiems',
                 'image' => '/img/products/product-6.jpg',
                 'category_id' => 3,
-                'price' => 8,
             ],
 
             [
@@ -87,7 +79,6 @@ class ProductsSeed extends Seeder
                 'description' => 'Riešinės suaugusiems',
                 'image' => '/img/products/product-6.jpg',
                 'category_id' => 3,
-                'price' => 8,
             ],
 
             [
@@ -96,7 +87,6 @@ class ProductsSeed extends Seeder
                 'description' => 'gumutė su ausytėm',
                 'image' => '/img/products/product-6.jpg',
                 'category_id' => 4,
-                'price' => 5,
             ],
 
             [
@@ -105,7 +95,6 @@ class ProductsSeed extends Seeder
                 'description' => 'sagtukai plaukams',
                 'image' => '/img/products/product-6.jpg',
                 'category_id' => 4,
-                'price' => 5,
             ],
             [
                 'name' => 'Galvajuostė',
@@ -113,7 +102,6 @@ class ProductsSeed extends Seeder
                 'description' => 'Galvajuostė su kaspinėliu',
                 'image' => '/img/products/product-6.jpg',
                 'category_id' => 4,
-                'price' => 8,
             ],
         ];
 
