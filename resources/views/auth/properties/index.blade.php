@@ -27,6 +27,7 @@
                             <form action="{{ route('properties.destroy', $property) }}" method="POST">
                                 <a class="btn btn-success" type="button" href="{{ route('properties.show', $property) }}">Atidaryti</a>
                                 <a class="btn btn-warning" type="button" href="{{ route('properties.edit', $property) }}">Redaguoti</a>
+                                <a class="btn btn-warning" type="button" href="{{ route('property-options.index', $property) }}">Prideti savybes varianta</a>
 
                                 @csrf
                                 @method('DELETE')

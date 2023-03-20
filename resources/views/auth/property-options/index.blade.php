@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="col-md-12">
-        <h1>Savybės parinktys</h1>
+        <h1>Savybės {{ $property->name }} parinktys</h1>
         <table class="table">
             <tbody>
             <tr>
@@ -12,10 +12,10 @@
                     #
                 </th>
                 <th>
-                    Parinktys
+                    Savybe
                 </th>
                 <th>
-                    Pavadinimas
+                    Savybes tipas
                 </th>
                 <th>
                     Veiksmai
