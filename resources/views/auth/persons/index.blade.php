@@ -1,3 +1,17 @@
+
+
+{{--Šis yra Blade šablono puslapiui, kuriame rodoma visų asmenų lentelė. Jis išplėsto pagrindinio maketo 'auth.layouts.master',
+nustato puslapio pavadinimą 'Asmenys' ir apibrėžia turinio sekciją.--}}
+
+{{--Turinio sekcijoje yra eilutė su 12 stulpelių, kuriame yra antraštė 'Persons',
+nuoroda į naujo asmens sukūrimą ir lentelė, kurioje rodoma informacija apie kiekvieną asmenį.
+Lentelės antraštės yra ID, vardas, pavardė, el. paštas, telefonas, naudotojas, sukurta, atnaujinta ir veiksmai.--}}
+
+{{--Lentelės kūnas apima ciklą, kuris eina per visus asmenis ir rodo jų informaciją eilutėje.
+Veiksmų stulpelis turi nuorodą, kuri leidžia redaguoti kiekvieną asmenį ir formą,
+kuri leidžia ištrinti kiekvieną asmenį.
+Forma naudoja HTTP POST metodą ir įtraukia CSRF žymą.--}}
+
 @extends('auth.layouts.master')
 
 @section('title', 'Asmenys')
