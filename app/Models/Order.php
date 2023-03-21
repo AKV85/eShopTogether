@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use App\Mail\OrderCreated;
 use App\Models\Traits\Translatable;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Mail;
 
 /**
  * @property int $id
@@ -79,8 +81,7 @@ class Order extends Model
                 'price' => $skuInOrder->price,
             ]);
         }
-
-        session()->forget('order');
+       session()->regenerate('order');
         return true;
     }
 }

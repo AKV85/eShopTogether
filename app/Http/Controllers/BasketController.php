@@ -63,10 +63,17 @@ class BasketController extends Controller
 //    Funkcija "basketRemove" pašalina prekę iš krepšelio, gautą per parametrą "$sku". Ji naudoja "BasketManager"
 // objektą, kad ištrintų prekę iš krepšelio. Po sėkmingo pašalinimo funkcija parodys pranešimą, kad prekė buvo
 // pašalinta iš krepšelio, pateikiant prekės pavadinimą, naudojant vertimo funkciją "__()".
+//    public function basketRemove(Sku $sku)
+//    {
+//        (new BasketManager())->removeSku($sku);
+//        session()->flash('warning', __('basket.removed') . $sku->product->__('name'));
+//        return redirect()->route('basket');
+//    }
+//}
     public function basketRemove(Sku $sku)
     {
-        (new BasketManager())->removeSku($sku);
+        $basketManager = new BasketManager();
+        $basketManager->removeSku($sku);
         session()->flash('warning', __('basket.removed') . $sku->product->__('name'));
         return redirect()->route('basket');
-    }
-}
+    }}
