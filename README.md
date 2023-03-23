@@ -17,7 +17,10 @@ apie padarytą užsakymą i el.pastą. Adminas turi galimybę kurti,redaguoti,tr
 Projekte naudojom dockerį,turėjome praktikos su github komandoje(kūrėme naujus branchus,git merge,git pull,
 sprendėme konfliktus)
 
-Panaudojom Laravel Breez
+Panaudojom Laravel Breeze
 
-- **[AKS Design](https://aksdesign.lt)**
+
+## Video 
+Trumpas video apie tai,ką jau pavyko sukūrti.
+- **[AKS Design](https://www.youtube.com/watch?v=CP_mJf99mOo)**
 
